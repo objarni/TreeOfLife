@@ -8,32 +8,44 @@ class ProjectTests {
 
     @Test
     fun testProjectionWithInitialParameters() {
-        val frame = ViewportProjector(
-            centerEye = Point(0, 0),
+        val projector = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
             windowSize = Dimension(200, 100),
             zoom = 1.0
         )
-        val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
+        val box = projector.projectRectangle(Point(0, 0), Dimension(10, 10))
         assertEquals(Point(100, 50), box.location)
         assertEquals(Dimension(10, 10), box.size)
     }
 
     @Test
-    fun testProjectionUserPannedRight10Units() {
-        val frame = ViewportProjector(
-            centerEye = Point(10, 0),
+    fun testProjectionUserPannedEast10Units() {
+        val project = ViewportProjector(
+            centerEyeWorld = Point(10, 0),
             windowSize = Dimension(200, 100),
             zoom = 1.0
         )
-        val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
+        val box = project.projectRectangle(Point(0, 0), Dimension(10, 10))
         assertEquals(Point(90, 50), box.location)
+        assertEquals(Dimension(10, 10), box.size)
+    }
+
+//    @Test
+    fun testProjectionUserPannedNorth10Units() {
+        val projector = ViewportProjector(
+            centerEyeWorld = Point(0, 10),
+            windowSize = Dimension(200, 100),
+            zoom = 1.0
+        )
+        val box = projector.projectRectangle(Point(0, 0), Dimension(10, 10))
+        assertEquals(Point(100, 60), box.location)
         assertEquals(Dimension(10, 10), box.size)
     }
 
     @Test
     fun testProjectionUserZoomIn() {
         val frame = ViewportProjector(
-            centerEye = Point(0, 0),
+            centerEyeWorld = Point(0, 0),
             windowSize = Dimension(200, 100),
         )
         frame.zoom = 2.0
@@ -43,11 +55,12 @@ class ProjectTests {
     }
 }
 
-class ViewportProjector(var centerEye: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
-    fun projectRectangle(bottomLeft: Point, size: Dimension): Rectangle {
-        val location = bottomLeft - centerEye + windowSize / 2
-        var size = size * zoom
-        return Rectangle(location, size)
+class ViewportProjector(var centerEyeWorld: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
+    fun projectRectangle(bottomLeftWorldCoordinate: Point, sizeWorldCoords: Dimension): Rectangle {
+        val yFlippedWorldCoordinate = Point(bottomLeftWorldCoordinate.x, -bottomLeftWorldCoordinate.y)
+        val viewportCoordinate = yFlippedWorldCoordinate - centerEyeWorld + windowSize / 2
+        var viewportDimension = sizeWorldCoords * zoom
+        return Rectangle(viewportCoordinate, viewportDimension)
     }
 }
 
