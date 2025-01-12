@@ -1,3 +1,4 @@
+package TreeOfLife
 
 import java.awt.EventQueue
 import javax.swing.JFrame
