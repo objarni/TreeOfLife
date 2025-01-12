@@ -1,13 +1,31 @@
 package TreeOfLife
 
 import java.awt.*
+import java.awt.event.MouseWheelEvent
+import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
-class TimeLinePanel : JPanel() {
+class TimeLinePanel : JPanel(), MouseWheelListener {
+    // Declare a member variable that keeps track of zoom level
+    private var zoom = 1.0
+
+
     init {
         // Set preferred size for the panel
         preferredSize = Dimension(400, 300)
         background = Color.WHITE
+        addMouseWheelListener(this)
+    }
+
+    override fun mouseWheelMoved(e: MouseWheelEvent) {
+        zoom += e.wheelRotation * 0.1
+
+        if(zoom < 0.1)
+            zoom = 0.1
+        if(zoom > 10)
+            zoom = 10.0
+
+        repaint()
     }
 
     override fun paintComponent(g: Graphics) {
@@ -19,7 +37,7 @@ class TimeLinePanel : JPanel() {
         val projector = ViewportProjector(
             centerEyeWorld = Point(0, 0),
             viewportSize = Dimension(width, height),
-            zoom = 1.0
+            zoom = zoom
         )
 
         g2d.color = Color.RED
