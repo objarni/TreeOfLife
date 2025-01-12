@@ -3,6 +3,7 @@ package TreeOfLife
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
+import java.awt.Point
 import javax.swing.JPanel
 
 class TimeLinePanel : JPanel() {
@@ -25,6 +26,18 @@ class TimeLinePanel : JPanel() {
         g2d.drawRect(50, 50, 200, 100)
         g2d.drawRect(0, 0, 20, 20)
         g2d.drawRect(this.width - 20, this.height - 20, 20, 20)
+
+
+        val projector = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(width, height),
+            zoom = 1.0
+        )
+
+        val xaxis = projector.projectRectangle(Point(0, 0), Dimension(20, 2))
+        val yaxis = projector.projectRectangle(Point(0, 0), Dimension(2, 20))
+        g2d.drawRect(xaxis.x, xaxis.y, xaxis.width, xaxis.height)
+        g2d.drawRect(yaxis.x, yaxis.y, yaxis.width, yaxis.height)
 
         // Optionally fill the rectangle
         g2d.color = Color.CYAN

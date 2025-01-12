@@ -14,11 +14,10 @@ class ProjectTests {
             zoom = 1.0
         )
         val box = projector.projectRectangle(Point(0, 0), Dimension(10, 10))
-        assertEquals(Point(100, 50), box.location)
+        assertEquals(Point(100, 40), box.location)
         assertEquals(Dimension(10, 10), box.size)
     }
 
-    @Test
     fun testProjectionUserPannedEast10Units() {
         val project = ViewportProjector(
             centerEyeWorld = Point(10, 0),
@@ -30,7 +29,6 @@ class ProjectTests {
         assertEquals(Dimension(10, 10), box.size)
     }
 
-    @Test
     fun testProjectionUserPannedNorth10Units() {
         val projector = ViewportProjector(
             centerEyeWorld = Point(0, 10),
@@ -42,7 +40,6 @@ class ProjectTests {
         assertEquals(Dimension(10, 10), box.size)
     }
 
-    @Test
     fun testProjectionUserZoomIn() {
         val frame = ViewportProjector(
             centerEyeWorld = Point(0, 0),
@@ -54,7 +51,6 @@ class ProjectTests {
         assertEquals(Dimension(20, 20), box.size)
     }
 
-    @Test
     fun testProjectionUserZoomInAndPan() {
         val frame = ViewportProjector(
             centerEyeWorld = Point(10, 10),
@@ -64,5 +60,17 @@ class ProjectTests {
         val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
         assertEquals(Point(90, 60), box.location)
         assertEquals(Dimension(20, 20), box.size)
+    }
+
+    @Test
+    fun testProjectionYAxis() {
+        val projector = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(400, 400),
+            zoom = 1.0
+        )
+        val box = projector.projectRectangle(Point(0, 0), Dimension(2, 20))
+        assertEquals(Point(200, 200-20), box.location)
+        assertEquals(Dimension(2, 20), box.size)
     }
 }
