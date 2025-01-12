@@ -21,6 +21,8 @@ class TimeLinePanel : JPanel() {
 
         // Draw a rectangle at (50, 50) with width 200 and height 100
         g2d.drawRect(50, 50, 200, 100)
+        g2d.drawRect(0, 0, 20, 20)
+        g2d.drawRect(this.width - 20, this.height - 20, 20, 20)
 
         // Optionally fill the rectangle
         g2d.color = Color.CYAN
