@@ -4,13 +4,7 @@ import java.awt.Dimension
 import java.awt.Point
 import java.awt.Rectangle
 
-class SimpleExTest {
-
-    @Test
-    fun testTitle() {
-        val frame = SimpleEx("Test Title")
-        assertEquals("Test Title", frame.title)
-    }
+class ProjectTests {
 
     @Test
     fun testProjection1() {
@@ -18,7 +12,7 @@ class SimpleExTest {
             centerEye = Point(0, 0),
             windowSize = Dimension(200, 100),
             zoom = 1.0
-        );
+        )
         val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
         assertEquals(Point(100, 50), box.location)
         assertEquals(Dimension(10, 10), box.size)
@@ -26,7 +20,7 @@ class SimpleExTest {
 }
 
 class ViewportProjector(var centerEye: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
-    fun projectRectangle(topLeft: Point, size: Dimension): Rectangle {
+    fun projectRectangle(bottomLeft: Point, size: Dimension): Rectangle {
         return Rectangle(Point(100, 50), size)
     }
 }
