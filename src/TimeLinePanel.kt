@@ -34,6 +34,10 @@ class TimeLinePanel : JPanel(), MouseWheelListener {
         // Cast Graphics to Graphics2D for more features if needed
         val g2d = g.create() // Create a copy of the Graphics object
 
+        // Shorten zoom to 2 decimal places
+        val zoomStr = String.format("%.2f", zoom)
+        g2d.drawString("Zoom: $zoomStr", 10, 20)
+
         val projector = ViewportProjector(
             centerEyeWorld = Point(0, 0),
             viewportSize = Dimension(width, height),
