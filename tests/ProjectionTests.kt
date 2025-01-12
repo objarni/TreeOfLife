@@ -7,7 +7,7 @@ import java.awt.Rectangle
 class ProjectTests {
 
     @Test
-    fun testProjection1() {
+    fun testProjectionWithInitialParameters() {
         val frame = ViewportProjector(
             centerEye = Point(0, 0),
             windowSize = Dimension(200, 100),
@@ -17,12 +17,41 @@ class ProjectTests {
         assertEquals(Point(100, 50), box.location)
         assertEquals(Dimension(10, 10), box.size)
     }
+
+    @Test
+    fun testProjectionUserPannedRight10Units() {
+        val frame = ViewportProjector(
+            centerEye = Point(10, 0),
+            windowSize = Dimension(200, 100),
+            zoom = 1.0
+        )
+        val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
+        assertEquals(Point(90, 50), box.location)
+        assertEquals(Dimension(10, 10), box.size)
+    }
 }
 
 class ViewportProjector(var centerEye: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
     fun projectRectangle(bottomLeft: Point, size: Dimension): Rectangle {
-        return Rectangle(Point(100, 50), size)
+        val location = bottomLeft - centerEye + windowSize / 2
+        return Rectangle(location, size)
     }
+}
+
+private operator fun Dimension.div(divider: Int): Point {
+    return Point(width / divider, height / divider)
+}
+
+private operator fun Point.plus(pt: Point): Point {
+    return Point(x + pt.x, y + pt.y)
+}
+
+private operator fun Point.unaryMinus(): Point {
+    return Point(-x, -y)
+}
+
+private operator fun Point.minus(pt: Point): Point {
+    return Point(x - pt.x, y - pt.y)
 }
 
 
