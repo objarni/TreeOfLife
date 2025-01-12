@@ -29,13 +29,30 @@ class ProjectTests {
         assertEquals(Point(90, 50), box.location)
         assertEquals(Dimension(10, 10), box.size)
     }
+
+    @Test
+    fun testProjectionUserZoomIn() {
+        val frame = ViewportProjector(
+            centerEye = Point(0, 0),
+            windowSize = Dimension(200, 100),
+        )
+        frame.zoom = 2.0
+        val box = frame.projectRectangle(Point(0, 0), Dimension(10, 10))
+        assertEquals(Point(100, 50), box.location)
+        assertEquals(Dimension(20, 20), box.size)
+    }
 }
 
 class ViewportProjector(var centerEye: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
     fun projectRectangle(bottomLeft: Point, size: Dimension): Rectangle {
         val location = bottomLeft - centerEye + windowSize / 2
+        var size = size * zoom
         return Rectangle(location, size)
     }
+}
+
+private operator fun Dimension.times(zoom: Double): Dimension {
+    return Dimension((width * zoom).toInt(), (height * zoom).toInt())
 }
 
 private operator fun Dimension.div(divider: Int): Point {
