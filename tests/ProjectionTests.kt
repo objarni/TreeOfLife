@@ -30,7 +30,7 @@ class ProjectTests {
         assertEquals(Dimension(10, 10), box.size)
     }
 
-//    @Test
+    @Test
     fun testProjectionUserPannedNorth10Units() {
         val projector = ViewportProjector(
             centerEyeWorld = Point(0, 10),
@@ -57,8 +57,7 @@ class ProjectTests {
 
 class ViewportProjector(var centerEyeWorld: Point, var windowSize: Dimension, var zoom: Double = 1.0) {
     fun projectRectangle(bottomLeftWorldCoordinate: Point, sizeWorldCoords: Dimension): Rectangle {
-        val yFlippedWorldCoordinate = Point(bottomLeftWorldCoordinate.x, -bottomLeftWorldCoordinate.y)
-        val viewportCoordinate = yFlippedWorldCoordinate - centerEyeWorld + windowSize / 2
+        val viewportCoordinate = windowSize / 2 - Point(centerEyeWorld.x, -centerEyeWorld.y) + bottomLeftWorldCoordinate
         var viewportDimension = sizeWorldCoords * zoom
         return Rectangle(viewportCoordinate, viewportDimension)
     }
