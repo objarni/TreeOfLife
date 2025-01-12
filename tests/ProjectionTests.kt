@@ -66,21 +66,3 @@ class ProjectTests {
         assertEquals(Dimension(20, 20), box.size)
     }
 }
-
-
-/*
-Projection tests.
-
-when the center eye is looking at world coordinate (0, 0) and the zoom level is 1,
-   and the window size is 200x100,
-   a 10x10 box should be drawn from (100, 50) to (110, 60).
-
-when the center eye is looking at world coordinate (0, 0) and the zoom level is 2,
-   and the window size is 200x100,
-   a 10x10 box should be drawn from (100, 50) to (120, 70).
-
-when the center eye is looking at world coordinate (10, 0) and the zoom level is 1,
-   and the window size is 200x100,
-   a 10x10 box should be drawn from (90, 50) to (100, 60).
-
- */
