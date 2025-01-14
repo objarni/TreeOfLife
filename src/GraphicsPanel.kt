@@ -61,14 +61,6 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             zoom = zoom
         )
 
-//        g2d.color = Color.RED
-//        val xaxis = projector.projectRectangle(Point(0, 0), Dimension(20, 1))
-//        g2d.drawRect(xaxis.x, xaxis.y, xaxis.width, xaxis.height)
-//
-//        g2d.color = Color.GREEN
-//        val yaxis = projector.projectRectangle(Point(0, 0), Dimension(1, 20))
-//        g2d.drawRect(yaxis.x, yaxis.y, yaxis.width, yaxis.height)
-
         for (box in boxes) {
             g2d.color = box.color
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
