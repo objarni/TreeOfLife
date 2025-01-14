@@ -75,10 +75,10 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
         if (e == null)
             return
         when (e.keyCode) {
-            KeyEvent.VK_LEFT -> centerEyeWorld.translate(10, 0)
-            KeyEvent.VK_RIGHT -> centerEyeWorld.translate(-10, 0)
-            KeyEvent.VK_UP -> centerEyeWorld.translate(0, -10)
-            KeyEvent.VK_DOWN -> centerEyeWorld.translate(0, 10)
+            KeyEvent.VK_LEFT -> centerEyeWorld.translate(-10, 0)
+            KeyEvent.VK_RIGHT -> centerEyeWorld.translate(10, 0)
+            KeyEvent.VK_UP -> centerEyeWorld.translate(0, 10)
+            KeyEvent.VK_DOWN -> centerEyeWorld.translate(0, -10)
         }
         repaint()
     }
