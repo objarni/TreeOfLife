@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
-import java.util.Enumeration
 import javax.swing.JPanel
 
 class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
@@ -18,7 +17,7 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
         val color: Color
     )
 
-    public fun SetBoxes(boxes: List<Box>) {
+    fun SetBoxes(boxes: List<Box>) {
         this.boxes.clear()
         this.boxes.addAll(boxes)
         repaint()
