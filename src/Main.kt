@@ -14,7 +14,7 @@ class SimpleEx(title: String) : JFrame() {
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(400, 300)
         setLocationRelativeTo(null)
-        contentPane.add(TimeLinePanel()) // Add RectanglePanel to the content pane
+        contentPane.add(GraphicsPanel()) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size
 
     }

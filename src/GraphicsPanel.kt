@@ -7,8 +7,7 @@ import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
-class TimeLinePanel : JPanel(), MouseWheelListener, KeyListener {
-    // Declare a member variable that keeps track of zoom level
+class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
 
