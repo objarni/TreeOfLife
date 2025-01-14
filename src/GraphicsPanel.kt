@@ -18,9 +18,9 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
         val color: Color
     )
 
-    public fun SetBoxes(boxes: Enumeration<Box>) {
+    public fun SetBoxes(boxes: List<Box>) {
         this.boxes.clear()
-        this.boxes.addAll(boxes.toList())
+        this.boxes.addAll(boxes)
         repaint()
     }
 
@@ -61,13 +61,19 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             zoom = zoom
         )
 
-        g2d.color = Color.RED
-        val xaxis = projector.projectRectangle(Point(0, 0), Dimension(20, 1))
-        g2d.drawRect(xaxis.x, xaxis.y, xaxis.width, xaxis.height)
+//        g2d.color = Color.RED
+//        val xaxis = projector.projectRectangle(Point(0, 0), Dimension(20, 1))
+//        g2d.drawRect(xaxis.x, xaxis.y, xaxis.width, xaxis.height)
+//
+//        g2d.color = Color.GREEN
+//        val yaxis = projector.projectRectangle(Point(0, 0), Dimension(1, 20))
+//        g2d.drawRect(yaxis.x, yaxis.y, yaxis.width, yaxis.height)
 
-        g2d.color = Color.GREEN
-        val yaxis = projector.projectRectangle(Point(0, 0), Dimension(1, 20))
-        g2d.drawRect(yaxis.x, yaxis.y, yaxis.width, yaxis.height)
+        for (box in boxes) {
+            g2d.color = box.color
+            val rect = projector.projectRectangle(box.rect.location, box.rect.size)
+            g2d.drawRect(rect.x, rect.y, rect.width, rect.height)
+        }
 
         g2d.dispose() // Clean up the graphics object
     }
