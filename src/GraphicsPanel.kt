@@ -7,15 +7,15 @@ import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
+data class Box(
+    val rect: Rectangle,
+    val color: Color
+)
+
 class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
     private val boxes = mutableListOf<Box>()
-
-    data class Box(
-        val rect: Rectangle,
-        val color: Color
-    )
 
     fun SetBoxes(boxes: List<Box>) {
         this.boxes.clear()

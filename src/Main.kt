@@ -20,15 +20,15 @@ class SimpleEx(title: String) : JFrame() {
         setLocationRelativeTo(null)
         val gfxPanel = GraphicsPanel()
         gfxPanel.SetBoxes(listOf(
-            GraphicsPanel.Box(
+            Box(
                 rect = Rectangle(100, 100, 50, 50),
                 color = Color.BLUE
             ),
-            GraphicsPanel.Box(
+            Box(
                 rect = Rectangle(0, 0, 20, 1),
                 color = Color.RED
             ),
-            GraphicsPanel.Box(
+            Box(
                 rect = Rectangle(0, 0, 1, 20),
                 color = Color.GREEN
             )
