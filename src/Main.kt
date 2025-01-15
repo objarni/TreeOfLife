@@ -1,14 +1,11 @@
 package TreeOfLife
 
-import TreeOfLife.Period
 import java.awt.Color
-import java.awt.Dimension
 import java.awt.EventQueue
-import java.awt.Point
 import java.awt.Rectangle
 import javax.swing.JFrame
 
-class SimpleEx(title: String) : JFrame() {
+class MainFrame(title: String) : JFrame() {
 
     init {
         createUI(title)
@@ -56,7 +53,7 @@ class SimpleEx(title: String) : JFrame() {
 }
 
 private fun createAndShowGUI() {
-    val frame = SimpleEx("Tree of life")
+    val frame = MainFrame("Tree of life")
     frame.isVisible = true
 }
 
