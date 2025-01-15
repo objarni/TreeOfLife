@@ -71,6 +71,8 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
 
     override fun keyTyped(e: KeyEvent?) {}
 
+    var onEscapePressed: () -> Unit = {}
+
     override fun keyPressed(e: KeyEvent?) {
         if (e == null)
             return
@@ -79,6 +81,7 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             KeyEvent.VK_RIGHT -> centerEyeWorld.translate(10, 0)
             KeyEvent.VK_UP -> centerEyeWorld.translate(0, 10)
             KeyEvent.VK_DOWN -> centerEyeWorld.translate(0, -10)
+            KeyEvent.VK_ESCAPE -> onEscapePressed()
         }
         repaint()
     }

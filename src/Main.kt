@@ -17,6 +17,7 @@ class MainFrame(title: String) : JFrame() {
         setSize(400, 300)
         setLocationRelativeTo(null)
         val gfxPanel = GraphicsPanel()
+        gfxPanel.onEscapePressed = { dispose() }
         gfxPanel.SetBoxes(
             listOf(
                 Box(
