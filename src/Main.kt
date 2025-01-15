@@ -21,15 +21,11 @@ class MainFrame(title: String) : JFrame() {
         gfxPanel.SetBoxes(
             listOf(
                 Box(
-                    rect = Rectangle(100, 100, 50, 50),
-                    color = Color.BLUE
-                ),
-                Box(
-                    rect = Rectangle(0, 0, 20, 1),
+                    rect = Rectangle(0, 0, 2000, 0),
                     color = Color.RED
                 ),
                 Box(
-                    rect = Rectangle(0, 0, 1, 20),
+                    rect = Rectangle(0, 0, 0, 20),
                     color = Color.GREEN
                 ),
                 Period(
