@@ -3,6 +3,7 @@ import TreeOfLife.Month
 import TreeOfLife.Period
 import TreeOfLife.TimePoint
 import TreeOfLife.Year
+import TreeOfLife.fromPeriods
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Color
@@ -45,16 +46,3 @@ class CategoryTests {
     }
 }
 
-fun Box.Companion.fromPeriods(periods: List<Period>, baseY: Int, color: Color): List<Box> {
-    /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
-    var addedBoxes = mutableListOf<Box>()
-    return periods.map { period ->
-        var y = baseY
-        while (addedBoxes.any { it.rect.intersects(period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y).rect) }) {
-            y++
-        }
-        val box = period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y)
-        addedBoxes.add(box)
-        box
-    }
-}
