@@ -63,30 +63,6 @@ class MainFrame(title: String) : JFrame() {
 
         val allBoxes = homeBoxes + axisBoxes
         gfxPanel.SetBoxes(allBoxes)
-//        gfxPanel.SetBoxes(
-//            listOf(
-//                Box(
-//                    rect = Rectangle(0, 0, 2000, 0),
-//                    color = Color.RED
-//                ),
-//                Box(
-//                    rect = Rectangle(0, 0, 0, 20),
-//                    color = Color.GREEN
-//                ),
-//                Period(
-//                    TimePoint(Year(1979), Month(7)),
-//                    TimePoint(Year(1983), Month(7)),
-//                    "Stockholm"
-//                ).toBox(
-//                    Color.BLUE,
-//                    y = 4,
-//                    monthOfBirth = TimePoint(
-//                        Year(1979), Month(7)
-//                    )
-//                )
-
-//            )
-//        )
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size
