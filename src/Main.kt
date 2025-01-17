@@ -59,7 +59,7 @@ class MainFrame(title: String) : JFrame() {
                 ),
         )
 
-        val homeBoxes = Box.fromPeriods(homes, color=Color.BLUE, baseY=4)
+        val homeBoxes = Box.fromPeriods(homes, color=Color.BLUE, baseY=4, birthMonth=TimePoint(Year(1979), Month.JULY))
 
         val allBoxes = homeBoxes + axisBoxes
         gfxPanel.SetBoxes(allBoxes)

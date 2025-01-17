@@ -10,12 +10,22 @@ import java.awt.Color
 
 class CategoryTests {
     @Test
+    fun theBoxesAreHorisontallyPlacedRelativeToBirthMonth() {
+        val periods = listOf(
+            Period(TimePoint(Year(1979), Month.JULY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
+        )
+        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0, birthMonth = TimePoint(
+            Year(1979), Month.JULY))
+    }
+
+    @Test
     fun testNonOverlapping() {
         val periods = listOf(
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 2")
         )
-        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0)
+        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0, birthMonth = TimePoint(
+            Year(1979), Month.JULY))
         assertEquals(0, boxes[0].rect.y)
         assertEquals(0, boxes[1].rect.y)
     }
@@ -26,7 +36,8 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MAY), "Test period 2")
         )
-        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.RED)
+        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.RED, birthMonth = TimePoint(
+            Year(1979), Month.JULY))
         assertEquals(0, boxes[0].rect.y)
         assertEquals(1, boxes[1].rect.y)
         assertEquals(Color.RED, boxes[1].color)
@@ -39,7 +50,8 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2020), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
         )
-        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.BLUE)
+        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            Year(1979), Month.JULY))
         assertEquals(0, boxes[0].rect.y)
         assertEquals(1, boxes[1].rect.y)
         assertEquals(0, boxes[2].rect.y)

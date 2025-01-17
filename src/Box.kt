@@ -10,15 +10,15 @@ data class Box(
     companion object
 }
 
-fun Box.Companion.fromPeriods(periods: List<Period>, baseY: Int, color: Color): List<Box> {
+fun Box.Companion.fromPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<Box> {
     /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
     var addedBoxes = mutableListOf<Box>()
     return periods.map { period ->
         var y = baseY
-        while (addedBoxes.any { it.rect.intersects(period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y).rect) }) {
+        while (addedBoxes.any { it.rect.intersects(period.toBox(color, birthMonth, y).rect) }) {
             y++
         }
-        val box = period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y)
+        val box = period.toBox(color, birthMonth, y)
         addedBoxes.add(box)
         box
     }
