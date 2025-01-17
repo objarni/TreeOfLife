@@ -10,7 +10,9 @@ import javax.swing.JPanel
 data class Box(
     val rect: Rectangle,
     val color: Color
-)
+) {
+    companion object
+}
 
 class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0

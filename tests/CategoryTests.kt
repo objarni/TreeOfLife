@@ -6,14 +6,55 @@ import TreeOfLife.Year
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Color
-import java.awt.Rectangle
-
-/*
-given a bunch of periods belonging to a category, convert them to boxes that do not overlap
-non overlapping 2 boxes gives output y = 0, 0
-overlapping 2 boxes gives output y = 0, 1
-3 boxes where the 2nd two overlap gives y = 0, 0, 1
- */
 
 class CategoryTests {
+    @Test
+    fun testNonOverlapping() {
+        val periods = listOf(
+            Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
+            Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 2")
+        )
+        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0)
+        assertEquals(0, boxes[0].rect.y)
+        assertEquals(0, boxes[1].rect.y)
+    }
+
+    @Test
+    fun testTwoOverlapping() {
+        val periods = listOf(
+            Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
+            Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MAY), "Test period 2")
+        )
+        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.RED)
+        assertEquals(0, boxes[0].rect.y)
+        assertEquals(1, boxes[1].rect.y)
+        assertEquals(Color.RED, boxes[1].color)
+    }
+
+    @Test
+    fun test3InZigZagFormation() {
+        val periods = listOf(
+            Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
+            Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
+            Period(TimePoint(Year(2020), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
+        )
+        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.BLUE)
+        assertEquals(0, boxes[0].rect.y)
+        assertEquals(1, boxes[1].rect.y)
+        assertEquals(0, boxes[2].rect.y)
+    }
+}
+
+fun Box.Companion.fromPeriods(periods: List<Period>, baseY: Int, color: Color): List<Box> {
+    /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
+    var addedBoxes = mutableListOf<Box>()
+    return periods.map { period ->
+        var y = baseY
+        while (addedBoxes.any { it.rect.intersects(period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y).rect) }) {
+            y++
+        }
+        val box = period.toBox(color, TimePoint(Year(2020), Month.JANUARY), y)
+        addedBoxes.add(box)
+        box
+    }
 }

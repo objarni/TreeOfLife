@@ -5,13 +5,20 @@ import java.awt.Rectangle
 
 data class Year(val value: Int) {
     init {
-        require(value in 1900..2020) { "Year value must be between 1900 and 2020" }
+        require(value in 1900..2100) { "Year value must be between 1900 and 2020" }
     }
 }
 
 data class Month(val value: Int) {
     init {
         require(value in 1..12) { "Month value must be between 1 and 12" }
+    }
+
+    companion object {
+        val JANUARY = Month(1)
+        val FEBRUARY = Month(2)
+        val MARCH = Month(3)
+        val MAY = Month(5)
     }
 }
 
