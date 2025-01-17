@@ -51,11 +51,13 @@ class MainFrame(title: String) : JFrame() {
         val axisBoxes = listOf(
                 Box(
                     rect = Rectangle(0, 0, 2000, 0),
-                    color = Color.RED
+                    color = Color.RED,
+                    text = "Time"
                 ),
                 Box(
                     rect = Rectangle(0, 0, 0, 20),
-                    color = Color.GREEN
+                    color = Color.GREEN,
+                    text = ""
                 ),
         )
 

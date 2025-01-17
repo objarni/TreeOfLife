@@ -59,6 +59,7 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             g2d.color = box.color
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
             g2d.drawRect(rect.x, rect.y, rect.width, rect.height)
+            g2d.drawString(box.text, rect.x, rect.y)
         }
 
         g2d.dispose() // Clean up the graphics object

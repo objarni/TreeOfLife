@@ -1,11 +1,13 @@
 package TreeOfLife
 
+import org.w3c.dom.Text
 import java.awt.Color
 import java.awt.Rectangle
 
 data class Box(
     val rect: Rectangle,
-    val color: Color
+    val color: Color,
+    val text: String
 ) {
     companion object
 }

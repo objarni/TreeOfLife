@@ -44,7 +44,8 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
         val xEnd = (endYear - birthYear) * 12 + endMonth - birthMonth
         return Box(
             rect = Rectangle(xStart, y, xEnd - xStart, y + 1),
-            color = color
+            color = color,
+            text = text
         )
     }
 
