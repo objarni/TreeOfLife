@@ -21,15 +21,15 @@ class PeriodTests {
             color = Color.BLUE
         )
         val actual = Period(
-            TimePoint(Year(1979), Month(7)),
-            TimePoint(Year(1983), Month(7)),
+            TimePoint(Year(1979), Month.JULY),
+            TimePoint(Year(1983), Month.JULY),
             "Test period"
         )
             .toBox(
                 Color.BLUE,
                 y=4,
                 monthOfBirth = TimePoint(
-                    Year(1979), Month(7)
+                    Year(1979), Month.JULY
                 )
             )
         assertEquals(expeced, actual)
