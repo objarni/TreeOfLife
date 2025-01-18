@@ -37,9 +37,11 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MAY), "Test period 2")
         )
         val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.RED, birthMonth = TimePoint(
-            Year(1979), Month.JULY))
+            Year(2000), Month.JANUARY))
         assertEquals(0, boxes[0].rect.y)
+        assertEquals(240, boxes[0].rect.x)
         assertEquals(1, boxes[1].rect.y)
+        assertEquals(241, boxes[1].rect.x)
         assertEquals(Color.RED, boxes[1].color)
     }
 
