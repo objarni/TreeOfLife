@@ -17,8 +17,9 @@ class PeriodTests {
     @Test
     fun testFromPeriodToBox() {
         val expeced = Box(
-            rect = Rectangle(0, 4, 48, 5),
-            color = Color.BLUE
+            rect = Rectangle(6, 4, 48, 5),
+            color = Color.BLUE,
+            text = "Test period"
         )
         val actual = Period(
             TimePoint(Year(1979), Month.JULY),
@@ -29,7 +30,7 @@ class PeriodTests {
                 Color.BLUE,
                 y=4,
                 monthOfBirth = TimePoint(
-                    Year(1979), Month.JULY
+                    Year(1979), Month.JANUARY
                 )
             )
         assertEquals(expeced, actual)
