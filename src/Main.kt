@@ -20,33 +20,7 @@ class MainFrame(title: String) : JFrame() {
         gfxPanel.onEscapePressed = { dispose() }
 
         // Periods in different homes in my life
-        val homes = listOf(
-            Period(
-                TimePoint(Year(1979), Month.JULY),
-                TimePoint(Year(1983), Month.JUNE),
-                "Stockholm"
-            ),
-            Period(
-                TimePoint(Year(1983), Month.JUNE),
-                TimePoint(Year(1997), Month.MAY),
-                "Röstånga"
-            ),
-            Period(
-                TimePoint(Year(1997), Month.MAY),
-                TimePoint(Year(1998), Month.MAY),
-                "Klippan"
-            ),
-            Period(
-                TimePoint(Year(1998), Month.MAY),
-                TimePoint(Year(1999), Month.JANUARY),
-                "Hisingen"
-            ),
-            Period(
-                TimePoint(Year(1999), Month.JANUARY),
-                TimePoint(Year(1999), Month.NOVEMBER),
-                "Boden"
-            ),
-        )
+        val homes = homePeriods()
 
         val axisBoxes = listOf(
                 Box(
@@ -71,6 +45,34 @@ class MainFrame(title: String) : JFrame() {
 
     }
 }
+
+fun homePeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1979), Month.JULY),
+        TimePoint(Year(1983), Month.JUNE),
+        "Stockholm"
+    ),
+    Period(
+        TimePoint(Year(1983), Month.JUNE),
+        TimePoint(Year(1997), Month.MAY),
+        "Röstånga"
+    ),
+    Period(
+        TimePoint(Year(1997), Month.MAY),
+        TimePoint(Year(1998), Month.MAY),
+        "Klippan"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.MAY),
+        TimePoint(Year(1999), Month.JANUARY),
+        "Hisingen"
+    ),
+    Period(
+        TimePoint(Year(1999), Month.JANUARY),
+        TimePoint(Year(1999), Month.NOVEMBER),
+        "Boden"
+    ),
+)
 
 private fun createAndShowGUI() {
     val frame = MainFrame("Tree of life")
