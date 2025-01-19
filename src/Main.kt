@@ -24,12 +24,12 @@ class MainFrame(title: String) : JFrame() {
 
         val axisBoxes = listOf(
                 Box(
-                    rect = Rectangle(0, 0, 2000, 0),
+                    rect = Rectangle(0, 0, 2000, 1),
                     color = Color.RED,
-                    text = "Time"
+                    text = "*"
                 ),
                 Box(
-                    rect = Rectangle(0, 0, 0, 20),
+                    rect = Rectangle(0, 0, 1, 20),
                     color = Color.GREEN,
                     text = ""
                 ),
@@ -37,7 +37,7 @@ class MainFrame(title: String) : JFrame() {
 
         val homeBoxes = Box.fromPeriods(homes, color=Color.BLUE, baseY=4, birthMonth=TimePoint(Year(1979), Month.JULY))
 
-        val allBoxes = homeBoxes + axisBoxes
+        val allBoxes = axisBoxes + homeBoxes
         gfxPanel.SetBoxes(allBoxes)
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
