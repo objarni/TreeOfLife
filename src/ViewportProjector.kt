@@ -5,11 +5,15 @@ import java.awt.Point
 import java.awt.Rectangle
 
 class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, var zoom: Double = 1.0) {
-    fun projectRectangle(bottomLeftWorldCoordinate: Point, sizeWorldCoords: Dimension): Rectangle {
-        val topLeftWorldCoordinate = bottomLeftWorldCoordinate + Point(0, sizeWorldCoords.height)
-        val viewportCoordinate = viewportSize / 2 - (Point(centerEyeWorld.x, -centerEyeWorld.y) + topLeftWorldCoordinate) * zoom
-        var viewportDimension = sizeWorldCoords * zoom
-        return Rectangle(viewportCoordinate, viewportDimension)
+    fun projectRectangle(bottomLeftWorld: Point, sizeWorld: Dimension): Rectangle {
+
+        val topLeftWorld = bottomLeftWorld + Point(0, sizeWorld.height)
+
+        val topLeftViewport = viewportSize / 2 + (Point(centerEyeWorld.x, -centerEyeWorld.y) - topLeftWorld) * zoom
+
+        var viewportDim = sizeWorld * zoom
+
+        return Rectangle(topLeftViewport, viewportDim)
     }
 }
 
