@@ -49,14 +49,15 @@ class CategoryTests {
     fun test3InZigZagFormation() {
         val periods = listOf(
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
-            Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
-            Period(TimePoint(Year(2020), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
+            Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2021), Month.MARCH), "Test period 1"),
+            Period(TimePoint(Year(2021), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
         )
         val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY))
-        assertEquals(0, boxes[0].rect.y)
-        assertEquals(1, boxes[1].rect.y)
-        assertEquals(0, boxes[2].rect.y)
+        val xs = boxes.map { it.rect.x }
+        val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
+        assert(xIsSorted)
+        assertEquals(intArrayOf(0, 1, 0).toList(), boxes.map { it.rect.y })
     }
 }
 
