@@ -10,7 +10,9 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
         val topLeftW = bottomLeftW + Point(0, sizeW.height)
         val eyeToBoxTopLeftW = topLeftW - centerEyeWorld
         val centerV = viewportSize / 2
-        val topLeftV = centerV + eyeToBoxTopLeftW * zoom
+        val eyeToBoxTopLeftScaledToV = eyeToBoxTopLeftW * zoom
+        val eyeTooBoxTopLeftV =  Point(eyeToBoxTopLeftScaledToV.x, -eyeToBoxTopLeftScaledToV.y)
+        val topLeftV = centerV + eyeTooBoxTopLeftV
         var dimV = sizeW * zoom
         return Rectangle(topLeftV, dimV)
     }
