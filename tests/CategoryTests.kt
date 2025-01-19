@@ -4,6 +4,7 @@ import TreeOfLife.Period
 import TreeOfLife.TimePoint
 import TreeOfLife.Year
 import TreeOfLife.fromPeriods
+import TreeOfLife.homePeriods
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Color
@@ -58,6 +59,16 @@ class CategoryTests {
         val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
         assert(xIsSorted)
         assertEquals(intArrayOf(0, 1, 0).toList(), boxes.map { it.rect.y })
+    }
+
+    @Test
+    fun homeBoxesAreSortedInX() {
+        val boxes = Box.fromPeriods(
+            homePeriods(), baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            Year(1979), Month.JULY))
+        val xs = boxes.map { it.rect.x }
+        val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
+        assert(xIsSorted)
     }
 }
 
