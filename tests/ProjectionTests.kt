@@ -77,4 +77,15 @@ class ProjectTests {
         assertEquals(Point(200, 200-20), box.location)
         assertEquals(Dimension(2, 20), box.size)
     }
+
+    @Test
+    fun testProjectionOfBoxAtXStart10() {
+        val frame = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(200, 100),
+        )
+        frame.zoom = 1.0
+        val box = frame.projectRectangle(Point(10, 0), Dimension(10, 10))
+        assertEquals(Point(110, 40), box.location)
+    }
 }
