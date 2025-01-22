@@ -19,9 +19,6 @@ class MainFrame(title: String) : JFrame() {
         val gfxPanel = GraphicsPanel()
         gfxPanel.onEscapePressed = { dispose() }
 
-        // Periods in different homes in my life
-        val homes = homePeriods()
-
         val axisBoxes = listOf(
                 Box(
                     rect = Rectangle(0, 0, 2000, 1),
@@ -35,9 +32,32 @@ class MainFrame(title: String) : JFrame() {
                 ),
         )
 
-        val homeBoxes = Box.fromPeriods(homes, color=Color.BLUE, baseY=4, birthMonth=TimePoint(Year(1979), Month.JULY))
+        val birthMonth = TimePoint(Year(1979), Month.JULY)
+        val homeBoxes = Box.fromPeriods(
+            homePeriods(),
+            color = Color.BLUE,
+            baseY = 2,
+            birthMonth = birthMonth
+        )
+        val educationBoxes = Box.fromPeriods(
+            listOf(
+                Period(
+                    TimePoint(Year(1986), Month.AUGUST),
+                    TimePoint(Year(1987), Month.JUNE),
+                    "Rödebo förskola"
+                ),
+                Period(
+                    TimePoint(Year(1987), Month.AUGUST),
+                    TimePoint(Year(1995), Month.JUNE),
+                    "Röstånga skola"
+                ),
+            ),
+            color = Color.GREEN,
+            baseY = 4,
+            birthMonth = birthMonth
+        )
 
-        val allBoxes = axisBoxes + homeBoxes
+        val allBoxes = axisBoxes + homeBoxes + educationBoxes
         gfxPanel.SetBoxes(allBoxes)
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane

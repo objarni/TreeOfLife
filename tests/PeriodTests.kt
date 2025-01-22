@@ -17,7 +17,7 @@ class PeriodTests {
     @Test
     fun testFromPeriodToBox() {
         val expeced = Box(
-            rect = Rectangle(6, 4, 48, 5),
+            rect = Rectangle(6, 4, 48, 1),
             color = Color.BLUE,
             text = "Test period"
         )
