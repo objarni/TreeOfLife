@@ -66,6 +66,8 @@ class MainFrame(title: String) : JFrame() {
     }
 }
 
+data class Text(val positionInTime: TimePoint, val levelAboveTimeline: Int, val text: String)
+
 fun homePeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1979), Month.JULY),
