@@ -10,17 +10,6 @@ import java.awt.Color
 
 class CategoryTests {
     @Test
-    fun theBoxesAreHorisontallyPlacedRelativeToBirthMonth() {
-        val periods = listOf(
-            Period(TimePoint(Year(1979), Month.JULY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
-        )
-        val boxes = boxesFromPeriods(
-            periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
-            Year(1979), Month.JULY)
-        )
-    }
-
-    @Test
     fun testNonOverlapping() {
         val periods = listOf(
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
