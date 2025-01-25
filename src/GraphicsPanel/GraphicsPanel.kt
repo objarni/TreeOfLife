@@ -57,12 +57,12 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             TextBlock(
                 rect = Rectangle(0, 0, 2000, 1),
                 color = Color.RED,
-                text = "*"
+                text = ""
             ),
             TextBlock(
                 rect = Rectangle(0, 0, 1, 20),
                 color = Color.GREEN,
-                text = ""
+                text = "*"
             ),
         )
 
