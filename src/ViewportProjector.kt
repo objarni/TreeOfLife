@@ -19,7 +19,7 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
         val eyeToPointTopLeftV =  Point(eyeToPointTopLeftScaledToV.x, -eyeToPointTopLeftScaledToV.y)
         val centerV = viewportSize / 2
         val topLeftV = centerV + eyeToPointTopLeftV
-        return topLeftV;
+        return topLeftV
     }
 }
 
@@ -37,10 +37,6 @@ private operator fun Dimension.div(divider: Int): Point {
 
 private operator fun Point.plus(pt: Point): Point {
     return Point(x + pt.x, y + pt.y)
-}
-
-private operator fun Point.unaryMinus(): Point {
-    return Point(-x, -y)
 }
 
 private operator fun Point.minus(pt: Point): Point {
