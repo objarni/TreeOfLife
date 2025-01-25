@@ -13,7 +13,7 @@ import javax.swing.JPanel
 class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
-    private val boxes = mutableListOf<TextBlock>()
+    private val blocks = mutableListOf<TextBlock>()
 
     init {
         // Set preferred size for the panel
@@ -52,7 +52,7 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             zoom = zoom
         )
 
-        for (box in boxes) {
+        for (box in blocks) {
             g2d.color = box.color
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
             g2d.fillRect(rect.x, rect.y, rect.width, rect.height)
@@ -84,9 +84,9 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
 
     override fun keyReleased(e: KeyEvent?) {}
 
-    fun SetBoxes(boxes: List<TextBlock>) {
-        this.boxes.clear()
-        this.boxes.addAll(boxes)
+    fun SetBlocks(blocks: List<TextBlock>) {
+        this.blocks.clear()
+        this.blocks.addAll(blocks)
         repaint()
     }
 }

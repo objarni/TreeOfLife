@@ -40,13 +40,13 @@ class MainFrame(title: String) : JFrame() {
         )
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
-        val homeBoxes = textBlocksForPeriods(
+        val homeBlocks = textBlocksForPeriods(
             homePeriods(),
             baseY = 2,
             color = Color.BLUE,
             birthMonth = birthMonth
         )
-        val educationBoxes = textBlocksForPeriods(
+        val educationBlocks = textBlocksForPeriods(
             listOf(
                 Period(
                     TimePoint(Year(1986), Month.AUGUST),
@@ -64,8 +64,8 @@ class MainFrame(title: String) : JFrame() {
             birthMonth = birthMonth
         )
 
-        val allBoxes = axisBlocks + homeBoxes + educationBoxes
-        gfxPanel.SetBoxes(allBoxes)
+        val allBlocks = axisBlocks + homeBlocks + educationBlocks
+        gfxPanel.SetBlocks(allBlocks)
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size

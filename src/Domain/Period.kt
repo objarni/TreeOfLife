@@ -57,7 +57,7 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
 }
 
 fun textBlocksForPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<TextBlock> {
-    /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
+    /* algorithm. keep track of all added-so-far blocks. for each period, check if it overlaps with any of the added blocks. if it does, increment y. */
     var addedBlocks = mutableListOf<TextBlock>()
     return periods.map { period ->
         var y = baseY
