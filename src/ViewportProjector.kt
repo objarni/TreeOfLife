@@ -14,12 +14,11 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
     }
 
     fun projectPoint(pointW: Point): Point {
-        val topLeftW = pointW
-        val eyeToBoxTopLeftW = topLeftW - centerEyeWorld
+        val eyeToPointTopLeftW = pointW - centerEyeWorld
+        val eyeToPointTopLeftScaledToV = eyeToPointTopLeftW * zoom
+        val eyeToPointTopLeftV =  Point(eyeToPointTopLeftScaledToV.x, -eyeToPointTopLeftScaledToV.y)
         val centerV = viewportSize / 2
-        val eyeToBoxTopLeftScaledToV = eyeToBoxTopLeftW * zoom
-        val eyeTooBoxTopLeftV =  Point(eyeToBoxTopLeftScaledToV.x, -eyeToBoxTopLeftScaledToV.y)
-        val topLeftV = centerV + eyeTooBoxTopLeftV
+        val topLeftV = centerV + eyeToPointTopLeftV
         return topLeftV;
     }
 }
