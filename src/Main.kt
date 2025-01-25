@@ -26,19 +26,6 @@ class MainFrame(title: String) : JFrame() {
         val gfxPanel = GraphicsPanel()
         gfxPanel.onEscapePressed = { dispose() }
 
-        val axisBlocks = listOf(
-            TextBlock(
-                rect = Rectangle(0, 0, 2000, 1),
-                color = Color.RED,
-                text = "*"
-            ),
-            TextBlock(
-                rect = Rectangle(0, 0, 1, 20),
-                color = Color.GREEN,
-                text = ""
-            ),
-        )
-
         val birthMonth = TimePoint(Year(1979), Month.JULY)
         val homeBlocks = textBlocksForPeriods(
             homePeriods(),
@@ -64,7 +51,7 @@ class MainFrame(title: String) : JFrame() {
             birthMonth = birthMonth
         )
 
-        val allBlocks = axisBlocks + homeBlocks + educationBlocks
+        val allBlocks = homeBlocks + educationBlocks
         gfxPanel.SetBlocks(allBlocks)
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane

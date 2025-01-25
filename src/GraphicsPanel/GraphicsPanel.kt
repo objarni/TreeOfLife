@@ -4,6 +4,7 @@ import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.Point
+import java.awt.Rectangle
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.awt.event.MouseWheelEvent
@@ -52,7 +53,20 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
             zoom = zoom
         )
 
-        for (box in blocks) {
+        val axisBlocks = listOf(
+            TextBlock(
+                rect = Rectangle(0, 0, 2000, 1),
+                color = Color.RED,
+                text = "*"
+            ),
+            TextBlock(
+                rect = Rectangle(0, 0, 1, 20),
+                color = Color.GREEN,
+                text = ""
+            ),
+        )
+
+        for (box in axisBlocks + blocks) {
             g2d.color = box.color
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
             g2d.fillRect(rect.x, rect.y, rect.width, rect.height)
