@@ -1,4 +1,3 @@
-import TreeOfLife.Box
 import TreeOfLife.Month
 import TreeOfLife.Period
 import TreeOfLife.TimePoint
@@ -15,8 +14,10 @@ class CategoryTests {
         val periods = listOf(
             Period(TimePoint(Year(1979), Month.JULY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
         )
-        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0, birthMonth = TimePoint(
-            Year(1979), Month.JULY))
+        val boxes = fromPeriods(
+            periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            Year(1979), Month.JULY)
+        )
     }
 
     @Test
@@ -25,8 +26,10 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 2")
         )
-        val boxes = Box.fromPeriods(periods, color = Color.BLUE, baseY = 0, birthMonth = TimePoint(
-            Year(1979), Month.JULY))
+        val boxes = fromPeriods(
+            periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            Year(1979), Month.JULY)
+        )
         assertEquals(0, boxes[0].rect.y)
         assertEquals(0, boxes[1].rect.y)
     }
@@ -37,8 +40,10 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MAY), "Test period 2")
         )
-        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.RED, birthMonth = TimePoint(
-            Year(2000), Month.JANUARY))
+        val boxes = fromPeriods(
+            periods, baseY = 0, color = Color.RED, birthMonth = TimePoint(
+            Year(2000), Month.JANUARY)
+        )
         assertEquals(0, boxes[0].rect.y)
         assertEquals(240, boxes[0].rect.x)
         assertEquals(1, boxes[1].rect.y)
@@ -53,8 +58,10 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2021), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2021), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
         )
-        val boxes = Box.fromPeriods(periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
-            Year(1979), Month.JULY))
+        val boxes = fromPeriods(
+            periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            Year(1979), Month.JULY)
+        )
         val xs = boxes.map { it.rect.x }
         val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
         assert(xIsSorted)
@@ -63,9 +70,10 @@ class CategoryTests {
 
     @Test
     fun homeBoxesAreSortedInX() {
-        val boxes = Box.fromPeriods(
+        val boxes = fromPeriods(
             homePeriods(), baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
-            Year(1979), Month.JULY))
+            Year(1979), Month.JULY)
+        )
         val xs = boxes.map { it.rect.x }
         val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
         assert(xIsSorted)

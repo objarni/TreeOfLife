@@ -33,13 +33,13 @@ class MainFrame(title: String) : JFrame() {
         )
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
-        val homeBoxes = Box.fromPeriods(
+        val homeBoxes = fromPeriods(
             homePeriods(),
-            color = Color.BLUE,
             baseY = 2,
+            color = Color.BLUE,
             birthMonth = birthMonth
         )
-        val educationBoxes = Box.fromPeriods(
+        val educationBoxes = fromPeriods(
             listOf(
                 Period(
                     TimePoint(Year(1986), Month.AUGUST),
@@ -52,8 +52,8 @@ class MainFrame(title: String) : JFrame() {
                     "Röstånga skola"
                 ),
             ),
-            color = Color.GREEN,
             baseY = 4,
+            color = Color.GREEN,
             birthMonth = birthMonth
         )
 

@@ -1,6 +1,5 @@
 package TreeOfLife
 
-import org.w3c.dom.Text
 import java.awt.Color
 import java.awt.Rectangle
 
@@ -12,7 +11,7 @@ data class Box(
     companion object
 }
 
-fun Box.Companion.fromPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<Box> {
+fun fromPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<Box> {
     /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
     var addedBoxes = mutableListOf<Box>()
     return periods.map { period ->
