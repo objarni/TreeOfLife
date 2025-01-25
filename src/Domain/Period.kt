@@ -1,6 +1,6 @@
 package TreeOfLife.Domain
 
-import TreeOfLife.GraphicsPanel.Box
+import TreeOfLife.GraphicsPanel.TextBlock
 import java.awt.Color
 import java.awt.Rectangle
 
@@ -34,7 +34,7 @@ data class Month(val value: Int) {
 data class TimePoint(val year: Year, val month: Month)
 
 data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
-    fun toBox(color: Color, monthOfBirth: TimePoint, y: Int): Box {
+    fun toBlock(color: Color, monthOfBirth: TimePoint, y: Int): TextBlock {
         val startYear = start.year.value
         val startMonth = start.month.value
         val endYear = end.year.value
@@ -43,7 +43,7 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
         val birthMonth = monthOfBirth.month.value
         val xStart = (startYear - birthYear) * 12 + startMonth - birthMonth
         val xEnd = (endYear - birthYear) * 12 + endMonth - birthMonth
-        return Box(
+        return TextBlock(
             rect = Rectangle(xStart, y, xEnd - xStart, 1),
             color = color,
             text = text
@@ -56,16 +56,16 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
     }
 }
 
-fun boxesFromPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<Box> {
+fun textBlocksForPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<TextBlock> {
     /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
-    var addedBoxes = mutableListOf<Box>()
+    var addedBlocks = mutableListOf<TextBlock>()
     return periods.map { period ->
         var y = baseY
-        while (addedBoxes.any { it.rect.intersects(period.toBox(color, birthMonth, y).rect) }) {
+        while (addedBlocks.any { it.rect.intersects(period.toBlock(color, birthMonth, y).rect) }) {
             y++
         }
-        val box = period.toBox(color, birthMonth, y)
-        addedBoxes.add(box)
-        box
+        val block = period.toBlock(color, birthMonth, y)
+        addedBlocks.add(block)
+        block
     }
 }

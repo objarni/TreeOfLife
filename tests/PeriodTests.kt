@@ -1,4 +1,4 @@
-import TreeOfLife.GraphicsPanel.Box
+import TreeOfLife.GraphicsPanel.TextBlock
 import TreeOfLife.Domain.Month
 import TreeOfLife.Domain.Period
 import TreeOfLife.Domain.TimePoint
@@ -15,8 +15,8 @@ a period in a persons life converted to a Box
 class PeriodTests {
 
     @Test
-    fun testFromPeriodToBox() {
-        val expeced = Box(
+    fun testFromPeriodToBlock() {
+        val expeced = TextBlock(
             rect = Rectangle(6, 4, 48, 1),
             color = Color.BLUE,
             text = "Test period"
@@ -26,7 +26,7 @@ class PeriodTests {
             TimePoint(Year(1983), Month.JULY),
             "Test period"
         )
-            .toBox(
+            .toBlock(
                 Color.BLUE,
                 y=4,
                 monthOfBirth = TimePoint(

@@ -1,7 +1,5 @@
 package TreeOfLife.GraphicsPanel
 
-import TreeOfLife.GraphicsPanel.Box
-import TreeOfLife.GraphicsPanel.ViewportProjector
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
@@ -15,7 +13,7 @@ import javax.swing.JPanel
 class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
-    private val boxes = mutableListOf<Box>()
+    private val boxes = mutableListOf<TextBlock>()
 
     init {
         // Set preferred size for the panel
@@ -86,7 +84,7 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
 
     override fun keyReleased(e: KeyEvent?) {}
 
-    fun SetBoxes(boxes: List<Box>) {
+    fun SetBoxes(boxes: List<TextBlock>) {
         this.boxes.clear()
         this.boxes.addAll(boxes)
         repaint()

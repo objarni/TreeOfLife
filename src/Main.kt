@@ -4,8 +4,8 @@ import TreeOfLife.Domain.Month
 import TreeOfLife.Domain.Period
 import TreeOfLife.Domain.TimePoint
 import TreeOfLife.Domain.Year
-import TreeOfLife.Domain.boxesFromPeriods
-import TreeOfLife.GraphicsPanel.Box
+import TreeOfLife.Domain.textBlocksForPeriods
+import TreeOfLife.GraphicsPanel.TextBlock
 import TreeOfLife.GraphicsPanel.GraphicsPanel
 import java.awt.Color
 import java.awt.EventQueue
@@ -26,13 +26,13 @@ class MainFrame(title: String) : JFrame() {
         val gfxPanel = GraphicsPanel()
         gfxPanel.onEscapePressed = { dispose() }
 
-        val axisBoxes = listOf(
-            Box(
+        val axisBlocks = listOf(
+            TextBlock(
                 rect = Rectangle(0, 0, 2000, 1),
                 color = Color.RED,
                 text = "*"
             ),
-            Box(
+            TextBlock(
                 rect = Rectangle(0, 0, 1, 20),
                 color = Color.GREEN,
                 text = ""
@@ -40,13 +40,13 @@ class MainFrame(title: String) : JFrame() {
         )
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
-        val homeBoxes = boxesFromPeriods(
+        val homeBoxes = textBlocksForPeriods(
             homePeriods(),
             baseY = 2,
             color = Color.BLUE,
             birthMonth = birthMonth
         )
-        val educationBoxes = boxesFromPeriods(
+        val educationBoxes = textBlocksForPeriods(
             listOf(
                 Period(
                     TimePoint(Year(1986), Month.AUGUST),
@@ -64,7 +64,7 @@ class MainFrame(title: String) : JFrame() {
             birthMonth = birthMonth
         )
 
-        val allBoxes = axisBoxes + homeBoxes + educationBoxes
+        val allBoxes = axisBlocks + homeBoxes + educationBoxes
         gfxPanel.SetBoxes(allBoxes)
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
