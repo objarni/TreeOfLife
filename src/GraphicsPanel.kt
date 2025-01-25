@@ -11,7 +11,6 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
     private val boxes = mutableListOf<Box>()
-    private val texts = mutableListOf<Text>()
 
     init {
         // Set preferred size for the panel
@@ -86,10 +85,5 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
         this.boxes.clear()
         this.boxes.addAll(boxes)
         repaint()
-    }
-
-    fun SetTexts(texts: List<Text>) {
-        this.texts.clear()
-        this.texts.addAll(texts)
     }
 }
