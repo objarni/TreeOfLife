@@ -1,5 +1,7 @@
 package TreeOfLife
 
+import TreeOfLife.GraphicsPanel.Box
+import TreeOfLife.GraphicsPanel.GraphicsPanel
 import java.awt.Color
 import java.awt.EventQueue
 import java.awt.Rectangle
@@ -20,16 +22,16 @@ class MainFrame(title: String) : JFrame() {
         gfxPanel.onEscapePressed = { dispose() }
 
         val axisBoxes = listOf(
-                Box(
-                    rect = Rectangle(0, 0, 2000, 1),
-                    color = Color.RED,
-                    text = "*"
-                ),
-                Box(
-                    rect = Rectangle(0, 0, 1, 20),
-                    color = Color.GREEN,
-                    text = ""
-                ),
+            Box(
+                rect = Rectangle(0, 0, 2000, 1),
+                color = Color.RED,
+                text = "*"
+            ),
+            Box(
+                rect = Rectangle(0, 0, 1, 20),
+                color = Color.GREEN,
+                text = ""
+            ),
         )
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)

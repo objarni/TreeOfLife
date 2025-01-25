@@ -1,4 +1,4 @@
-package TreeOfLife
+package TreeOfLife.GraphicsPanel
 
 import java.awt.Dimension
 import java.awt.Point
@@ -16,7 +16,7 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
     fun projectPoint(pointW: Point): Point {
         val eyeToPointTopLeftW = pointW - centerEyeWorld
         val eyeToPointTopLeftScaledToV = eyeToPointTopLeftW * zoom
-        val eyeToPointTopLeftV =  Point(eyeToPointTopLeftScaledToV.x, -eyeToPointTopLeftScaledToV.y)
+        val eyeToPointTopLeftV = Point(eyeToPointTopLeftScaledToV.x, -eyeToPointTopLeftScaledToV.y)
         val centerV = viewportSize / 2
         val topLeftV = centerV + eyeToPointTopLeftV
         return topLeftV

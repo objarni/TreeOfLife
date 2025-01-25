@@ -1,4 +1,4 @@
-package TreeOfLife
+package TreeOfLife.GraphicsPanel
 
 import java.awt.Color
 import java.awt.Rectangle
@@ -10,4 +10,3 @@ data class Box(
 ) {
     companion object
 }
-

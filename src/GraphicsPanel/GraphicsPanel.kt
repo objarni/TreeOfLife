@@ -1,6 +1,11 @@
-package TreeOfLife
+package TreeOfLife.GraphicsPanel
 
-import java.awt.*
+import TreeOfLife.GraphicsPanel.Box
+import TreeOfLife.GraphicsPanel.ViewportProjector
+import java.awt.Color
+import java.awt.Dimension
+import java.awt.Graphics
+import java.awt.Point
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.awt.event.MouseWheelEvent

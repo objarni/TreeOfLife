@@ -1,5 +1,6 @@
 package TreeOfLife
 
+import TreeOfLife.GraphicsPanel.Box
 import java.awt.Color
 import java.awt.Rectangle
 

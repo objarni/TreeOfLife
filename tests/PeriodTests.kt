@@ -1,4 +1,4 @@
-import TreeOfLife.Box
+import TreeOfLife.GraphicsPanel.Box
 import TreeOfLife.Month
 import TreeOfLife.Period
 import TreeOfLife.TimePoint
