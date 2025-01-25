@@ -54,3 +54,17 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
         require(start.year.value != end.year.value || start.month.value <= end.month.value) { "Start month must be before or equal to end month" }
     }
 }
+
+fun boxesFromPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<Box> {
+    /* algorithm. keep track of all added-so-far boxes. for each period, check if it overlaps with any of the added boxes. if it does, increment y. */
+    var addedBoxes = mutableListOf<Box>()
+    return periods.map { period ->
+        var y = baseY
+        while (addedBoxes.any { it.rect.intersects(period.toBox(color, birthMonth, y).rect) }) {
+            y++
+        }
+        val box = period.toBox(color, birthMonth, y)
+        addedBoxes.add(box)
+        box
+    }
+}
