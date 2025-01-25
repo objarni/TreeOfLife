@@ -59,6 +59,7 @@ class MainFrame(title: String) : JFrame() {
 
         val allBoxes = axisBoxes + homeBoxes + educationBoxes
         gfxPanel.SetBoxes(allBoxes)
+        gfxPanel.SetTexts(allTexts())
 
         contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size
