@@ -1,4 +1,4 @@
-package TreeOfLife
+package TreeOfLife.Domain
 
 import TreeOfLife.GraphicsPanel.Box
 import java.awt.Color

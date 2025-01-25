@@ -1,5 +1,10 @@
 package TreeOfLife
 
+import TreeOfLife.Domain.Month
+import TreeOfLife.Domain.Period
+import TreeOfLife.Domain.TimePoint
+import TreeOfLife.Domain.Year
+import TreeOfLife.Domain.boxesFromPeriods
 import TreeOfLife.GraphicsPanel.Box
 import TreeOfLife.GraphicsPanel.GraphicsPanel
 import java.awt.Color

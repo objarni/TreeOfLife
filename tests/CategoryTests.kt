@@ -1,8 +1,8 @@
-import TreeOfLife.Month
-import TreeOfLife.Period
-import TreeOfLife.TimePoint
-import TreeOfLife.Year
-import TreeOfLife.boxesFromPeriods
+import TreeOfLife.Domain.Month
+import TreeOfLife.Domain.Period
+import TreeOfLife.Domain.TimePoint
+import TreeOfLife.Domain.Year
+import TreeOfLife.Domain.boxesFromPeriods
 import TreeOfLife.homePeriods
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
