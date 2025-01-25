@@ -2,7 +2,7 @@ import TreeOfLife.Month
 import TreeOfLife.Period
 import TreeOfLife.TimePoint
 import TreeOfLife.Year
-import TreeOfLife.fromPeriods
+import TreeOfLife.boxesFromPeriods
 import TreeOfLife.homePeriods
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -14,7 +14,7 @@ class CategoryTests {
         val periods = listOf(
             Period(TimePoint(Year(1979), Month.JULY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
         )
-        val boxes = fromPeriods(
+        val boxes = boxesFromPeriods(
             periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
@@ -26,7 +26,7 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.FEBRUARY), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MARCH), "Test period 2")
         )
-        val boxes = fromPeriods(
+        val boxes = boxesFromPeriods(
             periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
@@ -40,7 +40,7 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.JANUARY), TimePoint(Year(2020), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2020), Month.MAY), "Test period 2")
         )
-        val boxes = fromPeriods(
+        val boxes = boxesFromPeriods(
             periods, baseY = 0, color = Color.RED, birthMonth = TimePoint(
             Year(2000), Month.JANUARY)
         )
@@ -58,7 +58,7 @@ class CategoryTests {
             Period(TimePoint(Year(2020), Month.FEBRUARY), TimePoint(Year(2021), Month.MARCH), "Test period 1"),
             Period(TimePoint(Year(2021), Month.MAY), TimePoint(Year(2025), Month.MAY), "Test period 3")
         )
-        val boxes = fromPeriods(
+        val boxes = boxesFromPeriods(
             periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
@@ -70,7 +70,7 @@ class CategoryTests {
 
     @Test
     fun homeBoxesAreSortedInX() {
-        val boxes = fromPeriods(
+        val boxes = boxesFromPeriods(
             homePeriods(), baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
