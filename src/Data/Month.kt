@@ -1,6 +1,11 @@
 package TreeOfLife.Data
 
 data class Month(val value: Int) {
+
+    fun name(): String {
+        return java.time.Month.of(value).name
+    }
+
     init {
         require(value in 1..12) { "Month value must be between 1 and 12" }
     }

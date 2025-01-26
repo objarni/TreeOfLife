@@ -71,7 +71,11 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
             ),
         )
 
-        
+        val origo = projector.projectPoint(Point(0, 0))
+        val monthName = origoTimePoint.month.name()
+        val yearText = "${origoTimePoint.year.value}"
+        val origoText =  "${monthName}, $yearText"
+        g2d.drawString(origoText, origo.x, origo.y+12)
 
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
