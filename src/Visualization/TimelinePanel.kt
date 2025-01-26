@@ -71,6 +71,8 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
             ),
         )
 
+        
+
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
             g2d.color = box.color
