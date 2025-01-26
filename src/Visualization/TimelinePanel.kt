@@ -74,8 +74,15 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         val origo = projector.projectPoint(Point(0, 0))
         val monthName = origoTimePoint.month.name()
         val yearText = "${origoTimePoint.year.value}"
-        val origoText =  "${monthName}, $yearText"
+        val origoText =  "Born ${monthName}, $yearText"
         g2d.drawString(origoText, origo.x, origo.y+12)
+        g2d.drawLine(origo.x, origo.y, origo.x, origo.y+5)
+
+        val year10 = Point(10 * 12, 0)
+        val year10Text = "${origoTimePoint.year.value + 10}"
+        val year10Point = projector.projectPoint(year10)
+        g2d.drawString("$year10Text (10 years)", year10Point.x, year10Point.y+12)
+        g2d.drawLine(year10Point.x, year10Point.y, year10Point.x, year10Point.y+5)
 
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
