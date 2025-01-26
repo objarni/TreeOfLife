@@ -1,5 +1,8 @@
 package TreeOfLife.GraphicsPanel
 
+import TreeOfLife.Data.Month
+import TreeOfLife.Data.TimePoint
+import TreeOfLife.Data.Year
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
@@ -15,6 +18,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
     private val blocks = mutableListOf<TextBlock>()
+    private var origoTimePoint = TimePoint(Year(1979), Month.JULY)
 
     init {
         // Set preferred size for the panel
@@ -36,6 +40,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
 
         repaint()
     }
+
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g) // Call the superclass's method to ensure proper rendering
@@ -101,6 +106,11 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
     fun setBlocks(blocks: List<TextBlock>) {
         this.blocks.clear()
         this.blocks.addAll(blocks)
+        repaint()
+    }
+
+    fun setOrigoTimePoint(timePoint: TimePoint) {
+        origoTimePoint = timePoint
         repaint()
     }
 }
