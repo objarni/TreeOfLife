@@ -50,7 +50,7 @@ class MainFrame(title: String) : JFrame() {
         )
 
         val allBlocks = homeBlocks + educationBlocks
-        timeLinePanel.SetBlocks(allBlocks)
+        timeLinePanel.setBlocks(allBlocks)
 
         contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size

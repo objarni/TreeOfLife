@@ -98,7 +98,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
 
     override fun keyReleased(e: KeyEvent?) {}
 
-    fun SetBlocks(blocks: List<TextBlock>) {
+    fun setBlocks(blocks: List<TextBlock>) {
         this.blocks.clear()
         this.blocks.addAll(blocks)
         repaint()
