@@ -21,8 +21,8 @@ class MainFrame(title: String) : JFrame() {
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(400, 300)
         setLocationRelativeTo(null)
-        val gfxPanel = TimelinePanel()
-        gfxPanel.onEscapePressed = { dispose() }
+        val timeLinePanel = TimelinePanel()
+        timeLinePanel.onEscapePressed = { dispose() }
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
         val homeBlocks = textBlocksForPeriods(
@@ -50,9 +50,9 @@ class MainFrame(title: String) : JFrame() {
         )
 
         val allBlocks = homeBlocks + educationBlocks
-        gfxPanel.SetBlocks(allBlocks)
+        timeLinePanel.SetBlocks(allBlocks)
 
-        contentPane.add(gfxPanel) // Add RectanglePanel to the content pane
+        contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size
 
     }
