@@ -67,8 +67,8 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         )
 
         for (box in axisBlocks + blocks) {
-            g2d.color = box.color
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
+            g2d.color = box.color
             g2d.fillRect(rect.x, rect.y, rect.width, rect.height)
             g2d.color = Color.GRAY
             g2d.drawRect(rect.x, rect.y, rect.width, rect.height)
