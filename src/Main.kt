@@ -43,6 +43,16 @@ class MainFrame(title: String) : JFrame() {
                     TimePoint(Year(1995), Month.JUNE),
                     "Röstånga skola"
                 ),
+                Period(
+                    TimePoint(Year(1995), Month.AUGUST),
+                    TimePoint(Year(1998), Month.JUNE),
+                    "Klippan gymnasieskola"
+                ),
+                Period(
+                    TimePoint(Year(1998), Month.AUGUST),
+                    TimePoint(Year(2005), Month.JUNE),
+                    "Göteborgs universitet"
+                ),
             ),
             baseY = 4,
             color = Color.GREEN,
