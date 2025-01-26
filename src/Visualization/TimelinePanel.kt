@@ -67,7 +67,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
             TextBlock(
                 rect = Rectangle(0, 0, 0, 20),
                 color = Color.GREEN,
-                text = "*"
+                text = ""
             ),
         )
 
