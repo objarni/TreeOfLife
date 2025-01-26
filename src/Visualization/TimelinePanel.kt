@@ -71,18 +71,10 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
             ),
         )
 
-        val origo = projector.projectPoint(Point(0, 0))
-        val monthName = origoTimePoint.month.name()
-        val yearText = "${origoTimePoint.year.value}"
-        val origoText =  "Born ${monthName}, $yearText"
-        g2d.drawString(origoText, origo.x, origo.y+12)
-        g2d.drawLine(origo.x, origo.y, origo.x, origo.y+5)
-
-        val year10 = Point(10 * 12, 0)
-        val year10Text = "${origoTimePoint.year.value + 10}"
-        val year10Point = projector.projectPoint(year10)
-        g2d.drawString("$year10Text (10 years)", year10Point.x, year10Point.y+12)
-        g2d.drawLine(year10Point.x, year10Point.y, year10Point.x, year10Point.y+5)
+        drawYearLabel(projector, 0, "Born %s, %d", g2d)
+        drawYearLabel(projector, 10, "%s, %d (10 years)", g2d)
+        drawYearLabel(projector, 18, "%s, %d (18 years)", g2d)
+        drawYearLabel(projector, 25, "%s, %d (25 years)", g2d)
 
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
@@ -95,6 +87,18 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         }
 
         g2d.dispose() // Clean up the graphics object
+    }
+
+    private fun drawYearLabel(
+        projector: ViewportProjector,
+        age: Int,
+        template: String,
+        g2d: Graphics
+    ) {
+        val origo = projector.projectPoint(Point(age * 12, 0))
+        val origoText = String.format(template, origoTimePoint.month.name(), origoTimePoint.year.value + age)
+        g2d.drawString(origoText, origo.x, origo.y + 12)
+        g2d.drawLine(origo.x, origo.y, origo.x, origo.y + 5)
     }
 
     override fun keyTyped(e: KeyEvent?) {}
