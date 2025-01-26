@@ -1,10 +1,10 @@
 package TreeOfLife
 
-import TreeOfLife.Domain.Month
-import TreeOfLife.Domain.Period
-import TreeOfLife.Domain.TimePoint
-import TreeOfLife.Domain.Year
-import TreeOfLife.Domain.textBlocksForPeriods
+import TreeOfLife.Data.Month
+import TreeOfLife.Data.Period
+import TreeOfLife.Data.TimePoint
+import TreeOfLife.Data.Year
+import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import java.awt.Color
 import java.awt.EventQueue
