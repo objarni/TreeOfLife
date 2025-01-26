@@ -5,11 +5,9 @@ import TreeOfLife.Domain.Period
 import TreeOfLife.Domain.TimePoint
 import TreeOfLife.Domain.Year
 import TreeOfLife.Domain.textBlocksForPeriods
-import TreeOfLife.GraphicsPanel.TextBlock
-import TreeOfLife.GraphicsPanel.GraphicsPanel
+import TreeOfLife.GraphicsPanel.TimelinePanel
 import java.awt.Color
 import java.awt.EventQueue
-import java.awt.Rectangle
 import javax.swing.JFrame
 
 class MainFrame(title: String) : JFrame() {
@@ -23,7 +21,7 @@ class MainFrame(title: String) : JFrame() {
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(400, 300)
         setLocationRelativeTo(null)
-        val gfxPanel = GraphicsPanel()
+        val gfxPanel = TimelinePanel()
         gfxPanel.onEscapePressed = { dispose() }
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)

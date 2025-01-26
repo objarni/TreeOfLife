@@ -11,7 +11,7 @@ import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
-class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
+class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
     private var zoom = 1.0
     private var centerEyeWorld = Point(0, 0)
     private val blocks = mutableListOf<TextBlock>()
