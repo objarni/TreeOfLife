@@ -55,12 +55,12 @@ class GraphicsPanel : JPanel(), MouseWheelListener, KeyListener {
 
         val axisBlocks = listOf(
             TextBlock(
-                rect = Rectangle(0, 0, 2000, 1),
+                rect = Rectangle(0, 0, 2000, 0),
                 color = Color.RED,
                 text = ""
             ),
             TextBlock(
-                rect = Rectangle(0, 0, 1, 20),
+                rect = Rectangle(0, 0, 0, 20),
                 color = Color.GREEN,
                 text = "*"
             ),
