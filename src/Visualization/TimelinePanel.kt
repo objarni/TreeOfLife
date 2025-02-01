@@ -22,7 +22,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
 
     init {
         // Set preferred size for the panel
-        preferredSize = Dimension(400, 300)
+        preferredSize = Dimension(1000, 800)
         background = Color.WHITE
         addMouseWheelListener(this)
         addKeyListener(this)

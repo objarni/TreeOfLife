@@ -19,7 +19,7 @@ class MainFrame(title: String) : JFrame() {
     private fun createUI(title: String) {
         setTitle(title)
         defaultCloseOperation = EXIT_ON_CLOSE
-        setSize(400, 300)
+        setSize(1000, 800)
         setLocationRelativeTo(null)
         val timeLinePanel = TimelinePanel()
         timeLinePanel.onEscapePressed = { dispose() }
