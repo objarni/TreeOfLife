@@ -81,6 +81,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         drawYearLabel(projector, 30, "%s, %d (30 years)", g2d)
         drawYearLabel(projector, 40, "%s, %d (40 years)", g2d)
 
+
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
             g2d.color = box.color
