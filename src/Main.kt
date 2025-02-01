@@ -29,19 +29,19 @@ class MainFrame(title: String) : JFrame() {
         val homeBlocks = textBlocksForPeriods(
             homePeriods(),
             baseY = 2,
-            color = Color.BLUE,
+            color = Color.ORANGE,
             birthMonth = birthMonth
         )
         val educationBlocks = textBlocksForPeriods(
             educationPeriods(),
             baseY = 4,
-            color = Color.GREEN,
+            color = Color.BLUE,
             birthMonth = birthMonth
         )
         val employmentBlocks = textBlocksForPeriods(
             employmentPeriods(),
             baseY = 6,
-            color = Color.GREEN,
+            color = Color.RED,
             birthMonth = birthMonth
         )
 
@@ -101,7 +101,7 @@ private fun employmentPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(2016), Month.JANUARY),
         TimePoint(Year(2018), Month.SEPTEMBER),
-        "Ericsson"
+        "Vizendo"
     ),
     Period(
         TimePoint(Year(2018), Month.SEPTEMBER),
