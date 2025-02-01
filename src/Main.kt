@@ -190,6 +190,21 @@ fun homePeriods(): List<Period> = listOf(
         TimePoint(Year(1999), Month.NOVEMBER),
         "Boden"
     ),
+    Period(
+        TimePoint(Year(1999), Month.NOVEMBER),
+        TimePoint(Year(2005), Month.JUNE),
+        "Hisingen"
+    ),
+    Period(
+        TimePoint(Year(2005), Month.JUNE),
+        TimePoint(Year(2008), Month.JUNE),
+        "Borås"
+    ),
+    Period(
+        TimePoint(Year(2008), Month.JUNE),
+        TimePoint(Year(2011), Month.SEPTEMBER),
+        "Mölndal"
+    ),
 )
 
 private fun createAndShowGUI() {
