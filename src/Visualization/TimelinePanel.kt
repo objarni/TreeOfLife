@@ -132,8 +132,4 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         repaint()
     }
 
-    fun setOrigoTimePoint(timePoint: TimePoint) {
-        origoTimePoint = timePoint
-        repaint()
-    }
 }
