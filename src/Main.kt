@@ -79,6 +79,31 @@ private fun educationPeriods(): List<Period> = listOf(
 
 private fun employmentPeriods(): List<Period> = listOf(
     Period(
+        TimePoint(Year(1999), Month.JANUARY),
+        TimePoint(Year(1999), Month.OCTOBER),
+        "Armens Musikkår Norrland"
+    ),
+    Period(
+        TimePoint(Year(2000), Month.JUNE),
+        TimePoint(Year(2000), Month.AUGUST),
+        "AstraZeneca R&D Lund"
+    ),
+    Period(
+        TimePoint(Year(2001), Month.JUNE),
+        TimePoint(Year(2001), Month.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
+        TimePoint(Year(2002), Month.JUNE),
+        TimePoint(Year(2002), Month.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
+        TimePoint(Year(2003), Month.JUNE),
+        TimePoint(Year(2003), Month.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
         TimePoint(Year(2005), Month.JUNE),
         TimePoint(Year(2006), Month.JUNE),
         "Cadcraft"
