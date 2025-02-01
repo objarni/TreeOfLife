@@ -25,6 +25,7 @@ class MainFrame(title: String) : JFrame() {
         timeLinePanel.onEscapePressed = { dispose() }
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
+
         val homeBlocks = textBlocksForPeriods(
             homePeriods(),
             baseY = 2,
@@ -32,81 +33,13 @@ class MainFrame(title: String) : JFrame() {
             birthMonth = birthMonth
         )
         val educationBlocks = textBlocksForPeriods(
-            listOf(
-                Period(
-                    TimePoint(Year(1986), Month.AUGUST),
-                    TimePoint(Year(1987), Month.JUNE),
-                    "Rödebo förskola"
-                ),
-                Period(
-                    TimePoint(Year(1987), Month.AUGUST),
-                    TimePoint(Year(1995), Month.JUNE),
-                    "Röstånga skola"
-                ),
-                Period(
-                    TimePoint(Year(1995), Month.AUGUST),
-                    TimePoint(Year(1998), Month.JUNE),
-                    "Klippan gymnasieskola"
-                ),
-                Period(
-                    TimePoint(Year(1998), Month.AUGUST),
-                    TimePoint(Year(2005), Month.JUNE),
-                    "Göteborgs universitet"
-                ),
-            ),
+            educationPeriods(),
             baseY = 4,
             color = Color.GREEN,
             birthMonth = birthMonth
         )
-
         val employmentBlocks = textBlocksForPeriods(
-            listOf(
-                Period(
-                    TimePoint(Year(2005), Month.JUNE),
-                    TimePoint(Year(2006), Month.JUNE),
-                    "Cadcraft"
-                ),
-                Period(
-                    TimePoint(Year(2006), Month.JUNE),
-                    TimePoint(Year(2011), Month.SEPTEMBER),
-                    "IGEMS"
-                ),
-                Period(
-                    TimePoint(Year(2011), Month.SEPTEMBER),
-                    TimePoint(Year(2014), Month.JUNE),
-                    "Lorensberg"
-                ),
-                Period(
-                    TimePoint(Year(2014), Month.JUNE),
-                    TimePoint(Year(2015), Month.DECEMBER),
-                    "Avalon Innovation"
-                ),
-                Period(
-                    TimePoint(Year(2016), Month.JANUARY),
-                    TimePoint(Year(2018), Month.SEPTEMBER),
-                    "Ericsson"
-                ),
-                Period(
-                    TimePoint(Year(2018), Month.SEPTEMBER),
-                    TimePoint(Year(2020), Month.JANUARY),
-                    "Objarni Productions"
-                ),
-                Period(
-                    TimePoint(Year(2020), Month.MARCH),
-                    TimePoint(Year(2023), Month.JUNE),
-                    "ProAgile"
-                ),
-                Period(
-                    TimePoint(Year(2023), Month.AUGUST),
-                    TimePoint(Year(2024), Month.JULY),
-                    "PowerFactors"
-                ),
-                Period(
-                    TimePoint(Year(2024), Month.AUGUST),
-                    TimePoint(Year(2027), Month.AUGUST),
-                    "Walley"
-                ),
-            ),
+            employmentPeriods(),
             baseY = 6,
             color = Color.GREEN,
             birthMonth = birthMonth
@@ -120,6 +53,77 @@ class MainFrame(title: String) : JFrame() {
 
     }
 }
+
+private fun educationPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.AUGUST),
+        TimePoint(Year(1987), Month.JUNE),
+        "Rödebo förskola"
+    ),
+    Period(
+        TimePoint(Year(1987), Month.AUGUST),
+        TimePoint(Year(1995), Month.JUNE),
+        "Röstånga skola"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.AUGUST),
+        TimePoint(Year(1998), Month.JUNE),
+        "Klippan gymnasieskola"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.AUGUST),
+        TimePoint(Year(2005), Month.JUNE),
+        "Göteborgs universitet"
+    ),
+)
+
+private fun employmentPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(2005), Month.JUNE),
+        TimePoint(Year(2006), Month.JUNE),
+        "Cadcraft"
+    ),
+    Period(
+        TimePoint(Year(2006), Month.JUNE),
+        TimePoint(Year(2011), Month.SEPTEMBER),
+        "IGEMS"
+    ),
+    Period(
+        TimePoint(Year(2011), Month.SEPTEMBER),
+        TimePoint(Year(2014), Month.JUNE),
+        "Lorensberg"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.JUNE),
+        TimePoint(Year(2015), Month.DECEMBER),
+        "Avalon Innovation"
+    ),
+    Period(
+        TimePoint(Year(2016), Month.JANUARY),
+        TimePoint(Year(2018), Month.SEPTEMBER),
+        "Ericsson"
+    ),
+    Period(
+        TimePoint(Year(2018), Month.SEPTEMBER),
+        TimePoint(Year(2020), Month.JANUARY),
+        "Objarni Productions"
+    ),
+    Period(
+        TimePoint(Year(2020), Month.MARCH),
+        TimePoint(Year(2023), Month.JUNE),
+        "ProAgile"
+    ),
+    Period(
+        TimePoint(Year(2023), Month.AUGUST),
+        TimePoint(Year(2024), Month.JULY),
+        "PowerFactors"
+    ),
+    Period(
+        TimePoint(Year(2024), Month.AUGUST),
+        TimePoint(Year(2027), Month.AUGUST),
+        "Walley"
+    ),
+)
 
 data class Text(val positionInTime: TimePoint, val levelAboveTimeline: Int, val text: String)
 
