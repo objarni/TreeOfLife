@@ -15,8 +15,8 @@ import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
 class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
-    private var zoom = 1.0
-    private var centerEyeWorld = Point(0, 0)
+    private var zoom = 7.7
+    private var centerEyeWorld = Point(100, 0)
     private val blocks = mutableListOf<TextBlock>()
     private var origoTimePoint = TimePoint(Year(1979), Month.JULY)
 
