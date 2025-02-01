@@ -59,7 +59,60 @@ class MainFrame(title: String) : JFrame() {
             birthMonth = birthMonth
         )
 
-        val allBlocks = homeBlocks + educationBlocks
+        val employmentBlocks = textBlocksForPeriods(
+            listOf(
+                Period(
+                    TimePoint(Year(2005), Month.JUNE),
+                    TimePoint(Year(2006), Month.JUNE),
+                    "Cadcraft"
+                ),
+                Period(
+                    TimePoint(Year(2006), Month.JUNE),
+                    TimePoint(Year(2011), Month.SEPTEMBER),
+                    "IGEMS"
+                ),
+                Period(
+                    TimePoint(Year(2011), Month.SEPTEMBER),
+                    TimePoint(Year(2014), Month.JUNE),
+                    "Lorensberg"
+                ),
+                Period(
+                    TimePoint(Year(2014), Month.JUNE),
+                    TimePoint(Year(2015), Month.DECEMBER),
+                    "Avalon Innovation"
+                ),
+                Period(
+                    TimePoint(Year(2016), Month.JANUARY),
+                    TimePoint(Year(2018), Month.SEPTEMBER),
+                    "Ericsson"
+                ),
+                Period(
+                    TimePoint(Year(2018), Month.SEPTEMBER),
+                    TimePoint(Year(2020), Month.JANUARY),
+                    "Objarni Productions"
+                ),
+                Period(
+                    TimePoint(Year(2020), Month.MARCH),
+                    TimePoint(Year(2023), Month.JUNE),
+                    "ProAgile"
+                ),
+                Period(
+                    TimePoint(Year(2023), Month.AUGUST),
+                    TimePoint(Year(2024), Month.JULY),
+                    "PowerFactors"
+                ),
+                Period(
+                    TimePoint(Year(2024), Month.AUGUST),
+                    TimePoint(Year(2027), Month.AUGUST),
+                    "Walley"
+                ),
+            ),
+            baseY = 6,
+            color = Color.GREEN,
+            birthMonth = birthMonth
+        )
+
+        val allBlocks = homeBlocks + educationBlocks + employmentBlocks
         timeLinePanel.setBlocks(allBlocks)
 
         contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
