@@ -205,6 +205,26 @@ fun homePeriods(): List<Period> = listOf(
         TimePoint(Year(2011), Month.SEPTEMBER),
         "Mölndal"
     ),
+    Period(
+        TimePoint(Year(2011), Month.SEPTEMBER),
+        TimePoint(Year(2013), Month.AUGUST),
+        "Kortedala (Eric Börjessons Väg)"
+    ),
+    Period(
+        TimePoint(Year(2013), Month.AUGUST),
+        TimePoint(Year(2014), Month.JULY),
+        "Hertford"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.JULY),
+        TimePoint(Year(2014), Month.SEPTEMBER),
+        "Kortedala (Januarigatan)"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.SEPTEMBER),
+        TimePoint(Year(2015), Month.SEPTEMBER),
+        "Kortedala (Decembergatan)"
+    ),
 )
 
 private fun createAndShowGUI() {
