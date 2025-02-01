@@ -152,18 +152,6 @@ private fun employmentPeriods(): List<Period> = listOf(
 
 data class Text(val positionInTime: TimePoint, val levelAboveTimeline: Int, val text: String)
 
-fun allTexts(): List<Text> {
-    val yearLabels = listOf(
-        Text(TimePoint(Year(1979), Month.JULY), 0, "1979"),
-        Text(TimePoint(Year(1983), Month.JUNE), 0, "1983"),
-        Text(TimePoint(Year(1987), Month.JUNE), 0, "1987"),
-        Text(TimePoint(Year(1991), Month.JUNE), 0, "1991"),
-        Text(TimePoint(Year(1995), Month.JUNE), 0, "1995"),
-        Text(TimePoint(Year(1999), Month.JUNE), 0, "1999"),
-    )
-    return yearLabels
-}
-
 fun homePeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1979), Month.JULY),
