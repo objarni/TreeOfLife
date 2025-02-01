@@ -31,12 +31,14 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
     }
 
     override fun mouseWheelMoved(e: MouseWheelEvent) {
-        zoom += e.wheelRotation * 0.1
+        zoom += e.wheelRotation * 0.11
 
-        if (zoom < 0.1)
-            zoom = 0.1
-        if (zoom > 10)
-            zoom = 10.0
+        val minZoom = 0.1
+        if (zoom < minZoom)
+            zoom = minZoom
+        val maxZoom = 20.0
+        if (zoom > maxZoom)
+            zoom = maxZoom
 
         repaint()
     }
