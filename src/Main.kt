@@ -6,6 +6,7 @@ import TreeOfLife.Data.Year
 import TreeOfLife.Data.educationPeriods
 import TreeOfLife.Data.employmentPeriods
 import TreeOfLife.Data.homePeriods
+import TreeOfLife.Data.loveRelationsShipPeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import java.awt.Color
@@ -43,11 +44,18 @@ class MainFrame(title: String) : JFrame() {
         val employmentBlocks = textBlocksForPeriods(
             employmentPeriods(),
             baseY = 6,
-            color = Color.RED,
+            color = Color.GRAY,
+            birthMonth = birthMonth
+        )
+        val relationsshipBlocks = textBlocksForPeriods(
+            loveRelationsShipPeriods(),
+            baseY = 8,
+            color = Color.PINK,
             birthMonth = birthMonth
         )
 
-        val allBlocks = homeBlocks + educationBlocks + employmentBlocks
+        val allBlocks = homeBlocks + educationBlocks + employmentBlocks + relationsshipBlocks
+
         timeLinePanel.setBlocks(allBlocks)
 
         contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
