@@ -1,9 +1,4 @@
-package TreeOfLife
-
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.Period
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
+package TreeOfLife.Data
 
 fun educationPeriods(): List<Period> = listOf(
     Period(

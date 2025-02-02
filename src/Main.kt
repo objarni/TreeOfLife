@@ -3,6 +3,9 @@ package TreeOfLife
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.Data.educationPeriods
+import TreeOfLife.Data.employmentPeriods
+import TreeOfLife.Data.homePeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import java.awt.Color
