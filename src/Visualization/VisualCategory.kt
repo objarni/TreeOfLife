@@ -9,7 +9,7 @@ fun visualCategories(): List<VisualCategory> {
     return listOf(
         VisualCategory(Category("Home", TreeOfLife.Data.homePeriods()), Color.ORANGE, 2),
         VisualCategory(Category("Educations", TreeOfLife.Data.educationPeriods()), Color.BLUE, 4),
-        VisualCategory(Category("Employments", TreeOfLife.Data.employmentPeriods()), Color.GRAY, 6),
+        VisualCategory(Category("Employments", TreeOfLife.Data.employmentPeriods()), Color.DARK_GRAY, 6),
         VisualCategory(Category("Love relationships", TreeOfLife.Data.loveRelationsShipPeriods()), Color.PINK, 8)
     )
 }
