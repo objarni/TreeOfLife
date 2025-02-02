@@ -9,6 +9,7 @@ import TreeOfLife.Data.homePeriods
 import TreeOfLife.Data.loveRelationsShipPeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
+import TreeOfLife.Visualization.visualCategories
 import java.awt.Color
 import java.awt.EventQueue
 import javax.swing.JFrame
@@ -29,34 +30,16 @@ class MainFrame(title: String) : JFrame() {
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
 
-        val homeBlocks = textBlocksForPeriods(
-            homePeriods(),
-            baseY = 2,
-            color = Color.ORANGE,
-            birthMonth = birthMonth
-        )
-        val educationBlocks = textBlocksForPeriods(
-            educationPeriods(),
-            baseY = 4,
-            color = Color.BLUE,
-            birthMonth = birthMonth
-        )
-        val employmentBlocks = textBlocksForPeriods(
-            employmentPeriods(),
-            baseY = 6,
-            color = Color.GRAY,
-            birthMonth = birthMonth
-        )
-        val relationsshipBlocks = textBlocksForPeriods(
-            loveRelationsShipPeriods(),
-            baseY = 8,
-            color = Color.PINK,
-            birthMonth = birthMonth
-        )
+        val allBlocks2 = visualCategories().flatMap { visualCategory ->
+            textBlocksForPeriods(
+                visualCategory.category.periods,
+                baseY = visualCategory.baseY,
+                color = visualCategory.color,
+                birthMonth = birthMonth
+            )
+        }
 
-        val allBlocks = homeBlocks + educationBlocks + employmentBlocks + relationsshipBlocks
-
-        timeLinePanel.setBlocks(allBlocks)
+        timeLinePanel.setBlocks(allBlocks2)
 
         contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
         pack() // Adjust frame size to match panel's preferred size
