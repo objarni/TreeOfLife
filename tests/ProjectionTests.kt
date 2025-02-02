@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import java.awt.Dimension
 import java.awt.Point
 
-class ProjectTests {
+class ProjectionTests {
 
     @Test
     fun testProjectionWithInitialParameters() {
