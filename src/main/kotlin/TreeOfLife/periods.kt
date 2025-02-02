@@ -1,0 +1,165 @@
+package TreeOfLife
+
+import TreeOfLife.Data.Month
+import TreeOfLife.Data.Period
+import TreeOfLife.Data.TimePoint
+import TreeOfLife.Data.Year
+
+fun educationPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.Companion.AUGUST),
+        TimePoint(Year(1987), Month.Companion.JUNE),
+        "Rödebo förskola"
+    ),
+    Period(
+        TimePoint(Year(1987), Month.Companion.AUGUST),
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        "Röstånga skola"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.Companion.AUGUST),
+        TimePoint(Year(1998), Month.Companion.JUNE),
+        "Klippan gymnasieskola"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.Companion.AUGUST),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "Göteborgs universitet"
+    ),
+)
+
+fun employmentPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1999), Month.Companion.JANUARY),
+        TimePoint(Year(1999), Month.Companion.OCTOBER),
+        "Armens Musikkår Norrland"
+    ),
+    Period(
+        TimePoint(Year(2000), Month.Companion.JUNE),
+        TimePoint(Year(2000), Month.Companion.AUGUST),
+        "AstraZeneca R&D Lund"
+    ),
+    Period(
+        TimePoint(Year(2001), Month.Companion.JUNE),
+        TimePoint(Year(2001), Month.Companion.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
+        TimePoint(Year(2002), Month.Companion.JUNE),
+        TimePoint(Year(2002), Month.Companion.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
+        TimePoint(Year(2003), Month.Companion.JUNE),
+        TimePoint(Year(2003), Month.Companion.AUGUST),
+        "Volvo Cars"
+    ),
+    Period(
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        TimePoint(Year(2006), Month.Companion.JUNE),
+        "Cadcraft"
+    ),
+    Period(
+        TimePoint(Year(2006), Month.Companion.JUNE),
+        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
+        "IGEMS"
+    ),
+    Period(
+        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2014), Month.Companion.JUNE),
+        "Lorensberg"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.Companion.JUNE),
+        TimePoint(Year(2015), Month.Companion.DECEMBER),
+        "Avalon Innovation"
+    ),
+    Period(
+        TimePoint(Year(2016), Month.Companion.JANUARY),
+        TimePoint(Year(2018), Month.Companion.SEPTEMBER),
+        "Vizendo"
+    ),
+    Period(
+        TimePoint(Year(2018), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2020), Month.Companion.JANUARY),
+        "Objarni Productions"
+    ),
+    Period(
+        TimePoint(Year(2020), Month.Companion.MARCH),
+        TimePoint(Year(2023), Month.Companion.JUNE),
+        "ProAgile"
+    ),
+    Period(
+        TimePoint(Year(2023), Month.Companion.AUGUST),
+        TimePoint(Year(2024), Month.Companion.JULY),
+        "PowerFactors"
+    ),
+    Period(
+        TimePoint(Year(2024), Month.Companion.AUGUST),
+        TimePoint(Year(2027), Month.Companion.AUGUST),
+        "Walley"
+    ),
+)
+
+fun homePeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1979), Month.Companion.JULY),
+        TimePoint(Year(1983), Month.Companion.JUNE),
+        "Stockholm"
+    ),
+    Period(
+        TimePoint(Year(1983), Month.Companion.JUNE),
+        TimePoint(Year(1997), Month.Companion.MAY),
+        "Röstånga"
+    ),
+    Period(
+        TimePoint(Year(1997), Month.Companion.MAY),
+        TimePoint(Year(1998), Month.Companion.MAY),
+        "Klippan"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.Companion.MAY),
+        TimePoint(Year(1999), Month.Companion.JANUARY),
+        "Hisingen"
+    ),
+    Period(
+        TimePoint(Year(1999), Month.Companion.JANUARY),
+        TimePoint(Year(1999), Month.Companion.NOVEMBER),
+        "Boden"
+    ),
+    Period(
+        TimePoint(Year(1999), Month.Companion.NOVEMBER),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "Hisingen"
+    ),
+    Period(
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        "Borås"
+    ),
+    Period(
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
+        "Mölndal"
+    ),
+    Period(
+        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2013), Month.Companion.AUGUST),
+        "Kortedala (Eric Börjessons Väg)"
+    ),
+    Period(
+        TimePoint(Year(2013), Month.Companion.AUGUST),
+        TimePoint(Year(2014), Month.Companion.JULY),
+        "Hertford"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.Companion.JULY),
+        TimePoint(Year(2014), Month.Companion.SEPTEMBER),
+        "Kortedala (Januarigatan)"
+    ),
+    Period(
+        TimePoint(Year(2014), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2015), Month.Companion.SEPTEMBER),
+        "Kortedala (Decembergatan)"
+    ),
+)
