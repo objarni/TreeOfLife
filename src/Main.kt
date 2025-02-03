@@ -10,9 +10,13 @@ import TreeOfLife.Data.loveRelationsShipPeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import TreeOfLife.Visualization.visualCategories
+import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.EventQueue
+import javax.swing.JButton
 import javax.swing.JFrame
+import javax.swing.JPanel
+import javax.swing.JTextField
 
 class MainFrame(title: String) : JFrame() {
 
@@ -38,12 +42,17 @@ class MainFrame(title: String) : JFrame() {
                 birthMonth = birthMonth
             )
         }
-
         timeLinePanel.setBlocks(allBlocks2)
 
-        contentPane.add(timeLinePanel) // Add RectanglePanel to the content pane
-        pack() // Adjust frame size to match panel's preferred size
+        layout = BorderLayout()
+        val bottomPanel = JPanel()
+        bottomPanel.add(JButton("Button 1"))
+        bottomPanel.add(JTextField("Text field 1"))
 
+        contentPane.add(timeLinePanel, BorderLayout.CENTER) // Add RectanglePanel to the content pane
+        contentPane.add(bottomPanel, BorderLayout.SOUTH)
+
+        pack()
     }
 }
 
