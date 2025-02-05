@@ -13,5 +13,5 @@ fun employments(): Category {
 }
 
 fun relationsships(): Category {
-    return Category("Love relationships", loveRelationsShipPeriods())
+    return Category("Love relationships", relationshipPeriods())
 }

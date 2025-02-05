@@ -3,15 +3,10 @@ package TreeOfLife
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
-import TreeOfLife.Data.educationPeriods
-import TreeOfLife.Data.employmentPeriods
-import TreeOfLife.Data.homePeriods
-import TreeOfLife.Data.loveRelationsShipPeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import TreeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout
-import java.awt.Color
 import java.awt.EventQueue
 import javax.swing.JButton
 import javax.swing.JFrame
@@ -55,8 +50,6 @@ class MainFrame(title: String) : JFrame() {
         pack()
     }
 }
-
-data class Text(val positionInTime: TimePoint, val levelAboveTimeline: Int, val text: String)
 
 private fun createAndShowGUI() {
     val frame = MainFrame("Tree of life")

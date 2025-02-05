@@ -159,7 +159,7 @@ fun homePeriods(): List<Period> = listOf(
     ),
 )
 
-public fun loveRelationsShipPeriods(): List<Period> {
+fun relationshipPeriods(): List<Period> {
     return listOf(
         Period(
             TimePoint(Year(1997), Month.Companion.JANUARY),
