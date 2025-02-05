@@ -1,10 +1,9 @@
-import TreeOfLife.Data.Category
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.educations
 import TreeOfLife.Data.homes
-import TreeOfLife.chronological
+import TreeOfLife.overlappingPeriods
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -26,15 +25,5 @@ class LifeTimeTests {
         assertEquals(expected, actual)
     }
 
-    private fun overlappingPeriods(
-        point: TimePoint,
-        categories: List<Category>
-    ): List<String> {
-        return categories.flatMap { category ->
-            category.periods.filter { period ->
-                chronological(period.start, point) && chronological(point, period.end)
-            }.map { it.text }
-        }
-    }
 }
 

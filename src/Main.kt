@@ -3,6 +3,7 @@ package TreeOfLife
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.Data.overlappingPeriods
 import TreeOfLife.Data.textBlocksForPeriods
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import TreeOfLife.Visualization.visualCategories
@@ -28,6 +29,15 @@ class MainFrame(title: String) : JFrame() {
         timeLinePanel.onEscapePressed = { dispose() }
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
+
+        val lifeTime = visualCategories().map { it.category }
+        for (year in 1979..2021) {
+            val year = Year(year)
+            val month = Month.JANUARY
+            val timePoint = TimePoint(year, month)
+            val overlappingPeriods = overlappingPeriods(timePoint, lifeTime)
+            println("Year: $year, overlappingPeriods: $overlappingPeriods")
+        }
 
         val allBlocks = visualCategories().flatMap { visualCategory ->
             textBlocksForPeriods(

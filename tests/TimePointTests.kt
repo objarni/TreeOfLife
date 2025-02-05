@@ -1,7 +1,7 @@
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
-import TreeOfLife.chronological
+import TreeOfLife.Data.chronological
 import kotlin.test.Test
 import kotlin.test.assertFalse
 
