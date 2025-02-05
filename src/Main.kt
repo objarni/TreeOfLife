@@ -29,7 +29,7 @@ class MainFrame(title: String) : JFrame() {
 
         val birthMonth = TimePoint(Year(1979), Month.JULY)
 
-        val allBlocks2 = visualCategories().flatMap { visualCategory ->
+        val allBlocks = visualCategories().flatMap { visualCategory ->
             textBlocksForPeriods(
                 visualCategory.category.periods,
                 baseY = visualCategory.baseY,
@@ -37,7 +37,7 @@ class MainFrame(title: String) : JFrame() {
                 birthMonth = birthMonth
             )
         }
-        timeLinePanel.setBlocks(allBlocks2)
+        timeLinePanel.setBlocks(allBlocks)
 
         layout = BorderLayout()
         val bottomPanel = JPanel()
