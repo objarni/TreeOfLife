@@ -1,6 +1,7 @@
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.chronological
 import kotlin.test.Test
 import kotlin.test.assertFalse
 
@@ -26,10 +27,5 @@ class TimePointTests {
         assert(chronological(june, july))
     }
 
-    private fun chronological(before: TimePoint, after: TimePoint): Boolean {
-        if(before.year.value == after.year.value) {
-            return before.month.value < after.month.value
-        }
-        return before.year.value < after.year.value
-    }
 }
+
