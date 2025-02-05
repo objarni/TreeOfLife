@@ -1,17 +1,17 @@
 package TreeOfLife.Data
 
-public fun homes(): Category {
+fun homes(): Category {
     return Category("Home", homePeriods())
 }
 
-public fun educations(): Category {
+fun educations(): Category {
     return Category("Educations", educationPeriods())
 }
 
-public fun employments(): Category {
+fun employments(): Category {
     return Category("Employments", employmentPeriods())
 }
 
-public fun loveRelationsShips(): Category {
+fun relationsships(): Category {
     return Category("Love relationships", loveRelationsShipPeriods())
 }
