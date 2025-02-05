@@ -27,8 +27,9 @@ class TimePointTests {
     }
 
     private fun chronological(before: TimePoint, after: TimePoint): Boolean {
-        val sameYear = before.year.value == after.year.value
+        if(before.year.value == after.year.value) {
+            return before.month.value < after.month.value
+        }
         return before.year.value < after.year.value
-                || (sameYear && before.month.value < after.month.value)
     }
 }
