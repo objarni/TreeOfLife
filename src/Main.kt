@@ -31,7 +31,7 @@ class MainFrame(title: String) : JFrame() {
         val birthMonth = TimePoint(Year(1979), Month.JULY)
 
         val lifeTime = visualCategories().map { it.category }
-        for (year in 1979..2021) {
+        for (year in 1979..2025) {
             val year = Year(year)
             val month = Month.JANUARY
             val timePoint = TimePoint(year, month)
