@@ -3,7 +3,7 @@ import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.educations
 import TreeOfLife.Data.homes
-import TreeOfLife.overlappingPeriods
+import TreeOfLife.Data.overlappingPeriods
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

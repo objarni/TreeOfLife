@@ -27,5 +27,12 @@ class TimePointTests {
         assert(chronological(june, july))
     }
 
+
+    @Test
+    fun testChronologicalSameTimePoint() {
+        val june = TimePoint(Year(1979), Month.JUNE)
+        assert(chronological(june, june))
+    }
+
 }
 
