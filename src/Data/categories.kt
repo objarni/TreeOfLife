@@ -164,14 +164,34 @@ fun homePeriods(): List<Period> = listOf(
         "Hertford"
     ),
     Period(
-        TimePoint(Year(2014), Month.Companion.JULY),
-        TimePoint(Year(2014), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2014), Month.Companion.AUGUST),
+        TimePoint(Year(2014), Month.Companion.OCTOBER),
         "Kortedala (Januarigatan)"
     ),
     Period(
-        TimePoint(Year(2014), Month.Companion.SEPTEMBER),
-        TimePoint(Year(2015), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2014), Month.Companion.OCTOBER),
+        TimePoint(Year(2015), Month.Companion.AUGUST),
         "Kortedala (Decembergatan)"
+    ),
+    Period(
+        TimePoint(Year(2015), Month.Companion.SEPTEMBER),
+        TimePoint(Year(2015), Month.Companion.DECEMBER),
+        "Hisingen (Kvillebäcken)"
+    ),
+    Period(
+        TimePoint(Year(2016), Month.Companion.JANUARY),
+        TimePoint(Year(2016), Month.Companion.DECEMBER),
+        "Kortedala (Advensvägen)"
+    ),
+    Period(
+        TimePoint(Year(2017), Month.Companion.JANUARY),
+        TimePoint(Year(2023), Month.Companion.JUNE),
+        "Kortedala (Fastlagsgatan)"
+    ),
+    Period(
+        TimePoint(Year(2023), Month.Companion.JUNE),
+        TimePoint(Year(2025), Month.Companion.MAY),
+        "Tangovägen"
     ),
 )
 
