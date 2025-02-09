@@ -1,6 +1,8 @@
 package TreeOfLife.Visualization
 
 import TreeOfLife.Data.Category
+import TreeOfLife.Data.computerPeriods
+import TreeOfLife.Data.computers
 import TreeOfLife.Data.educations
 import TreeOfLife.Data.employments
 import TreeOfLife.Data.homes
@@ -14,6 +16,7 @@ fun visualCategories(): List<VisualCategory> {
         VisualCategory(homes(), Color.ORANGE, 2),
         VisualCategory(educations(), Color.BLUE, 4),
         VisualCategory(employments(), Color.DARK_GRAY, 6),
-        VisualCategory(relationsships(), Color.PINK, 8)
+        VisualCategory(relationsships(), Color.PINK, 8),
+        VisualCategory(computers(), Color.GREEN, 10)
     )
 }

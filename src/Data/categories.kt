@@ -16,6 +16,10 @@ fun relationsships(): Category {
     return Category("Love relationships", relationshipPeriods())
 }
 
+fun computers(): Category {
+    return Category("Computers", computerPeriods())
+}
+
 fun educationPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1986), Month.Companion.AUGUST),
@@ -110,6 +114,34 @@ fun employmentPeriods(): List<Period> = listOf(
         TimePoint(Year(2027), Month.Companion.AUGUST),
         "Walley"
     ),
+)
+
+fun computerPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.Companion.JANUARY),
+        TimePoint(Year(1992), Month.Companion.MAY),
+        "Commodore 64"
+    ),
+    Period(
+        TimePoint(Year(1992), Month.Companion.FEBRUARY),
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        "Commodore Amiga 500"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        TimePoint(Year(1998), Month.Companion.JUNE),
+        "Compaq PC (486)"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.Companion.JUNE),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "Self-built Small tower PC (Pentium 133)"
+    ),
+    Period(
+        TimePoint(Year(2003), Month.Companion.JUNE),
+        TimePoint(Year(2006), Month.Companion.JUNE),
+        "Self-built Fulltower PC (AMD Athlon 64)"
+    )
 )
 
 fun homePeriods(): List<Period> = listOf(
