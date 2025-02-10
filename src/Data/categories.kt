@@ -138,10 +138,20 @@ fun computerPeriods(): List<Period> = listOf(
         "Self-built Small tower PC (Pentium 133)"
     ),
     Period(
-        TimePoint(Year(2003), Month.Companion.JUNE),
-        TimePoint(Year(2006), Month.Companion.JUNE),
+        TimePoint(Year(2007), Month.Companion.FEBRUARY),
+        TimePoint(Year(2011), Month.Companion.JUNE),
         "Self-built Fulltower PC (AMD Athlon 64)"
-    )
+    ),
+    Period(
+        TimePoint(Year(2004), Month.Companion.OCTOBER),
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        "Acer Travelmate"
+    ),
+    Period(
+        TimePoint(Year(2006), Month.Companion.JULY),
+        TimePoint(Year(2010), Month.Companion.JUNE),
+        "Packard Bell iMedia"
+    ),
 )
 
 fun homePeriods(): List<Period> = listOf(
