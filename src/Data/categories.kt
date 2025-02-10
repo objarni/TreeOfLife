@@ -20,6 +20,10 @@ fun computers(): Category {
     return Category("Computers", computerPeriods())
 }
 
+fun programming(): Category {
+    return Category("Programming languages", programmingLanguages())
+}
+
 fun educationPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1986), Month.Companion.AUGUST),
@@ -28,8 +32,13 @@ fun educationPeriods(): List<Period> = listOf(
     ),
     Period(
         TimePoint(Year(1987), Month.Companion.AUGUST),
-        TimePoint(Year(1995), Month.Companion.JUNE),
+        TimePoint(Year(1992), Month.Companion.JUNE),
         "Röstånga skola"
+    ),
+    Period(
+        TimePoint(Year(1992), Month.Companion.AUGUST),
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        "Svalövs högstadieskola"
     ),
     Period(
         TimePoint(Year(1995), Month.Companion.AUGUST),
@@ -151,6 +160,39 @@ fun computerPeriods(): List<Period> = listOf(
         TimePoint(Year(2006), Month.Companion.JULY),
         TimePoint(Year(2010), Month.Companion.JUNE),
         "Packard Bell iMedia"
+    ),
+)
+
+fun programmingLanguages(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.Companion.JANUARY),
+        TimePoint(Year(1992), Month.Companion.MAY),
+        "BASIC"
+    ),
+    Period(
+        TimePoint(Year(1992), Month.Companion.JULY),
+        TimePoint(Year(1995), Month.Companion.JULY),
+        "AMOS Professional"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.Companion.JULY),
+        TimePoint(Year(2000), Month.Companion.JUNE),
+        "C"
+    ),
+    Period(
+        TimePoint(Year(1996), Month.Companion.SEPTEMBER),
+        TimePoint(Year(1997), Month.Companion.MAY),
+        "Turbo Pascal"
+    ),
+    Period(
+        TimePoint(Year(2000), Month.Companion.JUNE),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "C++"
+    ),
+    Period(
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        "C#"
     ),
 )
 
