@@ -1,11 +1,6 @@
 package TreeOfLife
 
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.Period
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
-import TreeOfLife.Data.overlappingPeriods
-import TreeOfLife.Data.textBlocksForPeriods
+import TreeOfLife.Data.*
 import TreeOfLife.GraphicsPanel.TextBlock
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import TreeOfLife.Visualization.visualCategories
