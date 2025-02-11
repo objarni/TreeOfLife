@@ -1,7 +1,7 @@
 package TreeOfLife.Data
 
 fun homes(): Category {
-    return Category("Home", homePeriods())
+    return Category("Homes", homePeriods())
 }
 
 fun educations(): Category {
