@@ -1,14 +1,17 @@
 package TreeOfLife
 
 import TreeOfLife.Data.Month
+import TreeOfLife.Data.Period
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.overlappingPeriods
 import TreeOfLife.Data.textBlocksForPeriods
+import TreeOfLife.GraphicsPanel.TextBlock
 import TreeOfLife.GraphicsPanel.TimelinePanel
 import TreeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout
 import java.awt.EventQueue
+import java.awt.Rectangle
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
@@ -47,7 +50,14 @@ class MainFrame(title: String) : JFrame() {
                 birthMonth = birthMonth
             )
         }
-        timeLinePanel.setBlocks(allBlocks)
+        val labelBlocks = visualCategories().map { visualCategory ->
+            TextBlock(
+                rect = Rectangle(-20, visualCategory.baseY, 1, 1),
+                color = visualCategory.color,
+                text = visualCategory.category.category
+            )
+        }
+        timeLinePanel.setBlocks(allBlocks + labelBlocks)
 
         layout = BorderLayout()
         val bottomPanel = JPanel()
