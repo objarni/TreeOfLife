@@ -21,10 +21,23 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
         val topLeftV = centerV + eyeToPointTopLeftV
         return topLeftV
     }
+
+    fun reverseProjectPoint(pointV: Point): Point {
+        val centerV = viewportSize / 2
+        val eyeToPointTopLeftV = pointV - centerV
+        val eyeToPointTopLeftScaledToW = Point(eyeToPointTopLeftV.x, -eyeToPointTopLeftV.y) / zoom
+        val eyeToPointTopLeftW = eyeToPointTopLeftScaledToW
+        val pointW = centerEyeWorld + eyeToPointTopLeftW
+        return pointW
+    }
 }
 
-private operator fun Point.times(zoom: Double): Point {
-    return Point((x * zoom).toInt(), (y * zoom).toInt())
+private operator fun Point.times(a: Double): Point {
+    return Point((x * a).toInt(), (y * a).toInt())
+}
+
+private operator fun Point.div(a: Double): Point {
+    return Point((x / a).toInt(), (y / a).toInt())
 }
 
 private operator fun Dimension.times(zoom: Double): Dimension {

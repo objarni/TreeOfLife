@@ -99,4 +99,37 @@ class ProjectionTests {
         val point = frame.projectPoint(Point(10, 0))
         assertEquals(Point(110, 50), point)
     }
+
+    @Test
+    fun testViewportToWorldProjectionOfWindowCenterPoint() {
+        val frame = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(200, 100),
+        )
+        frame.zoom = 1.0
+        val point = frame.reverseProjectPoint(Point(100, 50))
+        assertEquals(Point(0, 0), point)
+    }
+
+    @Test
+    fun testViewportToWorldProjectionOfTopLeftPoint() {
+        val frame = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(200, 100),
+        )
+        frame.zoom = 1.0
+        val point = frame.reverseProjectPoint(Point(0, 0))
+        assertEquals(Point(-100, 50), point)
+    }
+
+    @Test
+    fun testViewportToWorldProjectionOfTopLeftPointZoomed() {
+        val frame = ViewportProjector(
+            centerEyeWorld = Point(0, 0),
+            viewportSize = Dimension(200, 100),
+        )
+        frame.zoom = 2.0
+        val point = frame.reverseProjectPoint(Point(0, 0))
+        assertEquals(Point(-50, 25), point)
+    }
 }
