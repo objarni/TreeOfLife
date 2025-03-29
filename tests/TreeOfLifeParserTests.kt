@@ -22,6 +22,34 @@ class TreeOfLifeParserTests {
         assertNull(monthParser("sososo"))
     }
 
+    @Test
+    fun testTimePoint_parser() {
+        val timePoint1 = timePointParser("Jul 1983")
+        assertEquals(TimePoint(Year(1983), Month.JULY), timePoint1)
+
+        val timePoint2 = timePointParser("Jul 1997")
+        assertEquals(TimePoint(Year(1997), Month.JULY), timePoint2)
+
+        val timePoint3 = timePointParser("   Jul   1997  ")
+        assertEquals(TimePoint(Year(1997), Month.JULY), timePoint3)
+
+        val timePoint4 = timePointParser("sososo")
+        assertNull(timePoint4)
+    }
+
+    private fun timePointParser(string: String): TimePoint? {
+        val regex = """\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+        val matchResult = regex.find(string)
+        if (matchResult != null) {
+            val (month, year) = matchResult.destructured
+            val parsedMonth = monthParser(month)
+            if (parsedMonth == null)
+                return null
+            return TimePoint(Year(year.toInt()), parsedMonth!!)
+        }
+        return null
+    }
+
     // Period parser - long format
     @Test
     fun testPeriodParser_long_format() {
@@ -127,5 +155,27 @@ Klippan: Jun 1996-Jul 1997"""
             categories
         )
     }
+
+//    @Test
+//    fun `test toplevel parser with birth timepoint`() {
+//        val input = """
+//            Month of birth: Jan 1983
+//
+//            ---Homes---
+//            Röstånga: Jul 1983-Jul 1997
+//        """.trimIndent()
+//        val (timePoint, categories) = toplevelParser(input)
+//    }
+//
+//    private fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
+//        val lines = string.split("\n")
+//        val monthOfBirthLine = lines.firstOrNull { it.startsWith("Month of birth:") }
+//        val monthOfBirth = monthOfBirthLine?.substringAfter(":")?.trim()
+//        val timePoint = monthOfBirth?.let { monthParser(it) }?.let { TimePoint(Year(1983), it) }
+//        val categoriesString = string.substringAfter("\n").trim()
+//        val categories = categoriesParser(categoriesString)
+//        return Pair(timePoint!!, categories)
+//
+//    }
 }
 
