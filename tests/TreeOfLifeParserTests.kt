@@ -81,7 +81,11 @@ class TreeOfLifeParserTests {
 
     @Test
     fun testCategoryParser_two_periods() {
-        val actualCategory = categoryParser("---Homes---\nRöstånga: Jul 1983-Jul 1997\nKlippan: Jun 1996-Jul 1997")
+        val actualCategory = categoryParser(
+            """---Homes---
+Röstånga: Jul 1983-Jul 1997
+Klippan: Jun 1996-Jul 1997"""
+        )
         assertEquals(
             Category(
                 "Homes",
@@ -91,6 +95,20 @@ class TreeOfLifeParserTests {
                 )
             ),
             actualCategory
+        )
+    }
+
+    @Test
+    fun testCategoriesParser() {
+        val actualCategory = categoryParser(
+            """---Homes---
+Röstånga: Jul 1983-Jul 1997
+Klippan: Jun 1996-Jul 1997
+
+---Computers---
+C64: Jul 1986-Jul 1995
+Amiga 500: Feb 1992-Feb 2000
+"""
         )
     }
 
