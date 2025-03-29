@@ -19,6 +19,10 @@ fun employments(): Category {
     return Category("Employments", employmentPeriods())
 }
 
+fun employmentsNew(): Category {
+    return categoryParser(employmentCategory)!!
+}
+
 fun relationsships(): Category {
     return Category("Love relationships", relationshipPeriods())
 }
