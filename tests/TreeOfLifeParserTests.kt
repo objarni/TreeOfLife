@@ -169,9 +169,10 @@ Klippan: Jun 1996-Jul 1997"""
 
     fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
         val lines = string.split("\n")
-        val birthTimePointLine = lines.firstOrNull { it.startsWith("Month of birth:") }
+        val prefix = "Month of birth:"
+        val birthTimePointLine = lines.firstOrNull { it.startsWith(prefix) }
         val birthTimePoint = if (birthTimePointLine != null) {
-            timePointParser(birthTimePointLine.removePrefix("Month of birth:").trim())
+            timePointParser(birthTimePointLine.removePrefix(prefix).trim())
         } else {
             null
         }
