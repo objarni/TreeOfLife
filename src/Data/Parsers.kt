@@ -21,7 +21,7 @@ fun categoriesParser(string: String): List<Category> {
     for (categoryString in categoryStrings) {
         if (categoryString.isNotBlank()) {
             val category = categoryParser(categoryString)
-            if(category == null)
+            if (category == null)
                 throw IllegalArgumentException("Invalid category string: $categoryString")
             categories.add(category)
         }

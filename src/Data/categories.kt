@@ -163,8 +163,18 @@ fun relationshipPeriods(): List<Period> {
 }
 
 fun computers(): Category {
-    return Category("Computers", computerPeriods())
+    return categoryParser(computerCategory)!!
 }
+
+const val computerCategory = """---Computers---
+Commodore 64: Jan 1986-May 1992
+Commodore Amiga 500: Feb 1992-Jun 1995
+Compaq PC (486): Jun 1995-Jun 1998
+Self-built Small tower PC (Pentium 133): Jun 1998-Jun 2005
+Self-built Fulltower PC (AMD Athlon 64): Feb 2007-Jun 2011
+Acer Travelmate: Oct 2004-Jun 2008
+Packard Bell iMedia: Jul 2006-Jun 2010
+"""
 
 fun computerPeriods(): List<Period> = listOf(
     Period(
