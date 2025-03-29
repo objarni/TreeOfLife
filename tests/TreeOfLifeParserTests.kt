@@ -2,6 +2,7 @@ import TreeOfLife.Data.Month
 import TreeOfLife.Data.Period
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.Data.monthParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertNull
@@ -53,13 +54,6 @@ class TreeOfLifeParserTests {
                 periodName
             )
         }
-        return null
-    }
-
-    fun monthParser(string: String): Month? {
-        val month = string.lowercase()
-        if (month.startsWith("jan")) return Month.JANUARY
-        if (month.startsWith("feb")) return Month.FEBRUARY
         return null
     }
 }
