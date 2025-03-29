@@ -17,12 +17,28 @@ class TreeOfLifeParserTests {
         assertNull(monthParser("sososo"))
     }
 
-    // Test data for the period parser
-    // Röstånga: Jul 1983-Jul 1997
-    // Röstånga: Jul 1983 - Jul 1997
+    // Period parser - long format
+    @Test
+    fun testPeriodParser_year_and_month_long_format() {
+        // Test with a valid period string, canonical format
+        val period1 = periodParser("Röstånga: Jul 1983-Jul 1997")
+        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period1)
+
+        // Test with a valid period string, with spaces around the dash
+        val period2 = periodParser("Röstånga: Jul 1983 - Jul 1997")
+        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period2)
+
+        // Test with a valid period string, with spaces around the dash, and whitespace around it all
+        val period3 = periodParser("   Röstånga: Jul   1983 - Jul   1997  ")
+        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period3)
+    }
+
+    // Period parser - short format
+    // Röstånga: Jul-Jul 1997
+    // Röstånga: Jul - Jul 1997
     //   Röstånga : Jun - Aug   1998
     @Test
-    fun testPeriodParser_year_and_month_format() {
+    fun testPeriodParser_year_and_month_short_format() {
         // Test with a valid period string, canonical format
         val period1 = periodParser("Röstånga: Jul 1983-Jul 1997")
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period1)
