@@ -164,7 +164,7 @@ Klippan: Jun 1996-Jul 1997"""
             ---Homes---
             Röstånga: Jul 1983-Jul 1997
         """.trimIndent()
-        val (timePoint, categories) = toplevelParser(input)
+        val (timePoint, categories) = topLevelParser(input)
         assertEquals(TimePoint(Year(1983), Month.JANUARY), timePoint)
         assertEquals(
             listOf(
@@ -179,7 +179,7 @@ Klippan: Jun 1996-Jul 1997"""
         )
     }
 
-    fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
+    fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
         val lines = string.split("\n")
         val prefix = "Month of birth:"
         val birthTimePointLine = lines.firstOrNull { it.startsWith(prefix) }
