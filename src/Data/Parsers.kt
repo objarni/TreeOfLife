@@ -63,7 +63,8 @@ fun periodParserShortFormat(string: String): Period? {
     val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
-        val (periodName, startMonth, endMonth, endYear) = matchResult.destructured
+        val (periodName, startMonth, endMonth, yearString) = matchResult.destructured
+        val year = yearString.toInt()
         val parsedMonthStart = monthParser(startMonth)
         if (parsedMonthStart == null)
             return null
@@ -72,7 +73,7 @@ fun periodParserShortFormat(string: String): Period? {
             return null
         return Period(
             TimePoint(Year(1983), parsedMonthStart),
-            TimePoint(Year(endYear.toInt()), parsedMonthEnd),
+            TimePoint(Year(year), parsedMonthEnd),
             periodName
         )
     }
