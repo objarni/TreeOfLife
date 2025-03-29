@@ -79,6 +79,18 @@ class TreeOfLifeParserTests {
         )
     }
 
+    @Test
+    fun testCategoryParser_two_periods() {
+        val actualCategory = categoryParser("---Homes---\nRöstånga: Jul 1983-Jul 1997")
+        assertEquals(
+            Category(
+                "Homes",
+                listOf(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"))
+            ),
+            actualCategory
+        )
+    }
+
     private fun categoryParser(string: String) : Category {
         val lines = string.split("\n")
         val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
