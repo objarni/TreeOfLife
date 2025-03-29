@@ -1,122 +1,8 @@
 package TreeOfLife.Data
 
-fun educations(): Category {
-    return categoryParser(educationCategory)!!
-}
-
-const val educationCategory = """---Educations---
-Rödebo förskola: Aug 1986-Jun 1987
-Röstånga skola: Aug 1987-Jun 1992
-Svalövs högstadieskola: Aug 1992-Jun 1995
-Klippan gymnasieskola: Aug 1995-Jun 1998
-Göteborgs universitet: Aug 1998-Jun 2005"""
-
-fun employments(): Category {
-    return categoryParser(employmentCategory)!!
-}
-
-const val employmentCategory = """---Employments---
-Armens Musikkår Norrland: Jan-Oct 1999
-AstraZeneca R&D Lund: Jun-Aug 2000
-Volvo Cars: Jun-Aug 2001
-Volvo Cars: Jun-Aug 2002
-Volvo Cars: Jun-Aug 2003
-Cadcraft: Jun 2005-Jun 2006
-IGEMS: Jun 2006-Sep 2011
-Lorensberg: Sep 2011-Jun 2014
-Avalon Innovation: Jun 2014-Dec 2015
-Vizendo: Jan 2016-Sep 2018
-Objarni Productions: Sep 2018-Jan 2020
-ProAgile: Mar 2020-Jun 2023
-PowerFactors: Aug 2023-Jul 2024
-Walley: Aug 2024-Aug 2027"""
-
 fun homes(): Category {
     return Category("Homes", homePeriods())
 }
-
-fun relationsships(): Category {
-    return Category("Love relationships", relationshipPeriods())
-}
-
-fun computers(): Category {
-    return Category("Computers", computerPeriods())
-}
-
-fun programming(): Category {
-    return Category("Programming languages", programmingLanguages())
-}
-
-fun computerPeriods(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1986), Month.Companion.JANUARY),
-        TimePoint(Year(1992), Month.Companion.MAY),
-        "Commodore 64"
-    ),
-    Period(
-        TimePoint(Year(1992), Month.Companion.FEBRUARY),
-        TimePoint(Year(1995), Month.Companion.JUNE),
-        "Commodore Amiga 500"
-    ),
-    Period(
-        TimePoint(Year(1995), Month.Companion.JUNE),
-        TimePoint(Year(1998), Month.Companion.JUNE),
-        "Compaq PC (486)"
-    ),
-    Period(
-        TimePoint(Year(1998), Month.Companion.JUNE),
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        "Self-built Small tower PC (Pentium 133)"
-    ),
-    Period(
-        TimePoint(Year(2007), Month.Companion.FEBRUARY),
-        TimePoint(Year(2011), Month.Companion.JUNE),
-        "Self-built Fulltower PC (AMD Athlon 64)"
-    ),
-    Period(
-        TimePoint(Year(2004), Month.Companion.OCTOBER),
-        TimePoint(Year(2008), Month.Companion.JUNE),
-        "Acer Travelmate"
-    ),
-    Period(
-        TimePoint(Year(2006), Month.Companion.JULY),
-        TimePoint(Year(2010), Month.Companion.JUNE),
-        "Packard Bell iMedia"
-    ),
-)
-
-fun programmingLanguages(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1986), Month.Companion.JANUARY),
-        TimePoint(Year(1992), Month.Companion.MAY),
-        "BASIC"
-    ),
-    Period(
-        TimePoint(Year(1992), Month.Companion.JULY),
-        TimePoint(Year(1995), Month.Companion.JULY),
-        "AMOS Professional"
-    ),
-    Period(
-        TimePoint(Year(1995), Month.Companion.JULY),
-        TimePoint(Year(2000), Month.Companion.JUNE),
-        "C"
-    ),
-    Period(
-        TimePoint(Year(1996), Month.Companion.SEPTEMBER),
-        TimePoint(Year(1997), Month.Companion.MAY),
-        "Turbo Pascal"
-    ),
-    Period(
-        TimePoint(Year(2000), Month.Companion.JUNE),
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        "C++"
-    ),
-    Period(
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        TimePoint(Year(2008), Month.Companion.JUNE),
-        "C#"
-    ),
-)
 
 fun homePeriods(): List<Period> = listOf(
     Period(
@@ -201,6 +87,41 @@ fun homePeriods(): List<Period> = listOf(
     ),
 )
 
+fun educations(): Category {
+    return categoryParser(educationCategory)!!
+}
+
+const val educationCategory = """---Educations---
+Rödebo förskola: Aug 1986-Jun 1987
+Röstånga skola: Aug 1987-Jun 1992
+Svalövs högstadieskola: Aug 1992-Jun 1995
+Klippan gymnasieskola: Aug 1995-Jun 1998
+Göteborgs universitet: Aug 1998-Jun 2005"""
+
+fun employments(): Category {
+    return categoryParser(employmentCategory)!!
+}
+
+const val employmentCategory = """---Employments---
+Armens Musikkår Norrland: Jan-Oct 1999
+AstraZeneca R&D Lund: Jun-Aug 2000
+Volvo Cars: Jun-Aug 2001
+Volvo Cars: Jun-Aug 2002
+Volvo Cars: Jun-Aug 2003
+Cadcraft: Jun 2005-Jun 2006
+IGEMS: Jun 2006-Sep 2011
+Lorensberg: Sep 2011-Jun 2014
+Avalon Innovation: Jun 2014-Dec 2015
+Vizendo: Jan 2016-Sep 2018
+Objarni Productions: Sep 2018-Jan 2020
+ProAgile: Mar 2020-Jun 2023
+PowerFactors: Aug 2023-Jul 2024
+Walley: Aug 2024-Aug 2027"""
+
+fun relationsships(): Category {
+    return Category("Love relationships", relationshipPeriods())
+}
+
 fun relationshipPeriods(): List<Period> {
     return listOf(
         Period(
@@ -240,3 +161,82 @@ fun relationshipPeriods(): List<Period> {
         )
     )
 }
+
+fun computers(): Category {
+    return Category("Computers", computerPeriods())
+}
+
+fun computerPeriods(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.Companion.JANUARY),
+        TimePoint(Year(1992), Month.Companion.MAY),
+        "Commodore 64"
+    ),
+    Period(
+        TimePoint(Year(1992), Month.Companion.FEBRUARY),
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        "Commodore Amiga 500"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.Companion.JUNE),
+        TimePoint(Year(1998), Month.Companion.JUNE),
+        "Compaq PC (486)"
+    ),
+    Period(
+        TimePoint(Year(1998), Month.Companion.JUNE),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "Self-built Small tower PC (Pentium 133)"
+    ),
+    Period(
+        TimePoint(Year(2007), Month.Companion.FEBRUARY),
+        TimePoint(Year(2011), Month.Companion.JUNE),
+        "Self-built Fulltower PC (AMD Athlon 64)"
+    ),
+    Period(
+        TimePoint(Year(2004), Month.Companion.OCTOBER),
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        "Acer Travelmate"
+    ),
+    Period(
+        TimePoint(Year(2006), Month.Companion.JULY),
+        TimePoint(Year(2010), Month.Companion.JUNE),
+        "Packard Bell iMedia"
+    ),
+)
+
+fun programming(): Category {
+    return Category("Programming languages", programmingLanguages())
+}
+
+fun programmingLanguages(): List<Period> = listOf(
+    Period(
+        TimePoint(Year(1986), Month.Companion.JANUARY),
+        TimePoint(Year(1992), Month.Companion.MAY),
+        "BASIC"
+    ),
+    Period(
+        TimePoint(Year(1992), Month.Companion.JULY),
+        TimePoint(Year(1995), Month.Companion.JULY),
+        "AMOS Professional"
+    ),
+    Period(
+        TimePoint(Year(1995), Month.Companion.JULY),
+        TimePoint(Year(2000), Month.Companion.JUNE),
+        "C"
+    ),
+    Period(
+        TimePoint(Year(1996), Month.Companion.SEPTEMBER),
+        TimePoint(Year(1997), Month.Companion.MAY),
+        "Turbo Pascal"
+    ),
+    Period(
+        TimePoint(Year(2000), Month.Companion.JUNE),
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        "C++"
+    ),
+    Period(
+        TimePoint(Year(2005), Month.Companion.JUNE),
+        TimePoint(Year(2008), Month.Companion.JUNE),
+        "C#"
+    ),
+)
