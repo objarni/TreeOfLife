@@ -11,6 +11,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0")
+    implementation("io.kpeg:kpeg:0.1.2")
     testImplementation(kotlin("test"))
 }
 
