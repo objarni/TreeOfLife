@@ -8,6 +8,10 @@ fun educations(): Category {
     return Category("Educations", educationPeriods())
 }
 
+fun educations2(): Category {
+    return categoryParser(educationCategory)!!
+}
+
 fun employments(): Category {
     return Category("Employments", employmentPeriods())
 }
