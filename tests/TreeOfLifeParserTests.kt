@@ -60,6 +60,8 @@ class TreeOfLifeParserTests {
 
     @Test
     fun test1() {
+        val result = evalExpr("1 + 2 - 3")
+        assert(result == 0) { "Expected 0, but got $result" }
     }
 }
 
