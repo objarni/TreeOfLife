@@ -9,7 +9,6 @@ fun monthParser(string: String): Month? {
 }
 
 fun periodParser(string: String): Period? {
-    return Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga")
     val regex = """(\w+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
