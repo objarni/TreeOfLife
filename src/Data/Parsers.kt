@@ -21,13 +21,15 @@ fun categoriesParser(string: String): List<Category> {
     for (categoryString in categoryStrings) {
         if (categoryString.isNotBlank()) {
             val category = categoryParser(categoryString)
+            if(category == null)
+                throw IllegalArgumentException("Invalid category string: $categoryString")
             categories.add(category)
         }
     }
     return categories
 }
 
-fun categoryParser(string: String): Category {
+fun categoryParser(string: String): Category? {
     val lines = string.split("\n")
     val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
     val periods = lines.drop(1).mapNotNull { periodParser(it) }
