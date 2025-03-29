@@ -135,7 +135,7 @@ Klippan: Jun 1996-Jul 1997"""
         )
     }
 
-    private fun categoriesParser(string: String): List<Category> {
+    fun categoriesParser(string: String): List<Category> {
         val categories = mutableListOf<Category>()
         val categoryStrings = string.split("###").map { it.trim() }
         for (categoryString in categoryStrings) {
