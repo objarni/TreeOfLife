@@ -4,7 +4,8 @@ fun homes(): Category {
     return categoryParser(homeCategory)!!
 }
 
-const val homeCategory: String = """---Homes---
+const val homeCategory: String = """
+ ---Homes---
 Röstånga: Jul 1983-Jul 1997
 Klippan: Jun 1996-Jul 1997
 Hisingen: Jun 1997-May 1998
@@ -26,7 +27,8 @@ fun educations(): Category {
     return categoryParser(educationCategory)!!
 }
 
-const val educationCategory = """---Educations---
+const val educationCategory = """
+    ---Educations---
 Rödebo förskola: Aug 1986-Jun 1987
 Röstånga skola: Aug 1987-Jun 1992
 Svalövs högstadieskola: Aug 1992-Jun 1995
