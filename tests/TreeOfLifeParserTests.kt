@@ -48,8 +48,8 @@ class TreeOfLifeParserTests {
             if(parsedMonthEnd == null)
                 return null
             return Period(
-                TimePoint(Year(startYear.toInt()), parsedMonthStart),
-                TimePoint(Year(endYear.toInt()), parsedMonthEnd),
+                TimePoint(Year(startYear.toInt()), parsedMonthStart!!),
+                TimePoint(Year(endYear.toInt()), parsedMonthEnd!!),
                 location
             )
         }
