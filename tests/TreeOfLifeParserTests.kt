@@ -49,7 +49,7 @@ class TreeOfLifeParserTests {
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period3)
     }
 
-    fun periodParserShortFormat(string: String): Period? {
+    private fun periodParserShortFormat(string: String): Period? {
         return Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga")
     }
 }
