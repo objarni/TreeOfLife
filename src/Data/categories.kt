@@ -11,28 +11,8 @@ Svalövs högstadieskola: Aug 1992-Jun 1995
 Klippan gymnasieskola: Aug 1995-Jun 1998
 Göteborgs universitet: Aug 1998-Jun 2005"""
 
-fun homes(): Category {
-    return Category("Homes", homePeriods())
-}
-
-fun employmentsOld(): Category {
-    return Category("Employments", employmentPeriods())
-}
-
 fun employments(): Category {
     return categoryParser(employmentCategory)!!
-}
-
-fun relationsships(): Category {
-    return Category("Love relationships", relationshipPeriods())
-}
-
-fun computers(): Category {
-    return Category("Computers", computerPeriods())
-}
-
-fun programming(): Category {
-    return Category("Programming languages", programmingLanguages())
 }
 
 const val employmentCategory = """---Employments---
@@ -51,78 +31,21 @@ ProAgile: Mar 2020-Jun 2023
 PowerFactors: Aug 2023-Jul 2024
 Walley: Aug 2024-Aug 2027"""
 
-fun employmentPeriods(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1999), Month.Companion.JANUARY),
-        TimePoint(Year(1999), Month.Companion.OCTOBER),
-        "Armens Musikkår Norrland"
-    ),
-    Period(
-        TimePoint(Year(2000), Month.Companion.JUNE),
-        TimePoint(Year(2000), Month.Companion.AUGUST),
-        "AstraZeneca R&D Lund"
-    ),
-    Period(
-        TimePoint(Year(2001), Month.Companion.JUNE),
-        TimePoint(Year(2001), Month.Companion.AUGUST),
-        "Volvo Cars"
-    ),
-    Period(
-        TimePoint(Year(2002), Month.Companion.JUNE),
-        TimePoint(Year(2002), Month.Companion.AUGUST),
-        "Volvo Cars"
-    ),
-    Period(
-        TimePoint(Year(2003), Month.Companion.JUNE),
-        TimePoint(Year(2003), Month.Companion.AUGUST),
-        "Volvo Cars"
-    ),
-    Period(
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        TimePoint(Year(2006), Month.Companion.JUNE),
-        "Cadcraft"
-    ),
-    Period(
-        TimePoint(Year(2006), Month.Companion.JUNE),
-        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
-        "IGEMS"
-    ),
-    Period(
-        TimePoint(Year(2011), Month.Companion.SEPTEMBER),
-        TimePoint(Year(2014), Month.Companion.JUNE),
-        "Lorensberg"
-    ),
-    Period(
-        TimePoint(Year(2014), Month.Companion.JUNE),
-        TimePoint(Year(2015), Month.Companion.DECEMBER),
-        "Avalon Innovation"
-    ),
-    Period(
-        TimePoint(Year(2016), Month.Companion.JANUARY),
-        TimePoint(Year(2018), Month.Companion.SEPTEMBER),
-        "Vizendo"
-    ),
-    Period(
-        TimePoint(Year(2018), Month.Companion.SEPTEMBER),
-        TimePoint(Year(2020), Month.Companion.JANUARY),
-        "Objarni Productions"
-    ),
-    Period(
-        TimePoint(Year(2020), Month.Companion.MARCH),
-        TimePoint(Year(2023), Month.Companion.JUNE),
-        "ProAgile"
-    ),
-    Period(
-        TimePoint(Year(2023), Month.Companion.AUGUST),
-        TimePoint(Year(2024), Month.Companion.JULY),
-        "PowerFactors"
-    ),
-    Period(
-        TimePoint(Year(2024), Month.Companion.AUGUST),
-        TimePoint(Year(2027), Month.Companion.AUGUST),
-        "Walley"
-    ),
-)
+fun homes(): Category {
+    return Category("Homes", homePeriods())
+}
+
+fun relationsships(): Category {
+    return Category("Love relationships", relationshipPeriods())
+}
+
+fun computers(): Category {
+    return Category("Computers", computerPeriods())
+}
+
+fun programming(): Category {
+    return Category("Programming languages", programmingLanguages())
+}
 
 fun computerPeriods(): List<Period> = listOf(
     Period(
