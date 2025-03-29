@@ -30,7 +30,7 @@ class TreeOfLifeParserTests {
 
     // Period parser - long format
     @Test
-    fun testPeriodParser_year_and_month_long_format() {
+    fun testPeriodParser_long_format() {
         // Test with a valid period string, canonical format
         val period1 = periodParser("Röstånga: Jul 1983-Jul 1997")
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period1)
