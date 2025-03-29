@@ -49,7 +49,7 @@ class TreeOfLifeParserTests {
     // Röstånga: Jul - Jul 1997
     //   Röstånga : Jun - Aug   1998
     @Test
-    fun testPeriodParser_year_and_month_short_format() {
+    fun testPeriodParser_short_format() {
         val period1 = periodParser("Röstånga: Jul 1983-Jul 1997")
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period1)
 
