@@ -5,10 +5,6 @@ fun homes(): Category {
 }
 
 fun educations(): Category {
-    return Category("Educations", educationPeriods())
-}
-
-fun educations2(): Category {
     return categoryParser(educationCategory)!!
 }
 
