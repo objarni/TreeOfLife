@@ -14,6 +14,16 @@ class TreeOfLifeParserTests {
     fun testMonthParser() {
         assertEquals(Month.JANUARY, monthParser("Jan"))
         assertEquals(Month.FEBRUARY, monthParser("Feb"))
+        assertEquals(Month.MARCH, monthParser("Mar"))
+        assertEquals(Month.APRIL, monthParser("Apr"))
+        assertEquals(Month.MAY, monthParser("May"))
+        assertEquals(Month.JUNE, monthParser("Jun"))
+        assertEquals(Month.JULY, monthParser("Jul"))
+        assertEquals(Month.AUGUST, monthParser("Aug"))
+        assertEquals(Month.SEPTEMBER, monthParser("Sep"))
+        assertEquals(Month.OCTOBER, monthParser("Oct"))
+        assertEquals(Month.NOVEMBER, monthParser("Nov"))
+        assertEquals(Month.DECEMBER, monthParser("Dec"))
         assertNull(monthParser("sososo"))
     }
 

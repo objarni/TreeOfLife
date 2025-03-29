@@ -5,6 +5,16 @@ fun monthParser(string: String): Month? {
     val month = string.lowercase()
     if (month.startsWith("jan")) return Month.JANUARY
     if (month.startsWith("feb")) return Month.FEBRUARY
+    if (month.startsWith("mar")) return Month.MARCH
+    if (month.startsWith("apr")) return Month.APRIL
+    if (month.startsWith("may")) return Month.MAY
+    if (month.startsWith("jun")) return Month.JUNE
+    if (month.startsWith("jul")) return Month.JULY
+    if (month.startsWith("aug")) return Month.AUGUST
+    if (month.startsWith("sep")) return Month.SEPTEMBER
+    if (month.startsWith("oct")) return Month.OCTOBER
+    if (month.startsWith("nov")) return Month.NOVEMBER
+    if (month.startsWith("dec")) return Month.DECEMBER
     return null
 }
 
