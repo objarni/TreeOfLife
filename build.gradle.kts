@@ -12,7 +12,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.8.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0")
     testImplementation(kotlin("test"))
-    testImplementation("me.alllex.parsus:parsus-jvm:0.6.1")
 }
 
 application {
