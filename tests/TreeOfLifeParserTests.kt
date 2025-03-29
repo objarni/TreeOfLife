@@ -112,6 +112,25 @@ C64: Jul 1986-Jul 1995
 Amiga 500: Feb 1992-Feb 2000
 """
         )
+        assertEquals(
+            listOf(
+                Category(
+                    "Homes",
+                    listOf(
+                        Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"),
+                        Period(TimePoint(Year(1996), Month.JUNE), TimePoint(Year(1997), Month.JULY), "Klippan"),
+                    )
+                ),
+                Category(
+                    "Computers",
+                    listOf(
+                        Period(TimePoint(Year(1986), Month.JULY), TimePoint(Year(1995), Month.JULY), "C64"),
+                        Period(TimePoint(Year(1992), Month.FEBRUARY), TimePoint(Year(2000), Month.FEBRUARY), "Amiga 500"),
+                    )
+                )
+            ),
+            categories
+        )
     }
 
     private fun categoriesParser(string: String): List<Category> {
