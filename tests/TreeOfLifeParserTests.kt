@@ -135,7 +135,11 @@ Klippan: Jun 1996-Jul 1997"""
                     "Computers",
                     listOf(
                         Period(TimePoint(Year(1986), Month.JULY), TimePoint(Year(1995), Month.JULY), "C64"),
-                        Period(TimePoint(Year(1992), Month.FEBRUARY), TimePoint(Year(2000), Month.FEBRUARY), "Amiga 500"),
+                        Period(
+                            TimePoint(Year(1992), Month.FEBRUARY),
+                            TimePoint(Year(2000), Month.FEBRUARY),
+                            "Amiga 500"
+                        ),
                     )
                 )
             ),
