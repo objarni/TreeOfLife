@@ -84,7 +84,6 @@ class TreeOfLifeParserTests {
         val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
         val periods = lines.drop(1).mapNotNull { periodParser(it) }
         return Category(categoryName, periods)
-
     }
 
 }
