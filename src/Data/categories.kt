@@ -82,38 +82,15 @@ Packard Bell iMedia: Jul 2006-Jun 2010
 """
 
 fun programming(): Category {
-    return Category("Programming languages", programmingLanguages())
+    return categoryParser(programmingCategory)!!
 }
 
-fun programmingLanguages(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1986), Month.Companion.JANUARY),
-        TimePoint(Year(1992), Month.Companion.MAY),
-        "BASIC"
-    ),
-    Period(
-        TimePoint(Year(1992), Month.Companion.JULY),
-        TimePoint(Year(1995), Month.Companion.JULY),
-        "AMOS Professional"
-    ),
-    Period(
-        TimePoint(Year(1995), Month.Companion.JULY),
-        TimePoint(Year(2000), Month.Companion.JUNE),
-        "C"
-    ),
-    Period(
-        TimePoint(Year(1996), Month.Companion.SEPTEMBER),
-        TimePoint(Year(1997), Month.Companion.MAY),
-        "Turbo Pascal"
-    ),
-    Period(
-        TimePoint(Year(2000), Month.Companion.JUNE),
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        "C++"
-    ),
-    Period(
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        TimePoint(Year(2008), Month.Companion.JUNE),
-        "C#"
-    ),
-)
+const val programmingCategory = """---Programming languages---
+BASIC: Jan 1986-May 1992
+AMOS Professional: Jul 1992-Jul 1995
+C: Jul 1995-Jun 2000
+Turbo Pascal: Sep 1996-May 1997
+C++: Jun 2000-Jun 2005
+C#: Jun 2005-Jun 2008
+"""
+
