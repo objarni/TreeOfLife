@@ -1,3 +1,4 @@
+import TreeOfLife.Data.Category
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.Period
 import TreeOfLife.Data.TimePoint
@@ -64,6 +65,26 @@ class TreeOfLifeParserTests {
     fun testPeriodParser_spaces_in_name() {
         val period = periodParser("Röst Ånga: Jul 1983-Jul 1997")
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röst Ånga"), period)
+    }
+
+    @Test
+    fun testCategoryParser_single_period() {
+        val actualCategory = categoryParser("---Homes---\nRöstånga: Jul 1983-Jul 1997")
+//        assertEquals(
+//            Category(
+//                "Homes",
+//                listOf(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"))
+//            ),
+//            actualCategory
+//        )
+    }
+
+    private fun categoryParser(string: String) : Category {
+        val lines = string.split("\n")
+        val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
+        val periods = lines.drop(1).mapNotNull { periodParser(it) }
+        return Category(categoryName, periods)
+
     }
 
 }
