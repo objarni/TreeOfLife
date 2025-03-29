@@ -5,7 +5,7 @@ import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.monthParser
 import TreeOfLife.Data.periodParser
-import TreeOfLife.Data.periodParserShortFormat
+import TreeOfLife.Data.categoryParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertNull
@@ -92,13 +92,6 @@ class TreeOfLifeParserTests {
             ),
             actualCategory
         )
-    }
-
-    fun categoryParser(string: String) : Category {
-        val lines = string.split("\n")
-        val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
-        val periods = lines.drop(1).mapNotNull { periodParser(it) }
-        return Category(categoryName, periods)
     }
 }
 
