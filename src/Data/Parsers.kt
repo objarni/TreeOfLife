@@ -72,7 +72,7 @@ fun periodParserShortFormat(string: String): Period? {
         if (parsedMonthEnd == null)
             return null
         return Period(
-            TimePoint(Year(1983), parsedMonthStart),
+            TimePoint(Year(year), parsedMonthStart),
             TimePoint(Year(year), parsedMonthEnd),
             periodName
         )
