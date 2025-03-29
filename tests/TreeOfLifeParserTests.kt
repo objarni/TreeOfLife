@@ -62,11 +62,11 @@ class TreeOfLifeParserTests {
         val period1 = periodParser("Röstånga: Jul-Aug 1997")
         assertEquals(Period(TimePoint(Year(1997), Month.JULY), TimePoint(Year(1997), Month.AUGUST), "Röstånga"), period1)
 
-//        val period2 = periodParser("Röstånga: Jul - Jul 1997")
-//        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period2)
-//
-//        val period3 = periodParser("   Röstånga: Jul   - Jul   1997  ")
-//        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period3)
+        val period2 = periodParser("Röstånga: May - Jul 1997")
+        assertEquals(Period(TimePoint(Year(1997), Month.MAY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period2)
+
+        val period3 = periodParser("   Röstånga: Jul   - Dec   2003  ")
+        assertEquals(Period(TimePoint(Year(2003), Month.JULY), TimePoint(Year(2003), Month.DECEMBER), "Röstånga"), period3)
     }
 
     @Test
