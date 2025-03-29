@@ -1,8 +1,26 @@
 package TreeOfLife.Data
 
 fun homes(): Category {
-    return Category("Homes", homePeriods())
+    return categoryParser(homeCategory)!!
 }
+
+const val homeCategory: String = """---Homes---
+Röstånga: Jul 1983-Jul 1997
+Klippan: Jun 1996-Jul 1997
+Hisingen: Jun 1997-May 1998
+Boden: May 1998-Nov 1999
+Hisingen: Nov 1999-Jun 2005
+Borås: Jun 2005-Jun 2008
+Mölndal: Jun 2008-Sep 2011
+Kortedala (Eric Börjessons Väg): Sep 2011-Aug 2013
+Hertford: Aug 2013-Jul 2014
+Kortedala (Januarigatan): Aug 2014-Oct 2014
+Kortedala (Decembergatan): Oct 2014-Aug 2015
+Hisingen (Kvillebäcken): Sep 2015-Dec 2015
+Kortedala (Adventsvägen): Jan 2016-Dec 2016
+Kortedala (Fastlagsgatan): Jan 2017-Jun 2023
+Tangovägen: Jun 2023-May 2025
+"""
 
 fun homePeriods(): List<Period> = listOf(
     Period(
@@ -145,44 +163,6 @@ Self-built Fulltower PC (AMD Athlon 64): Feb 2007-Jun 2011
 Acer Travelmate: Oct 2004-Jun 2008
 Packard Bell iMedia: Jul 2006-Jun 2010
 """
-
-fun computerPeriods(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1986), Month.Companion.JANUARY),
-        TimePoint(Year(1992), Month.Companion.MAY),
-        "Commodore 64"
-    ),
-    Period(
-        TimePoint(Year(1992), Month.Companion.FEBRUARY),
-        TimePoint(Year(1995), Month.Companion.JUNE),
-        "Commodore Amiga 500"
-    ),
-    Period(
-        TimePoint(Year(1995), Month.Companion.JUNE),
-        TimePoint(Year(1998), Month.Companion.JUNE),
-        "Compaq PC (486)"
-    ),
-    Period(
-        TimePoint(Year(1998), Month.Companion.JUNE),
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        "Self-built Small tower PC (Pentium 133)"
-    ),
-    Period(
-        TimePoint(Year(2007), Month.Companion.FEBRUARY),
-        TimePoint(Year(2011), Month.Companion.JUNE),
-        "Self-built Fulltower PC (AMD Athlon 64)"
-    ),
-    Period(
-        TimePoint(Year(2004), Month.Companion.OCTOBER),
-        TimePoint(Year(2008), Month.Companion.JUNE),
-        "Acer Travelmate"
-    ),
-    Period(
-        TimePoint(Year(2006), Month.Companion.JULY),
-        TimePoint(Year(2010), Month.Companion.JUNE),
-        "Packard Bell iMedia"
-    ),
-)
 
 fun programming(): Category {
     return Category("Programming languages", programmingLanguages())
