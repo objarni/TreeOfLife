@@ -100,10 +100,12 @@ Klippan: Jun 1996-Jul 1997"""
 
     @Test
     fun testCategoriesParser() {
-        val actualCategory = categoryParser(
+        val categories: List<Category> = categoriesParser(
             """---Homes---
 Röstånga: Jul 1983-Jul 1997
 Klippan: Jun 1996-Jul 1997
+
+###
 
 ---Computers---
 C64: Jul 1986-Jul 1995
@@ -112,5 +114,16 @@ Amiga 500: Feb 1992-Feb 2000
         )
     }
 
+    private fun categoriesParser(string: String): List<Category> {
+        val categories = mutableListOf<Category>()
+        val categoryStrings = string.split("###").map { it.trim() }
+        for (categoryString in categoryStrings) {
+            if (categoryString.isNotBlank()) {
+                val category = categoryParser(categoryString)
+                categories.add(category)
+            }
+        }
+        return categories
+    }
 }
 
