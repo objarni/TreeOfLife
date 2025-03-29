@@ -24,6 +24,13 @@ fun programming(): Category {
     return Category("Programming languages", programmingLanguages())
 }
 
+const val educationCategory = """---Educations---
+Rödebo förskola: Aug 1986-Jun 1987
+Röstånga skola: Aug 1987-Jun 1992
+Svalövs högstadieskola: Aug 1992-Jun 1995
+Klippan gymnasieskola: Aug 1995-Jun 1998
+Göteborgs universitet: Aug 1998-Jun 2005"""
+
 fun educationPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1986), Month.Companion.AUGUST),
