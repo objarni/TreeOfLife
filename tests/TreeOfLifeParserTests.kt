@@ -108,8 +108,8 @@ Klippan: Jun 1996-Jul 1997
 ###
 
 ---Computers---
-C64: Jul 1986-Jul 1995
-Amiga 500: Feb 1992-Feb 2000
+  C64: Jul 1986-Jul 1995
+  Amiga 500: Feb 1992-Feb 2000
 """
         )
         assertEquals(
