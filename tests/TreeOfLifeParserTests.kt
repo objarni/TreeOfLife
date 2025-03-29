@@ -40,7 +40,7 @@ class TreeOfLifeParserTests {
         val regex = """(\w+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
         val matchResult = regex.find(string)
         if (matchResult != null) {
-            val (location, startMonth, startYear, endMonth, endYear) = matchResult.destructured
+            val (periodName, startMonth, startYear, endMonth, endYear) = matchResult.destructured
             val parsedMonthStart = monthParser(startMonth)
             if(parsedMonthStart == null)
                 return null
@@ -50,7 +50,7 @@ class TreeOfLifeParserTests {
             return Period(
                 TimePoint(Year(startYear.toInt()), parsedMonthStart!!),
                 TimePoint(Year(endYear.toInt()), parsedMonthEnd!!),
-                location
+                periodName
             )
         }
         return null
