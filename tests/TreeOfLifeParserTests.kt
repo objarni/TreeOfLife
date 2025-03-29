@@ -4,6 +4,7 @@ import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.monthParser
 import TreeOfLife.Data.periodParser
+import TreeOfLife.Data.periodParserShortFormat
 import org.junit.jupiter.api.Assertions.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertNull
@@ -59,24 +60,5 @@ class TreeOfLifeParserTests {
 //        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period3)
     }
 
-     fun periodParserShortFormat(string: String): Period? {
-        val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
-        val matchResult = regex.find(string)
-        if (matchResult != null) {
-            val (periodName, startMonth, endMonth, endYear) = matchResult.destructured
-            val parsedMonthStart = monthParser(startMonth)
-            if (parsedMonthStart == null)
-                return null
-            val parsedMonthEnd = monthParser(endMonth)
-            if (parsedMonthEnd == null)
-                return null
-            return Period(
-                TimePoint(Year(1983), parsedMonthStart!!),
-                TimePoint(Year(endYear.toInt()), parsedMonthEnd!!),
-                periodName
-            )
-        }
-        return null
-    }
 }
 
