@@ -101,7 +101,7 @@ Klippan: Jun 1996-Jul 1997"""
     @Test
     fun testCategoriesParser() {
         val categories: List<Category> = categoriesParser(
-            """---Homes---
+            """   ---Homes---
 Röstånga: Jul 1983-Jul 1997
 Klippan: Jun 1996-Jul 1997
 
