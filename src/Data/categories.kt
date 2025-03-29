@@ -31,34 +31,6 @@ fun programming(): Category {
     return Category("Programming languages", programmingLanguages())
 }
 
-fun educationPeriods(): List<Period> = listOf(
-    Period(
-        TimePoint(Year(1986), Month.Companion.AUGUST),
-        TimePoint(Year(1987), Month.Companion.JUNE),
-        "Rödebo förskola"
-    ),
-    Period(
-        TimePoint(Year(1987), Month.Companion.AUGUST),
-        TimePoint(Year(1992), Month.Companion.JUNE),
-        "Röstånga skola"
-    ),
-    Period(
-        TimePoint(Year(1992), Month.Companion.AUGUST),
-        TimePoint(Year(1995), Month.Companion.JUNE),
-        "Svalövs högstadieskola"
-    ),
-    Period(
-        TimePoint(Year(1995), Month.Companion.AUGUST),
-        TimePoint(Year(1998), Month.Companion.JUNE),
-        "Klippan gymnasieskola"
-    ),
-    Period(
-        TimePoint(Year(1998), Month.Companion.AUGUST),
-        TimePoint(Year(2005), Month.Companion.JUNE),
-        "Göteborgs universitet"
-    ),
-)
-
 fun employmentPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1999), Month.Companion.JANUARY),
