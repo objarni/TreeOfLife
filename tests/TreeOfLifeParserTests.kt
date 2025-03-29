@@ -165,6 +165,18 @@ Klippan: Jun 1996-Jul 1997"""
             Röstånga: Jul 1983-Jul 1997
         """.trimIndent()
         val (timePoint, categories) = toplevelParser(input)
+        assertEquals(TimePoint(Year(1983), Month.JANUARY), timePoint)
+        assertEquals(
+            listOf(
+                Category(
+                    "Homes",
+                    listOf(
+                        Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"),
+                    )
+                )
+            ),
+            categories
+        )
     }
 
     fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
