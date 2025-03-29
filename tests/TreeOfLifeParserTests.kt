@@ -26,9 +26,9 @@ class TreeOfLifeParserTests {
         val period1 = periodParser("Röstånga: Jul 1983-Jul 1997")
         assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period1)
 
-//        // Test with a valid period string, with spaces around the dash
-//        val period2 = periodParser("Röstånga: Jul 1983 - Jul 1997")
-//        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period2)
+        // Test with a valid period string, with spaces around the dash
+        val period2 = periodParser("Röstånga: Jul 1983 - Jul 1997")
+        assertEquals(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"), period2)
 //
 //        // Test with a valid period string, with spaces around the dash, and whitespace around it all
 //        val period3 = periodParser("   Röstånga: Jul   1983 - Jul   1997  ")
