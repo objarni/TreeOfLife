@@ -51,8 +51,8 @@ fun periodParser(string: String): Period? {
         if (parsedMonthEnd == null)
             return null
         return Period(
-            TimePoint(Year(startYear.toInt()), parsedMonthStart!!),
-            TimePoint(Year(endYear.toInt()), parsedMonthEnd!!),
+            TimePoint(Year(startYear.toInt()), parsedMonthStart),
+            TimePoint(Year(endYear.toInt()), parsedMonthEnd),
             periodName
         )
     }
@@ -71,8 +71,8 @@ fun periodParserShortFormat(string: String): Period? {
         if (parsedMonthEnd == null)
             return null
         return Period(
-            TimePoint(Year(1983), parsedMonthStart!!),
-            TimePoint(Year(endYear.toInt()), parsedMonthEnd!!),
+            TimePoint(Year(1983), parsedMonthStart),
+            TimePoint(Year(endYear.toInt()), parsedMonthEnd),
             periodName
         )
     }
@@ -87,7 +87,7 @@ fun timePointParser(string: String): TimePoint? {
         val parsedMonth = monthParser(month)
         if (parsedMonth == null)
             return null
-        return TimePoint(Year(year.toInt()), parsedMonth!!)
+        return TimePoint(Year(year.toInt()), parsedMonth)
     }
     return null
 }
