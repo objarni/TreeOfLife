@@ -73,7 +73,7 @@ class TreeOfLifeParserTests {
     }
 
     @Test
-    fun testCategoryParser_two_periods() {
+    fun `test CategoryParser with two periods`() {
         val actualCategory = categoryParser(
             """---Homes---
 Röstånga: Jul 1983-Jul 1997
