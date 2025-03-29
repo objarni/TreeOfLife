@@ -156,26 +156,28 @@ Klippan: Jun 1996-Jul 1997"""
         )
     }
 
-//    @Test
-//    fun `test toplevel parser with birth timepoint`() {
-//        val input = """
-//            Month of birth: Jan 1983
-//
-//            ---Homes---
-//            Röstånga: Jul 1983-Jul 1997
-//        """.trimIndent()
-//        val (timePoint, categories) = toplevelParser(input)
-//    }
-//
-//    private fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
-//        val lines = string.split("\n")
-//        val monthOfBirthLine = lines.firstOrNull { it.startsWith("Month of birth:") }
-//        val monthOfBirth = monthOfBirthLine?.substringAfter(":")?.trim()
-//        val timePoint = monthOfBirth?.let { monthParser(it) }?.let { TimePoint(Year(1983), it) }
-//        val categoriesString = string.substringAfter("\n").trim()
-//        val categories = categoriesParser(categoriesString)
-//        return Pair(timePoint!!, categories)
-//
-//    }
+    @Test
+    fun `test toplevel parser with birth timepoint`() {
+        val input = """
+            Month of birth: Jan 1983
+
+            ---Homes---
+            Röstånga: Jul 1983-Jul 1997
+        """.trimIndent()
+        val (timePoint, categories) = toplevelParser(input)
+    }
+
+    private fun toplevelParser(string: String): Pair<TimePoint, List<Category>> {
+        val lines = string.split("\n")
+        val birthTimePointLine = lines.firstOrNull { it.startsWith("Month of birth:") }
+        val birthTimePoint = if (birthTimePointLine != null) {
+            timePointParser(birthTimePointLine.removePrefix("Month of birth:").trim())
+        } else {
+            null
+        }
+        val categoriesString = lines.dropWhile { !it.startsWith("---") }.joinToString("\n")
+        val categories = categoriesParser(categoriesString)
+        return Pair(birthTimePoint!!, categories)
+    }
 }
 
