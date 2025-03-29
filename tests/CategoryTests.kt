@@ -3,7 +3,7 @@ import TreeOfLife.Data.Period
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.textBlocksForPeriods
-import TreeOfLife.Data.homePeriods
+import TreeOfLife.Data.homes
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Color
@@ -60,7 +60,7 @@ class CategoryTests {
     @Test
     fun homeBlocksAreSortedInX() {
         val blocks = textBlocksForPeriods(
-            homePeriods(), baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            homes().periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
         val xs = blocks.map { it.rect.x }
