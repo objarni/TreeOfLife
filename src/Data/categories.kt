@@ -132,46 +132,6 @@ Evelyn - 3: Nov 2021-Jan 2022
 Josefin: Mar 2022-Jan 2025
 """
 
-fun relationshipPeriods(): List<Period> {
-    return listOf(
-        Period(
-            TimePoint(Year(1997), Month.Companion.JANUARY),
-            TimePoint(Year(2000), Month.Companion.AUGUST),
-            "Emma"
-        ),
-        Period(
-            TimePoint(Year(2000), Month.Companion.NOVEMBER),
-            TimePoint(Year(2013), Month.Companion.SEPTEMBER),
-            "Mozhdeh"
-        ),
-        Period(
-            TimePoint(Year(2013), Month.Companion.OCTOBER),
-            TimePoint(Year(2018), Month.Companion.SEPTEMBER),
-            "Evelyn - 1"
-        ),
-        Period(
-            TimePoint(Year(2019), Month.Companion.MAY),
-            TimePoint(Year(2020), Month.Companion.JANUARY),
-            "Evelyn - 2"
-        ),
-        Period(
-            TimePoint(Year(2020), Month.Companion.MAY),
-            TimePoint(Year(2020), Month.Companion.SEPTEMBER),
-            "Golnaz"
-        ),
-        Period(
-            TimePoint(Year(2021), Month.Companion.NOVEMBER),
-            TimePoint(Year(2022), Month.Companion.JANUARY),
-            "Evelyn - 3"
-        ),
-        Period(
-            TimePoint(Year(2022), Month.Companion.MARCH),
-            TimePoint(Year(2025), Month.Companion.JANUARY),
-            "Josefin"
-        )
-    )
-}
-
 fun computers(): Category {
     return categoryParser(computerCategory)!!
 }
