@@ -67,3 +67,15 @@ fun categoryParser(string: String) : Category {
     val periods = lines.drop(1).mapNotNull { periodParser(it) }
     return Category(categoryName, periods)
 }
+
+fun categoriesParser(string: String): List<Category> {
+    val categories = mutableListOf<Category>()
+    val categoryStrings = string.split("###").map { it.trim() }
+    for (categoryString in categoryStrings) {
+        if (categoryString.isNotBlank()) {
+            val category = categoryParser(categoryString)
+            categories.add(category)
+        }
+    }
+    return categories
+}

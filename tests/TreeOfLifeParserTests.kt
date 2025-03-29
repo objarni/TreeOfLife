@@ -1,11 +1,4 @@
-import TreeOfLife.Data.Category
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.Period
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
-import TreeOfLife.Data.monthParser
-import TreeOfLife.Data.periodParser
-import TreeOfLife.Data.categoryParser
+import TreeOfLife.Data.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertNull
@@ -133,18 +126,6 @@ Klippan: Jun 1996-Jul 1997"""
             ),
             categories
         )
-    }
-
-    fun categoriesParser(string: String): List<Category> {
-        val categories = mutableListOf<Category>()
-        val categoryStrings = string.split("###").map { it.trim() }
-        for (categoryString in categoryStrings) {
-            if (categoryString.isNotBlank()) {
-                val category = categoryParser(categoryString)
-                categories.add(category)
-            }
-        }
-        return categories
     }
 }
 
