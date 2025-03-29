@@ -31,6 +31,22 @@ fun programming(): Category {
     return Category("Programming languages", programmingLanguages())
 }
 
+const val employmentCategory = """---Employments---
+Armens Musikkår Norrland: Jan-Oct 1999
+AstraZeneca R&D Lund: Jun-Aug 2000
+Volvo Cars: Jun-Aug 2001
+Volvo Cars: Jun-Aug 2002
+Volvo Cars: Jun-Aug 2003
+Cadcraft: Jun 2005-Jun 2006
+IGEMS: Jun 2006-Sep 2011
+Lorensberg: Sep 2011-Jun 2014
+Avalon Innovation: Jun 2014-Dec 2015
+Vizendo: Jan 2016-Sep 2018
+Objarni Productions: Sep 2018-Jan 2020
+ProAgile: Mar 2020-Jun 2023
+PowerFactors: Aug 2023-Jul 2024
+Walley: Aug 2024-Aug 2027"""
+
 fun employmentPeriods(): List<Period> = listOf(
     Period(
         TimePoint(Year(1999), Month.Companion.JANUARY),
