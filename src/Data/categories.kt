@@ -15,11 +15,11 @@ fun homes(): Category {
     return Category("Homes", homePeriods())
 }
 
-fun employments(): Category {
+fun employmentsOld(): Category {
     return Category("Employments", employmentPeriods())
 }
 
-fun employmentsNew(): Category {
+fun employments(): Category {
     return categoryParser(employmentCategory)!!
 }
 
