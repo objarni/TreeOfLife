@@ -19,7 +19,7 @@ fun monthParser(string: String): Month? {
 }
 
 fun periodParser(string: String): Period? {
-    val regex = """(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+    val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (periodName, startMonth, startYear, endMonth, endYear) = matchResult.destructured
