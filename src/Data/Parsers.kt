@@ -79,3 +79,32 @@ fun categoriesParser(string: String): List<Category> {
     }
     return categories
 }
+
+
+fun timePointParser(string: String): TimePoint? {
+    val regex = """\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+    val matchResult = regex.find(string)
+    if (matchResult != null) {
+        val (month, year) = matchResult.destructured
+        val parsedMonth = monthParser(month)
+        if (parsedMonth == null)
+            return null
+        return TimePoint(Year(year.toInt()), parsedMonth!!)
+    }
+    return null
+}
+
+
+fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
+    val lines = string.split("\n")
+    val prefix = "Month of birth:"
+    val birthTimePointLine = lines.firstOrNull { it.startsWith(prefix) }
+    val birthTimePoint = if (birthTimePointLine != null) {
+        timePointParser(birthTimePointLine.removePrefix(prefix).trim())
+    } else {
+        null
+    }
+    val categoriesString = lines.dropWhile { !it.startsWith("---") }.joinToString("\n")
+    val categories = categoriesParser(categoriesString)
+    return Pair(birthTimePoint!!, categories)
+}

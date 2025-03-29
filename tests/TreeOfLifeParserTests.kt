@@ -37,19 +37,6 @@ class TreeOfLifeParserTests {
         assertNull(timePoint4)
     }
 
-    private fun timePointParser(string: String): TimePoint? {
-        val regex = """\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
-        val matchResult = regex.find(string)
-        if (matchResult != null) {
-            val (month, year) = matchResult.destructured
-            val parsedMonth = monthParser(month)
-            if (parsedMonth == null)
-                return null
-            return TimePoint(Year(year.toInt()), parsedMonth!!)
-        }
-        return null
-    }
-
     // Period parser - long format
     @Test
     fun testPeriodParser_long_format() {
@@ -179,18 +166,5 @@ Klippan: Jun 1996-Jul 1997"""
         )
     }
 
-    fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
-        val lines = string.split("\n")
-        val prefix = "Month of birth:"
-        val birthTimePointLine = lines.firstOrNull { it.startsWith(prefix) }
-        val birthTimePoint = if (birthTimePointLine != null) {
-            timePointParser(birthTimePointLine.removePrefix(prefix).trim())
-        } else {
-            null
-        }
-        val categoriesString = lines.dropWhile { !it.startsWith("---") }.joinToString("\n")
-        val categories = categoriesParser(categoriesString)
-        return Pair(birthTimePoint!!, categories)
-    }
 }
 
