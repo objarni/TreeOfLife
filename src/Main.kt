@@ -7,6 +7,7 @@ import TreeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout
 import java.awt.EventQueue
 import java.awt.Rectangle
+import java.awt.event.KeyEvent
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JMenu
@@ -15,6 +16,7 @@ import javax.swing.JMenuItem
 import javax.swing.JOptionPane
 import javax.swing.JPanel
 import javax.swing.JTextField
+import javax.swing.KeyStroke
 
 class MainFrame(title: String) : JFrame() {
 
@@ -95,6 +97,8 @@ class MainFrame(title: String) : JFrame() {
         quitMenuItem.addActionListener {
             dispose()
         }
+
+        quitMenuItem.accelerator = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0)
 
         fileMenu.add(aboutMenuItem)
         fileMenu.add(helpMenuItem)
