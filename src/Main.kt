@@ -82,14 +82,14 @@ class MainFrame(title: String) : JFrame() {
         aboutMenuItem.addActionListener {
             JOptionPane.showMessageDialog(
                 this,
-                "Tree of Life Application\nVersion 1.0",
+                "Tree of Life - visualize your life\nVersion 0.1",
                 "About",
                 JOptionPane.INFORMATION_MESSAGE
             )
         }
 
         helpMenuItem.addActionListener {
-            JOptionPane.showMessageDialog(this, "Help content goes here.", "Help", JOptionPane.INFORMATION_MESSAGE)
+            JOptionPane.showMessageDialog(this, "TODO", "Help", JOptionPane.INFORMATION_MESSAGE)
         }
 
         quitMenuItem.addActionListener {
