@@ -9,6 +9,10 @@ import java.awt.EventQueue
 import java.awt.Rectangle
 import javax.swing.JButton
 import javax.swing.JFrame
+import javax.swing.JMenu
+import javax.swing.JMenuBar
+import javax.swing.JMenuItem
+import javax.swing.JOptionPane
 import javax.swing.JPanel
 import javax.swing.JTextField
 
@@ -62,7 +66,43 @@ class MainFrame(title: String) : JFrame() {
         contentPane.add(timeLinePanel, BorderLayout.CENTER) // Add RectanglePanel to the content pane
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
 
+        createMenuBar()
+
         pack()
+    }
+
+    private fun createMenuBar() {
+        val menuBar = JMenuBar()
+
+        val fileMenu = JMenu("File")
+        val aboutMenuItem = JMenuItem("About")
+        val helpMenuItem = JMenuItem("Help")
+        val quitMenuItem = JMenuItem("Quit")
+
+        aboutMenuItem.addActionListener {
+            JOptionPane.showMessageDialog(
+                this,
+                "Tree of Life Application\nVersion 1.0",
+                "About",
+                JOptionPane.INFORMATION_MESSAGE
+            )
+        }
+
+        helpMenuItem.addActionListener {
+            JOptionPane.showMessageDialog(this, "Help content goes here.", "Help", JOptionPane.INFORMATION_MESSAGE)
+        }
+
+        quitMenuItem.addActionListener {
+            dispose()
+        }
+
+        fileMenu.add(aboutMenuItem)
+        fileMenu.add(helpMenuItem)
+        fileMenu.addSeparator()
+        fileMenu.add(quitMenuItem)
+
+        menuBar.add(fileMenu)
+        jMenuBar = menuBar
     }
 }
 
