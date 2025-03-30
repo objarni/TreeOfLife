@@ -77,10 +77,10 @@ class TreeOfLifeParserTests {
 
     @Test
     fun testCategoryParser_single_period() {
-        val actualCategory = categoryParser("---Homes---\nRöstånga: Jul 1983-Jul 1997")
+        val actualCategory = categoryParser("---Homes fulltime---\nRöstånga: Jul 1983-Jul 1997")
         assertEquals(
             Category(
-                "Homes",
+                "Homes fulltime",
                 listOf(Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"))
             ),
             actualCategory
