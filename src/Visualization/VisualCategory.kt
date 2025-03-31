@@ -4,6 +4,7 @@ import TreeOfLife.Data.Category
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.Data.categories
 import TreeOfLife.Data.computers
 import TreeOfLife.Data.educations
 import TreeOfLife.Data.employments
@@ -18,14 +19,7 @@ data class VisualCategory(val category: Category, val color: Color, val baseY: I
 fun visualCategories(): List<VisualCategory> {
     // For now, compute y values using the textBlocksForPeriods algorithm
     var initialY = 0
-    val allCategories = listOf(
-        homes(),
-        educations(),
-        employments(),
-        relationsships(),
-        computers(),
-        programming()
-    )
+    val allCategories = categories()
     val allColors = listOf(
         Color.ORANGE,
         Color.BLUE,
@@ -42,14 +36,4 @@ fun visualCategories(): List<VisualCategory> {
         initialY += maxY + 2
         visualCategory
     }
-
-
-    return listOf(
-        VisualCategory(homes(), Color.ORANGE, 2),
-        VisualCategory(educations(), Color.BLUE, 4),
-        VisualCategory(employments(), Color.DARK_GRAY, 6),
-        VisualCategory(relationsships(), Color.PINK, 8),
-        VisualCategory(computers(), Color.GREEN, 10),
-        VisualCategory(programming(), Color.RED, 14)
-    )
 }

@@ -1,5 +1,15 @@
 package TreeOfLife.Data
 
+
+fun categories(): List<Category> = listOf(
+    homes(),
+    educations(),
+    employments(),
+    relationsships(),
+    computers(),
+    programming()
+)
+
 fun homes(): Category {
     return categoryParser(homeCategory)!!
 }
