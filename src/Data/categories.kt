@@ -1,7 +1,23 @@
 package TreeOfLife.Data
 
+const val filePath = "src/Data/TreeOfLife.txt"
 
-fun categories(): List<Category> = listOf(
+fun categoriesFromFile(): List<Category> {
+    val fileContent = readFile(filePath)
+    val pair =  topLevelParser(fileContent)
+    return pair.second
+}
+
+fun readFile(string: String):String {
+    val file = java.io.File(string)
+    return file.readText()
+}
+
+fun categories(): List<Category> {
+    return categoriesFromFile()
+}
+
+fun categoriesOld(): List<Category> = listOf(
     homes(),
     educations(),
     employments(),
