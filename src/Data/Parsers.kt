@@ -10,7 +10,7 @@ fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
     } else {
         null
     }
-    val categoriesString = lines.dropWhile { !it.startsWith("---") }.joinToString("\n")
+    val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
     val categories = categoriesParser(categoriesString)
     return Pair(birthTimePoint!!, categories)
 }
