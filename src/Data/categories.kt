@@ -1,9 +1,18 @@
 package TreeOfLife.Data
 
-const val filePath = "src/Data/TreeOfLife.txt"
+import java.nio.file.Paths
+
+fun getDocumentsPath(): String {
+    val userHome = System.getProperty("user.home")
+    val documentsPath = when {
+        System.getProperty("os.name").contains("Windows", ignoreCase = true) -> Paths.get(userHome, "Documents")
+        else -> Paths.get(userHome, "Documents")
+    }
+    return documentsPath.toString()
+}
 
 fun categoriesFromFile(): List<Category> {
-    val fileContent = readFile(filePath)                    
+    val fileContent = readFile(getDocumentsPath() + "/TreeOfLife.txt")
     val pair =  topLevelParser(fileContent)
     return pair.second
 }
