@@ -3,7 +3,7 @@ package TreeOfLife.Data
 const val filePath = "src/Data/TreeOfLife.txt"
 
 fun categoriesFromFile(): List<Category> {
-    val fileContent = readFile(filePath)
+    val fileContent = readFile(filePath)                    
     val pair =  topLevelParser(fileContent)
     return pair.second
 }
