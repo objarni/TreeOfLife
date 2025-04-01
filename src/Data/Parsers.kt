@@ -4,7 +4,7 @@ package TreeOfLife.Data
 fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
     val lines = string.split("\n")
     val prefix = "Month of birth:"
-    val birthTimePointLine = lines.firstOrNull { it.startsWith(prefix) }
+    val birthTimePointLine = lines.firstOrNull { it.trim().startsWith(prefix) }
     val birthTimePoint = if (birthTimePointLine != null) {
         timePointParser(birthTimePointLine.removePrefix(prefix).trim())
     } else {
