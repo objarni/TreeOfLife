@@ -5,12 +5,6 @@ import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import TreeOfLife.Data.categories
-import TreeOfLife.Data.computers
-import TreeOfLife.Data.educations
-import TreeOfLife.Data.employments
-import TreeOfLife.Data.homes
-import TreeOfLife.Data.programming
-import TreeOfLife.Data.relationsships
 import TreeOfLife.Data.textBlocksForPeriods
 import java.awt.Color
 
