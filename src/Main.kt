@@ -46,6 +46,8 @@ class MainFrame(title: String) : JFrame() {
 
         val birthMonth = data.first
 
+        timeLinePanel.setOrigoTimePoint(birthMonth)
+
         val lifeTime = visualCategories().map { it.category }
         for (y in 1979..2025) {
             val year = Year(y)
