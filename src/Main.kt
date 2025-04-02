@@ -35,11 +35,20 @@ class MainFrame(title: String) : JFrame() {
         val timeLinePanel = TimelinePanel()
         timeLinePanel.onEscapePressed = { dispose() }
 
-        val birthMonth = TimePoint(Year(1979), Month.JULY)
+        val data: Pair<TimePoint, List<Category>>
+        try {
+            data = loadDataFile()
+        }
+        catch (e: Exception) {
+            popupMessageDialog("Error loading data file: ${e.message}")
+            throw e
+        }
+
+        val birthMonth = data.first
 
         val lifeTime = visualCategories().map { it.category }
-        for (year in 1979..2025) {
-            val year = Year(year)
+        for (y in 1979..2025) {
+            val year = Year(y)
             val month = Month.JANUARY
             val timePoint = TimePoint(year, month)
             val overlappingPeriods = overlappingPeriods(timePoint, lifeTime)
@@ -74,6 +83,15 @@ class MainFrame(title: String) : JFrame() {
         createMenuBar()
 
         pack()
+    }
+
+    private fun popupMessageDialog(msg: String) {
+        JOptionPane.showMessageDialog(
+            this,
+            msg,
+            "Error",
+            JOptionPane.ERROR_MESSAGE
+        )
     }
 
     private fun openDataFile() {

@@ -154,7 +154,7 @@ Klippan: Jun 1996-Jul 1997"""
     @Test
     fun `test toplevel parser with birth timepoint`() {
         val input = """
-            Birthmonth: Jan 1983
+            Birth month: Jan 1983
 
             ---Homes---
             Röstånga: Jul 1983-Jul 1997

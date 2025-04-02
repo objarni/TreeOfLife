@@ -3,11 +3,12 @@ package TreeOfLife.Data
 
 fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
     val lines = string.split("\n")
-    val prefix = "Birthmonth:"
+    val prefix = "Birth month:"
     val birthTimePointLine = lines.firstOrNull { it.trim().startsWith(prefix) }
     val birthTimePoint = if (birthTimePointLine != null) {
         timePointParser(birthTimePointLine.removePrefix(prefix).trim())
     } else {
+        throw IllegalArgumentException("Birth month not found in the file")
         null
     }
     val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
