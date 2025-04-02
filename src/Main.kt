@@ -8,6 +8,8 @@ import java.awt.BorderLayout
 import java.awt.EventQueue
 import java.awt.Rectangle
 import java.awt.event.KeyEvent
+import java.io.File
+import java.io.IOException
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JMenu
@@ -25,6 +27,7 @@ class MainFrame(title: String) : JFrame() {
     }
 
     private fun createUI(title: String) {
+
         setTitle(title)
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(1000, 800)
@@ -73,12 +76,55 @@ class MainFrame(title: String) : JFrame() {
         pack()
     }
 
+    private fun openDataFile() {
+        openTextFile("${System.getProperty("user.home")}/Documents/TreeOfLife.txt")
+    }
+
+    fun openTextFile(file: String) {
+        val os = System.getProperty("os.name").lowercase()
+
+        try {
+            when {
+                os.contains("win") -> {
+                    // Windows: Use Notepad
+                    ProcessBuilder("notepad.exe", file).start()
+                }
+
+                os.contains("mac") -> {
+                    // macOS: Try CotEditor or VS Code, fallback to open -e
+                    val editorsToTry = listOf(
+                        "/Applications/CotEditor.app" to listOf("open", "-a", "CotEditor",
+                            file),
+                        "/Applications/Visual Studio Code.app" to listOf("open", "-a", "Visual Studio Code",
+                            file),
+                        null to listOf("open", "-e",
+                            file) // fallback to TextEdit in plaintext mode
+                    )
+
+                    for ((appPath, command) in editorsToTry) {
+                        if (appPath == null || File(appPath).exists()) {
+                            ProcessBuilder(command).start()
+                            break
+                        }
+                    }
+                }
+
+                else -> {
+                    println("Unsupported OS: $os")
+                }
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+
     private fun createMenuBar() {
         val menuBar = JMenuBar()
 
         val fileMenu = JMenu("File")
         val aboutMenuItem = JMenuItem("About")
-        val helpMenuItem = JMenuItem("Help")
+        val openDataFileMenuItem = JMenuItem("Open Data File")
         val quitMenuItem = JMenuItem("Quit")
 
         aboutMenuItem.addActionListener {
@@ -90,8 +136,8 @@ class MainFrame(title: String) : JFrame() {
             )
         }
 
-        helpMenuItem.addActionListener {
-            JOptionPane.showMessageDialog(this, "TODO", "Help", JOptionPane.INFORMATION_MESSAGE)
+        openDataFileMenuItem.addActionListener {
+            openDataFile()
         }
 
         quitMenuItem.addActionListener {
@@ -101,7 +147,7 @@ class MainFrame(title: String) : JFrame() {
         quitMenuItem.accelerator = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0)
 
         fileMenu.add(aboutMenuItem)
-        fileMenu.add(helpMenuItem)
+        fileMenu.add(openDataFileMenuItem)
         fileMenu.addSeparator()
         fileMenu.add(quitMenuItem)
 
@@ -118,3 +164,7 @@ private fun createAndShowGUI() {
 fun main() {
     EventQueue.invokeLater(::createAndShowGUI)
 }
+
+
+
+//Year and month of birth
