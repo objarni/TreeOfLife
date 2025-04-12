@@ -35,9 +35,10 @@ class MainFrame(title: String) : JFrame() {
         val timeLinePanel = TimelinePanel()
         timeLinePanel.onEscapePressed = { dispose() }
 
+
         val data: Pair<TimePoint, List<Category>>
         try {
-            data = loadDataFile()
+            data = loadDataFile(getDocumentsPath() + "/TreeOfLife.txt")
         }
         catch (e: Exception) {
             popupMessageDialog("Error loading data file: ${e.message}")
