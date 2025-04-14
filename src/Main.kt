@@ -100,20 +100,26 @@ Birth month: Jan 1983
 Stockholm: Sep 1983-Jun 1984
 Malmö: Jun 1984-Jun 2000
 
+###
+
 ---Utbildningar---
 Möllevångsskolan: Aug 1989-Jun 1995
 JENSEN: Aug 1995-Jun 2000
 Lärarprogrammet LTH: Aug 2000-Jun 2005
 
+###
+
 ---Arbete---
 Lärare: Aug 2005-Jun 2010
 Programmerare: Aug 2010-Jun 2020
+
+###
 
 ---Hobbyer---
 Måla: Jan 1984-May 2025
 Cykel: Jan 1995-Jun 2000
             """.trimIndent()
-
+        File(dataFilePath).writeText(defaultData)
     }
 
     private fun popupMessageDialog(msg: String) {
