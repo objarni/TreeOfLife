@@ -21,18 +21,65 @@ import javax.swing.JTextField
 import javax.swing.KeyStroke
 
 class MainFrame(title: String) : JFrame() {
+    private lateinit var timeLinePanel: TimelinePanel
+    private var lastModified: Long = 0
+    private val dataFilePath = getDocumentsPath() + "/TreeOfLife.txt"
+    private val fileCheckTimer = javax.swing.Timer(1000) { checkFileAndReload() } // 1 second interval
 
     init {
         createUI(title)
+        startFileWatcher()
+    }
+
+    private fun startFileWatcher() {
+        lastModified = File(dataFilePath).lastModified()
+        fileCheckTimer.start()
+    }
+
+    private fun checkFileAndReload() {
+        val currentModified = File(dataFilePath).lastModified()
+        if (currentModified > lastModified) {
+            println("File changed, reloading data...") // Debug print
+            lastModified = currentModified
+            reloadData()
+        }
+    }
+
+    private fun reloadData() {
+        try {
+            val data = loadDataFile(dataFilePath)
+            val birthMonth = data.first
+
+            val allBlocks = visualCategories().flatMap { visualCategory ->
+                textBlocksForPeriods(
+                    visualCategory.category.periods,
+                    baseY = visualCategory.baseY,
+                    color = visualCategory.color,
+                    birthMonth = birthMonth
+                )
+            }
+            val labelBlocks = visualCategories().map { visualCategory ->
+                TextBlock(
+                    rect = Rectangle(-20, visualCategory.baseY, 1, 1),
+                    color = visualCategory.color,
+                    text = visualCategory.category.category
+                )
+            }
+            timeLinePanel.setOrigoTimePoint(birthMonth)
+            timeLinePanel.setBlocks(allBlocks + labelBlocks)
+            println("Data reloaded successfully") // Debug print
+        } catch (e: Exception) {
+            println("Error reloading data: ${e.message}") // Debug print
+            popupMessageDialog("Error reloading data file: ${e.message}")
+        }
     }
 
     private fun createUI(title: String) {
-
         setTitle(title)
         defaultCloseOperation = EXIT_ON_CLOSE
         setSize(1000, 800)
         setLocationRelativeTo(null)
-        val timeLinePanel = TimelinePanel()
+        timeLinePanel = TimelinePanel()
         timeLinePanel.onEscapePressed = { dispose() }
 
         val dataFilePath = getDocumentsPath() + "/TreeOfLife.txt"
@@ -84,7 +131,7 @@ class MainFrame(title: String) : JFrame() {
         bottomPanel.add(JButton("Button 1"))
         bottomPanel.add(JTextField("Text field 1"))
 
-        contentPane.add(timeLinePanel, BorderLayout.CENTER) // Add RectanglePanel to the content pane
+        contentPane.add(timeLinePanel, BorderLayout.CENTER)
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
 
         createMenuBar()
@@ -208,6 +255,11 @@ Cykel: Jan 1995-Jun 2000
 
         menuBar.add(fileMenu)
         jMenuBar = menuBar
+    }
+
+    override fun dispose() {
+        fileCheckTimer.stop()
+        super.dispose()
     }
 }
 
