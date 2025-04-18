@@ -1,5 +1,11 @@
 package TreeOfLife.Data
 
+// Common regex patterns
+private const val MONTH_PATTERN = """[A-Z][a-z]{2}"""
+private const val YEAR_PATTERN = """\d{4}"""
+private const val TIME_POINT_PATTERN = """($MONTH_PATTERN)\s*($YEAR_PATTERN)"""
+private const val PERIOD_NAME_PATTERN = """.+"""
+
 // Helper function to create a TimePoint from month and year strings
 private fun createTimePoint(monthStr: String, yearStr: String): TimePoint? {
     val parsedMonth = monthParser(monthStr) ?: return null
@@ -47,7 +53,7 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
         return periodShort
 
     // Try parsing present format first (e.g. "Göteborg: Aug 2024-")
-    val presentRegex = """\s*(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*$""".toRegex()
+    val presentRegex = """\s*($PERIOD_NAME_PATTERN):\s*$TIME_POINT_PATTERN\s*-\s*$""".toRegex()
     val presentMatch = presentRegex.find(string)
     if (presentMatch != null) {
         val (periodName, startMonth, startYear) = presentMatch.destructured
@@ -56,7 +62,7 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
     }
 
     // Try parsing regular format (e.g. "Göteborg: Aug 2024-Jul 2025")
-    val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+    val regex = """\s*($PERIOD_NAME_PATTERN):\s*$TIME_POINT_PATTERN\s*-\s*$TIME_POINT_PATTERN""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (periodName, startMonth, startYear, endMonth, endYear) = matchResult.destructured
@@ -68,7 +74,7 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
 }
 
 fun periodParserShortFormat(string: String): Period? {
-    val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+    val regex = """\s*($PERIOD_NAME_PATTERN):\s*($MONTH_PATTERN)\s*-\s*($MONTH_PATTERN)\s*($YEAR_PATTERN)""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (periodName, startMonth, endMonth, yearString) = matchResult.destructured
@@ -80,7 +86,7 @@ fun periodParserShortFormat(string: String): Period? {
 }
 
 fun timePointParser(string: String): TimePoint? {
-    val regex = """\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
+    val regex = """\s*$TIME_POINT_PATTERN""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (month, year) = matchResult.destructured
