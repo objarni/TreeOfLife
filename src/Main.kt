@@ -22,6 +22,7 @@ import javax.swing.KeyStroke
 
 class MainFrame(title: String) : JFrame() {
     private lateinit var timeLinePanel: TimelinePanel
+    private lateinit var statusLabel: JTextField
     private var lastModified: Long = 0
     private val dataFilePath = getDocumentsPath() + "/TreeOfLife.txt"
     private val fileCheckTimer = javax.swing.Timer(1000) { checkFileAndReload() } // 1 second interval
@@ -81,6 +82,21 @@ class MainFrame(title: String) : JFrame() {
         setLocationRelativeTo(null)
         timeLinePanel = TimelinePanel()
         timeLinePanel.onEscapePressed = { dispose() }
+        
+        // Add status bar
+        statusLabel = JTextField()
+        statusLabel.isEditable = false
+        statusLabel.horizontalAlignment = JTextField.CENTER
+        
+        // Set up cursor movement handler
+        timeLinePanel.onCursorMoved = { timePoint, overlappingPeriods ->
+            val statusText = if (overlappingPeriods.isEmpty()) {
+                "${timePoint.month.name()}, ${timePoint.year.value}"
+            } else {
+                "${timePoint.month.name()}, ${timePoint.year.value} - ${overlappingPeriods.joinToString(", ")}"
+            }
+            statusLabel.text = statusText
+        }
 
         val dataFilePath = getDocumentsPath() + "/TreeOfLife.txt"
         // if no data file exists, create a default one
@@ -128,6 +144,7 @@ class MainFrame(title: String) : JFrame() {
 
         layout = BorderLayout()
         val bottomPanel = JPanel()
+        bottomPanel.add(statusLabel)
         bottomPanel.add(JButton("Button 1"))
         bottomPanel.add(JTextField("Text field 1"))
 

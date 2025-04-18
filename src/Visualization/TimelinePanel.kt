@@ -4,21 +4,28 @@ import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
 import java.awt.Color
+import java.awt.Cursor
 import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.Point
 import java.awt.Rectangle
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
+import java.awt.event.MouseEvent
+import java.awt.event.MouseListener
+import java.awt.event.MouseMotionListener
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
 
-class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
+class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, MouseMotionListener {
     private var zoom = 7.7
     private var centerEyeWorld = Point(100, 0)
     private val blocks = mutableListOf<TextBlock>()
     private var origoTimePoint = TimePoint(Year(1979), Month.JULY)
+    private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
+    var onCursorMoved: (TimePoint, List<String>) -> Unit = { _, _ -> }
+    private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
 
     init {
         // Set preferred size for the panel
@@ -26,6 +33,8 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
         background = Color.WHITE
         addMouseWheelListener(this)
         addKeyListener(this)
+        addMouseListener(this)
+        addMouseMotionListener(this)
         isFocusable = true
         requestFocusInWindow()
     }
@@ -59,6 +68,17 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
             viewportSize = Dimension(width, height),
             zoom = zoom
         )
+
+        // Draw cursor
+        val cursorX = projector.projectPoint(Point(cursorPosition, 0)).x
+        val xAxisY = projector.projectPoint(Point(0, 0)).y // Get Y position of X-axis
+        val cursorStartY = xAxisY + 50 // Start 50 pixels below X-axis
+        g2d.color = Color.BLUE
+        g2d.drawLine(cursorX, cursorStartY, cursorX, xAxisY) // Draw from below X-axis up to X-axis
+        // Draw arrow pointing upwards
+        val arrowSize = 10
+        g2d.drawLine(cursorX, xAxisY, cursorX - arrowSize, xAxisY + arrowSize)
+        g2d.drawLine(cursorX, xAxisY, cursorX + arrowSize, xAxisY + arrowSize)
 
         val axisBlocks = listOf(
             TextBlock(
@@ -136,5 +156,62 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener {
     fun setOrigoTimePoint(timePoint: TimePoint) {
         this.origoTimePoint = timePoint
         repaint()
+    }
+
+    override fun mouseClicked(e: MouseEvent) {
+        val projector = ViewportProjector(
+            centerEyeWorld = centerEyeWorld,
+            viewportSize = Dimension(width, height),
+            zoom = zoom
+        )
+        val worldX = projector.reverseProjectPoint(Point(e.x, e.y)).x
+        cursorPosition = worldX.toInt()
+        
+        // Calculate the time point and notify listeners
+        val years = cursorPosition / 12
+        val months = cursorPosition % 12 + 1 // Month values are 1-based
+        val cursorTimePoint = TimePoint(
+            Year(origoTimePoint.year.value + years),
+            Month(months)
+        )
+        
+        // Find overlapping periods
+        val overlappingPeriods = blocks
+            .filter { it.text.isNotEmpty() } // Filter out axis blocks
+            .filter { block ->
+                val blockStart = block.rect.x
+                val blockEnd = blockStart + block.rect.width
+                cursorPosition in blockStart..blockEnd
+            }
+            .map { it.text }
+        
+        onCursorMoved(cursorTimePoint, overlappingPeriods)
+        repaint()
+    }
+
+    override fun mousePressed(e: MouseEvent?) {}
+    override fun mouseReleased(e: MouseEvent?) {}
+    override fun mouseEntered(e: MouseEvent?) {}
+    override fun mouseExited(e: MouseEvent?) {}
+
+    override fun mouseMoved(e: MouseEvent) {
+        val projector = ViewportProjector(
+            centerEyeWorld = centerEyeWorld,
+            viewportSize = Dimension(width, height),
+            zoom = zoom
+        )
+        val xAxisY = projector.projectPoint(Point(0, 0)).y
+        val distanceToAxis = Math.abs(e.y - xAxisY)
+        
+        // Change cursor to hand if within clickable area
+        cursor = if (distanceToAxis <= clickableAreaHeight) {
+            Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)
+        } else {
+            Cursor.getDefaultCursor()
+        }
+    }
+
+    override fun mouseDragged(e: MouseEvent) {
+        // Not used but required by MouseMotionListener
     }
 }
