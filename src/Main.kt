@@ -95,6 +95,7 @@ class MainFrame(title: String) : JFrame() {
             } else {
                 "${timePoint.month.name()}, ${timePoint.year.value} - ${overlappingPeriods.joinToString(", ")}"
             }
+            println(statusText)
             statusLabel.text = statusText
         }
 
@@ -143,10 +144,9 @@ class MainFrame(title: String) : JFrame() {
         timeLinePanel.setBlocks(allBlocks + labelBlocks)
 
         layout = BorderLayout()
-        val bottomPanel = JPanel()
-        bottomPanel.add(statusLabel)
-        bottomPanel.add(JButton("Button 1"))
-        bottomPanel.add(JTextField("Text field 1"))
+
+        val bottomPanel = JPanel(BorderLayout())
+        bottomPanel.add(statusLabel, BorderLayout.CENTER)
 
         contentPane.add(timeLinePanel, BorderLayout.CENTER)
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
