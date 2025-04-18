@@ -11,14 +11,14 @@ fun getDocumentsPath(): String {
     return documentsPath.toString()
 }
 
-fun categoriesFromFile(): List<Category> {
-    val pair = loadDataFile(getDocumentsPath() + "/TreeOfLife.txt")
+fun categoriesFromFile(currentTimePoint: TimePoint): List<Category> {
+    val pair = loadDataFile(getDocumentsPath() + "/TreeOfLife.txt", currentTimePoint)
     return pair.second
 }
 
-fun loadDataFile(dataFilePath: String): Pair<TimePoint, List<Category>> {
+fun loadDataFile(dataFilePath: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
     val fileContent = readFile(dataFilePath)
-    return topLevelParser(fileContent)
+    return topLevelParser(fileContent, currentTimePoint)
 }
 
 fun readFile(string: String):String {
@@ -26,12 +26,12 @@ fun readFile(string: String):String {
     return file.readText()
 }
 
-fun categories(): List<Category> {
-    return categoriesFromFile()
+fun categories(currentTimePoint: TimePoint): List<Category> {
+    return categoriesFromFile(currentTimePoint)
 }
 
-fun homes(): Category {
-    return categoryParser(homeCategory)!!
+fun homes(currentTimePoint: TimePoint): Category {
+    return categoryParser(homeCategory, currentTimePoint)!!
 }
 
 const val homeCategory: String = """
@@ -53,8 +53,8 @@ Kortedala (Fastlagsgatan): Jan 2017-Jun 2023
 Tangovägen: Jun 2023-May 2025
 """
 
-fun educations(): Category {
-    return categoryParser(educationCategory)!!
+fun educations(currentTimePoint: TimePoint): Category {
+    return categoryParser(educationCategory, currentTimePoint)!!
 }
 
 const val educationCategory = """

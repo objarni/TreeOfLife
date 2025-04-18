@@ -10,7 +10,6 @@ import java.awt.Rectangle
 import java.awt.event.KeyEvent
 import java.io.File
 import java.io.IOException
-import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JMenu
 import javax.swing.JMenuBar
@@ -48,10 +47,14 @@ class MainFrame(title: String) : JFrame() {
 
     private fun reloadData() {
         try {
-            val data = loadDataFile(dataFilePath)
+            val currentTimePoint = TimePoint(
+                Year(java.time.LocalDate.now().year),
+                Month(java.time.LocalDate.now().month.value)
+            )
+            val data = loadDataFile(dataFilePath, currentTimePoint)
             val birthMonth = data.first
 
-            val allBlocks = visualCategories().flatMap { visualCategory ->
+            val allBlocks = visualCategories(currentTimePoint).flatMap { visualCategory ->
                 textBlocksForPeriods(
                     visualCategory.category.periods,
                     baseY = visualCategory.baseY,
@@ -59,7 +62,7 @@ class MainFrame(title: String) : JFrame() {
                     birthMonth = birthMonth
                 )
             }
-            val labelBlocks = visualCategories().map { visualCategory ->
+            val labelBlocks = visualCategories(currentTimePoint).map { visualCategory ->
                 TextBlock(
                     rect = Rectangle(-20, visualCategory.baseY, 1, 1),
                     color = visualCategory.color,
@@ -106,7 +109,11 @@ class MainFrame(title: String) : JFrame() {
         }
         val data: Pair<TimePoint, List<Category>>
         try {
-            data = loadDataFile(dataFilePath)
+            val currentTimePoint = TimePoint(
+                Year(java.time.LocalDate.now().year),
+                Month(java.time.LocalDate.now().month.value)
+            )
+            data = loadDataFile(dataFilePath, currentTimePoint)
         }
         catch (e: Exception) {
             popupMessageDialog("Error loading data file: ${e.message}")
@@ -117,7 +124,11 @@ class MainFrame(title: String) : JFrame() {
 
         timeLinePanel.setOrigoTimePoint(birthMonth)
 
-        val lifeTime = visualCategories().map { it.category }
+        val currentTimePoint = TimePoint(
+            Year(java.time.LocalDate.now().year),
+            Month(java.time.LocalDate.now().month.value)
+        )
+        val lifeTime = visualCategories(currentTimePoint).map { it.category }
         for (y in 1979..2025) {
             val year = Year(y)
             val month = Month.JANUARY
@@ -126,7 +137,7 @@ class MainFrame(title: String) : JFrame() {
             println("Year: $year, overlappingPeriods: $overlappingPeriods")
         }
 
-        val allBlocks = visualCategories().flatMap { visualCategory ->
+        val allBlocks = visualCategories(currentTimePoint).flatMap { visualCategory ->
             textBlocksForPeriods(
                 visualCategory.category.periods,
                 baseY = visualCategory.baseY,
@@ -134,7 +145,7 @@ class MainFrame(title: String) : JFrame() {
                 birthMonth = birthMonth
             )
         }
-        val labelBlocks = visualCategories().map { visualCategory ->
+        val labelBlocks = visualCategories(currentTimePoint).map { visualCategory ->
             TextBlock(
                 rect = Rectangle(-20, visualCategory.baseY, 1, 1),
                 color = visualCategory.color,

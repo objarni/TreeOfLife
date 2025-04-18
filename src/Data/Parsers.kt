@@ -1,7 +1,7 @@
 package TreeOfLife.Data
 
 
-fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
+fun topLevelParser(string: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
     val lines = string.split("\n")
     val prefix = "Birth month:"
     val birthTimePointLine = lines.firstOrNull { it.trim().startsWith(prefix) }
@@ -9,19 +9,18 @@ fun topLevelParser(string: String): Pair<TimePoint, List<Category>> {
         timePointParser(birthTimePointLine.removePrefix(prefix).trim())
     } else {
         throw IllegalArgumentException("Birth month not found in the file")
-        null
     }
     val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
-    val categories = categoriesParser(categoriesString)
+    val categories = categoriesParser(categoriesString, currentTimePoint)
     return Pair(birthTimePoint!!, categories)
 }
 
-fun categoriesParser(string: String): List<Category> {
+fun categoriesParser(string: String, currentTimePoint: TimePoint): List<Category> {
     val categories = mutableListOf<Category>()
     val categoryStrings = string.split("###").map { it.trim() }
     for (categoryString in categoryStrings) {
         if (categoryString.isNotBlank()) {
-            val category = categoryParser(categoryString)
+            val category = categoryParser(categoryString, currentTimePoint)
             if (category == null)
                 throw IllegalArgumentException("Invalid category string: $categoryString")
             categories.add(category)
@@ -30,17 +29,35 @@ fun categoriesParser(string: String): List<Category> {
     return categories
 }
 
-fun categoryParser(string: String): Category? {
+fun categoryParser(string: String, currentTimePoint: TimePoint): Category? {
     val lines = string.split("\n")
     val categoryName = lines[0].trim().removePrefix("---").removeSuffix("---").trim()
-    val periods = lines.drop(1).mapNotNull { periodParser(it) }
+    val periods = lines.drop(1).mapNotNull { periodParser(it, currentTimePoint) }
     return Category(categoryName, periods)
 }
 
-fun periodParser(string: String): Period? {
+fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
     val periodShort = periodParserShortFormat(string)
     if (periodShort != null)
         return periodShort
+
+    // Try parsing present format first (e.g. "Göteborg: Aug 2024-")
+    val presentRegex = """\s*(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*$""".toRegex()
+    val presentMatch = presentRegex.find(string)
+    if (presentMatch != null) {
+        val (periodName, startMonth, startYear) = presentMatch.destructured
+        val parsedMonthStart = monthParser(startMonth)
+        if (parsedMonthStart == null)
+            return null
+        
+        return Period(
+            TimePoint(Year(startYear.toInt()), parsedMonthStart),
+            currentTimePoint,
+            periodName
+        )
+    }
+
+    // Try parsing regular format (e.g. "Göteborg: Aug 2024-Jul 2025")
     val regex = """\s*(.+):\s*([A-Z][a-z]{2})\s*(\d{4})\s*-\s*([A-Z][a-z]{2})\s*(\d{4})""".toRegex()
     val matchResult = regex.find(string)
     if (matchResult != null) {

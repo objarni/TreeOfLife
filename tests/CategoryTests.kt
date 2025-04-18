@@ -59,8 +59,9 @@ class CategoryTests {
 
     @Test
     fun homeBlocksAreSortedInX() {
+        val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
         val blocks = textBlocksForPeriods(
-            homes().periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
+            homes(currentTimePoint).periods, baseY = 0, color = Color.BLUE, birthMonth = TimePoint(
             Year(1979), Month.JULY)
         )
         val xs = blocks.map { it.rect.x }
