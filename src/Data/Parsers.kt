@@ -1,5 +1,15 @@
 package TreeOfLife.Data
 
+// Helper function to create a TimePoint from month and year strings
+private fun createTimePoint(monthStr: String, yearStr: String): TimePoint? {
+    val parsedMonth = monthParser(monthStr) ?: return null
+    return TimePoint(Year(yearStr.toInt()), parsedMonth)
+}
+
+// Helper function to parse a period with given start and end time points
+private fun createPeriod(name: String, start: TimePoint, end: TimePoint): Period {
+    return Period(start, end, name)
+}
 
 fun topLevelParser(string: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
     val lines = string.split("\n")
@@ -46,15 +56,8 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
     val presentMatch = presentRegex.find(string)
     if (presentMatch != null) {
         val (periodName, startMonth, startYear) = presentMatch.destructured
-        val parsedMonthStart = monthParser(startMonth)
-        if (parsedMonthStart == null)
-            return null
-        
-        return Period(
-            TimePoint(Year(startYear.toInt()), parsedMonthStart),
-            currentTimePoint,
-            periodName
-        )
+        val startTimePoint = createTimePoint(startMonth, startYear) ?: return null
+        return createPeriod(periodName, startTimePoint, currentTimePoint)
     }
 
     // Try parsing regular format (e.g. "Göteborg: Aug 2024-Jul 2025")
@@ -62,17 +65,9 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (periodName, startMonth, startYear, endMonth, endYear) = matchResult.destructured
-        val parsedMonthStart = monthParser(startMonth)
-        if (parsedMonthStart == null)
-            return null
-        val parsedMonthEnd = monthParser(endMonth)
-        if (parsedMonthEnd == null)
-            return null
-        return Period(
-            TimePoint(Year(startYear.toInt()), parsedMonthStart),
-            TimePoint(Year(endYear.toInt()), parsedMonthEnd),
-            periodName
-        )
+        val startTimePoint = createTimePoint(startMonth, startYear) ?: return null
+        val endTimePoint = createTimePoint(endMonth, endYear) ?: return null
+        return createPeriod(periodName, startTimePoint, endTimePoint)
     }
     return null
 }
@@ -82,18 +77,9 @@ fun periodParserShortFormat(string: String): Period? {
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (periodName, startMonth, endMonth, yearString) = matchResult.destructured
-        val year = yearString.toInt()
-        val parsedMonthStart = monthParser(startMonth)
-        if (parsedMonthStart == null)
-            return null
-        val parsedMonthEnd = monthParser(endMonth)
-        if (parsedMonthEnd == null)
-            return null
-        return Period(
-            TimePoint(Year(year), parsedMonthStart),
-            TimePoint(Year(year), parsedMonthEnd),
-            periodName
-        )
+        val startTimePoint = createTimePoint(startMonth, yearString) ?: return null
+        val endTimePoint = createTimePoint(endMonth, yearString) ?: return null
+        return createPeriod(periodName, startTimePoint, endTimePoint)
     }
     return null
 }
@@ -103,28 +89,26 @@ fun timePointParser(string: String): TimePoint? {
     val matchResult = regex.find(string)
     if (matchResult != null) {
         val (month, year) = matchResult.destructured
-        val parsedMonth = monthParser(month)
-        if (parsedMonth == null)
-            return null
-        return TimePoint(Year(year.toInt()), parsedMonth)
+        return createTimePoint(month, year)
     }
     return null
 }
 
-
 fun monthParser(string: String): Month? {
     val month = string.lowercase()
-    if (month.startsWith("jan")) return Month.JANUARY
-    if (month.startsWith("feb")) return Month.FEBRUARY
-    if (month.startsWith("mar")) return Month.MARCH
-    if (month.startsWith("apr")) return Month.APRIL
-    if (month.startsWith("may")) return Month.MAY
-    if (month.startsWith("jun")) return Month.JUNE
-    if (month.startsWith("jul")) return Month.JULY
-    if (month.startsWith("aug")) return Month.AUGUST
-    if (month.startsWith("sep")) return Month.SEPTEMBER
-    if (month.startsWith("oct")) return Month.OCTOBER
-    if (month.startsWith("nov")) return Month.NOVEMBER
-    if (month.startsWith("dec")) return Month.DECEMBER
-    return null
+    return when {
+        month.startsWith("jan") -> Month.JANUARY
+        month.startsWith("feb") -> Month.FEBRUARY
+        month.startsWith("mar") -> Month.MARCH
+        month.startsWith("apr") -> Month.APRIL
+        month.startsWith("may") -> Month.MAY
+        month.startsWith("jun") -> Month.JUNE
+        month.startsWith("jul") -> Month.JULY
+        month.startsWith("aug") -> Month.AUGUST
+        month.startsWith("sep") -> Month.SEPTEMBER
+        month.startsWith("oct") -> Month.OCTOBER
+        month.startsWith("nov") -> Month.NOVEMBER
+        month.startsWith("dec") -> Month.DECEMBER
+        else -> null
+    }
 }
