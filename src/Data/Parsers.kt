@@ -6,11 +6,6 @@ private fun createTimePoint(monthStr: String, yearStr: String): TimePoint? {
     return TimePoint(Year(yearStr.toInt()), parsedMonth)
 }
 
-// Helper function to parse a period with given start and end time points
-private fun createPeriod(name: String, start: TimePoint, end: TimePoint): Period {
-    return Period(start, end, name)
-}
-
 fun topLevelParser(string: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
     val lines = string.split("\n")
     val prefix = "Birth month:"
@@ -57,7 +52,7 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
     if (presentMatch != null) {
         val (periodName, startMonth, startYear) = presentMatch.destructured
         val startTimePoint = createTimePoint(startMonth, startYear) ?: return null
-        return createPeriod(periodName, startTimePoint, currentTimePoint)
+        return Period(startTimePoint, currentTimePoint, periodName)
     }
 
     // Try parsing regular format (e.g. "Göteborg: Aug 2024-Jul 2025")
@@ -67,7 +62,7 @@ fun periodParser(string: String, currentTimePoint: TimePoint): Period? {
         val (periodName, startMonth, startYear, endMonth, endYear) = matchResult.destructured
         val startTimePoint = createTimePoint(startMonth, startYear) ?: return null
         val endTimePoint = createTimePoint(endMonth, endYear) ?: return null
-        return createPeriod(periodName, startTimePoint, endTimePoint)
+        return Period(startTimePoint, endTimePoint, periodName)
     }
     return null
 }
@@ -79,7 +74,7 @@ fun periodParserShortFormat(string: String): Period? {
         val (periodName, startMonth, endMonth, yearString) = matchResult.destructured
         val startTimePoint = createTimePoint(startMonth, yearString) ?: return null
         val endTimePoint = createTimePoint(endMonth, yearString) ?: return null
-        return createPeriod(periodName, startTimePoint, endTimePoint)
+        return Period(startTimePoint, endTimePoint, periodName)
     }
     return null
 }
