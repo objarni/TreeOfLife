@@ -3,6 +3,7 @@ package TreeOfLife
 import TreeOfLife.Data.*
 import TreeOfLife.GraphicsPanel.TextBlock
 import TreeOfLife.GraphicsPanel.TimelinePanel
+import TreeOfLife.Visualization.StatusText
 import TreeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout
 import java.awt.EventQueue
@@ -93,11 +94,7 @@ class MainFrame(title: String) : JFrame() {
         
         // Set up cursor movement handler
         timeLinePanel.onCursorMoved = { timePoint, overlappingPeriods ->
-            val statusText = if (overlappingPeriods.isEmpty()) {
-                "${timePoint.month.name()}, ${timePoint.year.value}"
-            } else {
-                "${timePoint.month.name()}, ${timePoint.year.value} - ${overlappingPeriods.joinToString(", ")}"
-            }
+            val statusText = StatusText.calculate(timePoint, overlappingPeriods)
             println(statusText)
             statusLabel.text = statusText
         }
