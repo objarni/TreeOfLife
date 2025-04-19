@@ -24,7 +24,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
     private val blocks = mutableListOf<TextBlock>()
     private var origoTimePoint = TimePoint(Year(1979), Month.JULY)
     private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
-    var onCursorMoved: (TimePoint, List<String>) -> Unit = { _, _ -> }
+    var onCursorMoved: (TimePoint, TimePoint, List<String>) -> Unit = { _, _, _ -> }
     private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
 
     init {
@@ -165,7 +165,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
             zoom = zoom
         )
         val worldX = projector.reverseProjectPoint(Point(e.x, e.y)).x
-        cursorPosition = worldX.toInt()
+        cursorPosition = worldX
         
         // Calculate the time point and notify listeners
         val years = cursorPosition / 12
@@ -185,7 +185,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
             }
             .map { it.text }
         
-        onCursorMoved(cursorTimePoint, overlappingPeriods)
+        onCursorMoved(cursorTimePoint, origoTimePoint, overlappingPeriods)
         repaint()
     }
 
