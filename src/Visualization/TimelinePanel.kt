@@ -17,6 +17,7 @@ import java.awt.event.MouseMotionListener
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
+import kotlin.div
 
 class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener, MouseMotionListener {
     private var zoom = 7.7
@@ -63,6 +64,18 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         // Shorten zoom to 2 decimal places
         val zoomStr = String.format("%.2f", zoom)
         g2d.drawString("Zoom: $zoomStr", 10, 20)
+
+        // Draw the title centered
+        val originalFont = g2d.font
+        val biggerFont = g2d.font.deriveFont(g2d.font.size2D * 2)
+        g2d.font = biggerFont
+        val fontMetrics = g2d.fontMetrics
+        val titleWidth = fontMetrics.stringWidth(title)
+        val titleHeight = fontMetrics.height
+        val titleX = (width - titleWidth) / 2
+        val titleY = titleHeight // Position it at the top with some padding
+        g2d.drawString(title, titleX, titleY)
+        g2d.font = originalFont
 
         val projector = ViewportProjector(
             centerEyeWorld = centerEyeWorld,
