@@ -165,6 +165,12 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
             zoom = zoom
         )
         val worldX = projector.reverseProjectPoint(Point(e.x, e.y)).x
+
+        // If the world coordinate is before birth, ignore this click
+        if(worldX < 0) {
+            return
+        }
+
         cursorPosition = worldX
         
         // Calculate the time point and notify listeners
