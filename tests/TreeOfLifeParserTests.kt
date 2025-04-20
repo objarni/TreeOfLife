@@ -166,8 +166,8 @@ Klippan: Jun 1996-Jul 1997""", currentTimePoint
             ---Homes---
             Röstånga: Jul 1983-Jul 1997
         """.trimIndent()
-        val (timePoint, categories) = topLevelParser(input, currentTimePoint)
-        assertEquals(TimePoint(Year(1983), Month.JANUARY), timePoint)
+        val (birthMonth, categories) = topLevelParser(input, currentTimePoint)
+        assertEquals(TimePoint(Year(1983), Month.JANUARY), birthMonth)
         assertEquals(
             listOf(
                 Category(
