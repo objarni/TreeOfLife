@@ -22,7 +22,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
     private var zoom = 7.7
     private var centerEyeWorld = Point(100, 0)
     private val blocks = mutableListOf<TextBlock>()
-    private var origoTimePoint = TimePoint(Year(1979), Month.JULY)
+    private var birthMonth = TimePoint(Year(1979), Month.JULY)
     private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
     var onCursorMoved: (TimePoint, TimePoint, List<String>) -> Unit = { _, _, _ -> }
     private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
@@ -123,7 +123,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
         g2d: Graphics
     ) {
         val origo = projector.projectPoint(Point(age * 12, 0))
-        val origoText = String.format(template, origoTimePoint.month.name(), origoTimePoint.year.value + age)
+        val origoText = String.format(template, birthMonth.month.name(), birthMonth.year.value + age)
         g2d.drawString(origoText, origo.x, origo.y + 12)
         g2d.drawLine(origo.x, origo.y, origo.x, origo.y + 5)
     }
@@ -154,7 +154,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
     }
 
     fun setOrigoTimePoint(timePoint: TimePoint) {
-        this.origoTimePoint = timePoint
+        this.birthMonth = timePoint
         repaint()
     }
 
@@ -171,7 +171,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
         val years = cursorPosition / 12
         val months = cursorPosition % 12 + 1 // Month values are 1-based
         val cursorTimePoint = TimePoint(
-            Year(origoTimePoint.year.value + years),
+            Year(birthMonth.year.value + years),
             Month(months)
         )
         
@@ -185,7 +185,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
             }
             .map { it.text }
         
-        onCursorMoved(cursorTimePoint, origoTimePoint, overlappingPeriods)
+        onCursorMoved(cursorTimePoint, birthMonth, overlappingPeriods)
         repaint()
     }
 
