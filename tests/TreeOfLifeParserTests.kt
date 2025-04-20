@@ -182,6 +182,32 @@ Klippan: Jun 1996-Jul 1997""", currentTimePoint
     }
 
     @Test
+    fun `test new toplevel parser`() {
+        val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
+        val input = """
+            Birth month: Jan 1983
+
+            ---Homes---
+            Röstånga: Jul 1983-Jul 1997
+        """.trimIndent()
+        val treeOfLifeData = treeOfLifeParser(input, currentTimePoint)
+        val birthMonth = treeOfLifeData.birthMonth
+        val categories = treeOfLifeData.categories
+        assertEquals(TimePoint(Year(1983), Month.JANUARY), birthMonth)
+        assertEquals(
+            listOf(
+                Category(
+                    "Homes",
+                    listOf(
+                        Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"),
+                    )
+                )
+            ),
+            categories
+        )
+    }
+
+    @Test
     fun testPeriodParser_present_format() {
         val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
         val period1 = periodParser("Göteborg: Aug 2024-", currentTimePoint)

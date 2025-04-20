@@ -113,3 +113,13 @@ fun monthParser(string: String): Month? {
         else -> null
     }
 }
+
+data class TreeOfLifeData(
+    val birthMonth: TimePoint,
+    val categories: List<Category>
+)
+
+fun treeOfLifeParser(input: String, currentTimePoint: TimePoint): TreeOfLifeData {
+    val (birthMonth, categories) = topLevelParser(input, currentTimePoint)
+    return TreeOfLifeData(birthMonth, categories)
+}
