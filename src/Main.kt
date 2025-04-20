@@ -1,7 +1,7 @@
 package TreeOfLife
 
 import TreeOfLife.Data.*
-import TreeOfLife.GraphicsPanel.TextBlock
+import TreeOfLife.Visualization.TextBlock
 import TreeOfLife.Visualization.TimelinePanel
 import TreeOfLife.Visualization.StatusText
 import TreeOfLife.Visualization.visualCategories

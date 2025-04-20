@@ -1,4 +1,4 @@
-package TreeOfLife.GraphicsPanel
+package TreeOfLife.Visualization
 
 import java.awt.Color
 import java.awt.Rectangle

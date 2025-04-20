@@ -1,6 +1,6 @@
 package TreeOfLife.Data
 
-import TreeOfLife.GraphicsPanel.TextBlock
+import TreeOfLife.Visualization.TextBlock
 import java.awt.Color
 import java.awt.Rectangle
 

@@ -1,4 +1,4 @@
-package TreeOfLife.GraphicsPanel
+package TreeOfLife.Visualization
 
 import java.awt.Dimension
 import java.awt.Point

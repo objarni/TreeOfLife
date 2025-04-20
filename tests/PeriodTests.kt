@@ -1,4 +1,4 @@
-import TreeOfLife.GraphicsPanel.TextBlock
+import TreeOfLife.Visualization.TextBlock
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.Period
 import TreeOfLife.Data.TimePoint
