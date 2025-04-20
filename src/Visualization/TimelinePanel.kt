@@ -23,7 +23,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     private var centerEyeWorld = Point(100, 0)
     private val blocks = mutableListOf<TextBlock>()
     private var birthMonth = TimePoint(Year(1979), Month.JULY)
-    private var title = "Timeline";
+    private var title: String = "Timeline";
     private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
     var onCursorMoved: (TimePoint, TimePoint, List<String>) -> Unit = { _, _, _ -> }
     private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
@@ -160,7 +160,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     }
 
     fun setTitle(title: String) {
-        title = title
+        this.title = title
         repaint()
     }
 
