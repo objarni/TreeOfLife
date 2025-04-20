@@ -158,31 +158,7 @@ Klippan: Jun 1996-Jul 1997""", currentTimePoint
     }
 
     @Test
-    fun `test toplevel parser with birth timepoint`() {
-        val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
-        val input = """
-            Birth month: Jan 1983
-
-            ---Homes---
-            Röstånga: Jul 1983-Jul 1997
-        """.trimIndent()
-        val (birthMonth, categories) = topLevelParser(input, currentTimePoint)
-        assertEquals(TimePoint(Year(1983), Month.JANUARY), birthMonth)
-        assertEquals(
-            listOf(
-                Category(
-                    "Homes",
-                    listOf(
-                        Period(TimePoint(Year(1983), Month.JULY), TimePoint(Year(1997), Month.JULY), "Röstånga"),
-                    )
-                )
-            ),
-            categories
-        )
-    }
-
-    @Test
-    fun `test new toplevel parser`() {
+    fun `test treeOfLife parser`() {
         val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
         val input = """
             Birth month: Jan 1983

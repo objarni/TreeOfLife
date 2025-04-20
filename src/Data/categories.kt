@@ -18,7 +18,8 @@ fun categoriesFromFile(currentTimePoint: TimePoint): List<Category> {
 
 fun loadDataFile(dataFilePath: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
     val fileContent = readFile(dataFilePath)
-    return topLevelParser(fileContent, currentTimePoint)
+    val result = treeOfLifeParser(fileContent, currentTimePoint)
+    return Pair(result.birthMonth, result.categories)
 }
 
 fun readFile(string: String):String {

@@ -12,20 +12,6 @@ private fun createTimePoint(monthStr: String, yearStr: String): TimePoint? {
     return TimePoint(Year(yearStr.toInt()), parsedMonth)
 }
 
-fun topLevelParser(string: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
-    val lines = string.split("\n")
-    val prefix = "Birth month:"
-    val birthTimePointLine = lines.firstOrNull { it.trim().startsWith(prefix) }
-    val birthTimePoint = if (birthTimePointLine != null) {
-        timePointParser(birthTimePointLine.removePrefix(prefix).trim())
-    } else {
-        throw IllegalArgumentException("Birth month not found in the file")
-    }
-    val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
-    val categories = categoriesParser(categoriesString, currentTimePoint)
-    return Pair(birthTimePoint!!, categories)
-}
-
 fun categoriesParser(string: String, currentTimePoint: TimePoint): List<Category> {
     val categories = mutableListOf<Category>()
     val categoryStrings = string.split("###").map { it.trim() }
@@ -120,6 +106,18 @@ data class TreeOfLifeData(
 )
 
 fun treeOfLifeParser(input: String, currentTimePoint: TimePoint): TreeOfLifeData {
-    val (birthMonth, categories) = topLevelParser(input, currentTimePoint)
-    return TreeOfLifeData(birthMonth, categories)
+    val lines = input.split("\n")
+    val prefix = "Birth month:"
+    val birthTimePointLine = lines.firstOrNull { it.trim().startsWith(prefix) }
+    val birthTimePoint = if (birthTimePointLine != null) {
+        timePointParser(birthTimePointLine.removePrefix(prefix).trim())
+    } else {
+        throw IllegalArgumentException("Birth month not found in the file")
+    }
+    if(birthTimePoint == null) {
+        throw IllegalArgumentException("Invalid birth month format")
+    }
+    val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
+    val categories = categoriesParser(categoriesString, currentTimePoint)
+    return TreeOfLifeData(birthTimePoint, categories)
 }
