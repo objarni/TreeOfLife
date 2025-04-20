@@ -93,8 +93,8 @@ class MainFrame(title: String) : JFrame() {
         statusLabel.horizontalAlignment = JTextField.CENTER
         
         // Set up cursor movement handler
-        timeLinePanel.onCursorMoved = { timePoint, birthMonth, overlappingPeriods ->
-            val statusText = StatusText.calculate(timePoint, birthMonth, overlappingPeriods)
+        timeLinePanel.onCursorMoved = { cursorAtTimePoint, birthMonth, overlappingPeriods ->
+            val statusText = StatusText.calculate(cursorAtTimePoint, birthMonth, overlappingPeriods)
             println(statusText)
             statusLabel.text = statusText
         }
