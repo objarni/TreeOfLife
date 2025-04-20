@@ -2,7 +2,7 @@ package TreeOfLife
 
 import TreeOfLife.Data.*
 import TreeOfLife.GraphicsPanel.TextBlock
-import TreeOfLife.GraphicsPanel.TimelinePanel
+import TreeOfLife.Visualization.TimelinePanel
 import TreeOfLife.Visualization.StatusText
 import TreeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout

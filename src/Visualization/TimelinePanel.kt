@@ -1,8 +1,10 @@
-package TreeOfLife.GraphicsPanel
+package TreeOfLife.Visualization
 
 import TreeOfLife.Data.Month
 import TreeOfLife.Data.TimePoint
 import TreeOfLife.Data.Year
+import TreeOfLife.GraphicsPanel.TextBlock
+import TreeOfLife.GraphicsPanel.ViewportProjector
 import java.awt.Color
 import java.awt.Cursor
 import java.awt.Dimension
