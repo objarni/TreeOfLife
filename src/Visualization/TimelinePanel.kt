@@ -17,7 +17,6 @@ import java.awt.event.MouseMotionListener
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
-import kotlin.div
 
 class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener, MouseMotionListener {
     private var zoom = 7.7
