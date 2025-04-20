@@ -153,7 +153,7 @@ class TimelinePanel : JPanel(), MouseWheelListener, KeyListener, MouseListener, 
         repaint()
     }
 
-    fun setOrigoTimePoint(timePoint: TimePoint) {
+    fun setBirthMonth(timePoint: TimePoint) {
         this.birthMonth = timePoint
         repaint()
     }

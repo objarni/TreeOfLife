@@ -70,7 +70,7 @@ class MainFrame(title: String) : JFrame() {
                     text = visualCategory.category.category
                 )
             }
-            timeLinePanel.setOrigoTimePoint(birthMonth)
+            timeLinePanel.setBirthMonth(birthMonth)
             timeLinePanel.setBlocks(allBlocks + labelBlocks)
             println("Data reloaded successfully") // Debug print
         } catch (e: Exception) {
@@ -119,7 +119,7 @@ class MainFrame(title: String) : JFrame() {
 
         val birthMonth = data.first
 
-        timeLinePanel.setOrigoTimePoint(birthMonth)
+        timeLinePanel.setBirthMonth(birthMonth)
 
         val currentTimePoint = TimePoint(
             Year(java.time.LocalDate.now().year),
