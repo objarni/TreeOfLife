@@ -102,7 +102,8 @@ fun monthParser(string: String): Month? {
 
 data class TreeOfLifeData(
     val birthMonth: TimePoint,
-    val categories: List<Category>
+    val categories: List<Category>,
+    val name: String
 )
 
 fun findValueForPrefix(
@@ -116,14 +117,16 @@ fun findValueForPrefix(
 fun treeOfLifeParser(input: String, currentTimePoint: TimePoint): TreeOfLifeData {
     val lines = input.split("\n")
     val birthMonthLine = findValueForPrefix(lines, "Birth month:")
-    if(birthMonthLine == null) {
+    if (birthMonthLine == null) {
         throw IllegalArgumentException("Birth month not found in the file")
     }
     val birthTimePoint = timePointParser(birthMonthLine)
-    if(birthTimePoint == null) {
+    if (birthTimePoint == null) {
         throw IllegalArgumentException("Invalid birth month format")
     }
+    val nameValue = findValueForPrefix(lines, "Name:")
+    val name = nameValue ?: "Timeline"
     val categoriesString = lines.dropWhile { !it.trim().startsWith("---") }.joinToString("\n")
     val categories = categoriesParser(categoriesString, currentTimePoint)
-    return TreeOfLifeData(birthTimePoint, categories)
+    return TreeOfLifeData(birthTimePoint, categories, name)
 }

@@ -162,14 +162,17 @@ Klippan: Jun 1996-Jul 1997""", currentTimePoint
         val currentTimePoint = TimePoint(Year(2025), Month.APRIL)
         val input = """
             Birth month: Jan 1983
+            Name: Test Person
 
             ---Homes---
             Röstånga: Jul 1983-Jul 1997
         """.trimIndent()
         val treeOfLifeData = treeOfLifeParser(input, currentTimePoint)
         val birthMonth = treeOfLifeData.birthMonth
+        val name = treeOfLifeData.name
         val categories = treeOfLifeData.categories
         assertEquals(TimePoint(Year(1983), Month.JANUARY), birthMonth)
+        assertEquals("Test Person", name)
         assertEquals(
             listOf(
                 Category(
