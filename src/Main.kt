@@ -99,28 +99,6 @@ class MainFrame(title: String) : JFrame() {
             statusLabel.text = statusText
         }
 
-        val dataFilePath = getDocumentsPath() + "/TreeOfLife.txt"
-        // if no data file exists, create a default one
-        if (!File(dataFilePath).exists()) {
-            writeDefaultFile(dataFilePath)
-        }
-        val data: Pair<TimePoint, List<Category>>
-        try {
-            val currentTimePoint = TimePoint(
-                Year(java.time.LocalDate.now().year),
-                Month(java.time.LocalDate.now().month.value)
-            )
-            data = loadDataFile(dataFilePath, currentTimePoint)
-        }
-        catch (e: Exception) {
-            popupMessageDialog("Error loading data file: ${e.message}")
-            throw e
-        }
-
-        val birthMonth = data.first
-
-        timeLinePanel.setBirthMonth(birthMonth)
-
         val currentTimePoint = TimePoint(
             Year(java.time.LocalDate.now().year),
             Month(java.time.LocalDate.now().month.value)
@@ -134,23 +112,6 @@ class MainFrame(title: String) : JFrame() {
             println("Year: $year, overlappingPeriods: $overlappingPeriods")
         }
 
-        val allBlocks = visualCategories(currentTimePoint).flatMap { visualCategory ->
-            textBlocksForPeriods(
-                visualCategory.category.periods,
-                baseY = visualCategory.baseY,
-                color = visualCategory.color,
-                birthMonth = birthMonth
-            )
-        }
-        val labelBlocks = visualCategories(currentTimePoint).map { visualCategory ->
-            TextBlock(
-                rect = Rectangle(-20, visualCategory.baseY, 1, 1),
-                color = visualCategory.color,
-                text = visualCategory.category.category
-            )
-        }
-        timeLinePanel.setBlocks(allBlocks + labelBlocks)
-
         layout = BorderLayout()
 
         val bottomPanel = JPanel(BorderLayout())
@@ -160,6 +121,7 @@ class MainFrame(title: String) : JFrame() {
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
 
         createMenuBar()
+        reloadData()
 
         pack()
     }

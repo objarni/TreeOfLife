@@ -12,14 +12,7 @@ fun getDocumentsPath(): String {
 }
 
 fun categoriesFromFile(currentTimePoint: TimePoint): List<Category> {
-    val pair = loadDataFile(getDocumentsPath() + "/TreeOfLife.txt", currentTimePoint)
-    return pair.second
-}
-
-fun loadDataFile(dataFilePath: String, currentTimePoint: TimePoint): Pair<TimePoint, List<Category>> {
-    val fileContent = readFile(dataFilePath)
-    val result = treeOfLifeParser(fileContent, currentTimePoint)
-    return Pair(result.birthMonth, result.categories)
+    return loadTreeOfLifeDataFile(getDocumentsPath() + "/TreeOfLife.txt", currentTimePoint).categories
 }
 
 fun loadTreeOfLifeDataFile(dataFilePath: String, currentTimePoint: TimePoint): TreeOfLifeData {
