@@ -99,27 +99,11 @@ class MainFrame(title: String) : JFrame() {
             statusLabel.text = statusText
         }
 
-        val currentTimePoint = TimePoint(
-            Year(java.time.LocalDate.now().year),
-            Month(java.time.LocalDate.now().month.value)
-        )
-        val lifeTime = visualCategories(currentTimePoint).map { it.category }
-        for (y in 1979..2025) {
-            val year = Year(y)
-            val month = Month.JANUARY
-            val timePoint = TimePoint(year, month)
-            val overlappingPeriods = overlappingPeriods(timePoint, lifeTime)
-            println("Year: $year, overlappingPeriods: $overlappingPeriods")
-        }
-
         layout = BorderLayout()
-
         val bottomPanel = JPanel(BorderLayout())
         bottomPanel.add(statusLabel, BorderLayout.CENTER)
-
         contentPane.add(timeLinePanel, BorderLayout.CENTER)
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
-
         createMenuBar()
         reloadData()
 
