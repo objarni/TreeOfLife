@@ -182,6 +182,10 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             viewportSize = Dimension(width, height),
             zoom = zoom
         )
+
+        if(yAxisDistance(e, projector.projectPoint(Point(0, 0)).y) > clickableAreaHeight) {
+            return
+        }
         val worldX = projector.reverseProjectPoint(Point(e.x, e.y)).x
 
         // If the world coordinate is before birth, ignore this click
@@ -225,7 +229,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             zoom = zoom
         )
         val xAxisY = projector.projectPoint(Point(0, 0)).y
-        val distanceToAxis = Math.abs(e.y - xAxisY)
+        val distanceToAxis = yAxisDistance(e, xAxisY)
         
         // Change cursor to hand if within clickable area
         cursor = if (distanceToAxis <= clickableAreaHeight) {
@@ -234,6 +238,8 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             Cursor.getDefaultCursor()
         }
     }
+
+    private fun yAxisDistance(e: MouseEvent, xAxisY: Int): Int = Math.abs(e.y - xAxisY)
 
     override fun mouseDragged(e: MouseEvent) {
         // Not used but required by MouseMotionListener
