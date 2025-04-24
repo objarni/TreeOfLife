@@ -52,7 +52,6 @@ class MainFrame(title: String) : JFrame() {
                 Year(java.time.LocalDate.now().year),
                 Month(java.time.LocalDate.now().month.value)
             )
-            val data = loadDataFile(dataFilePath, currentTimePoint)
             val treeOfLifeData = loadTreeOfLifeDataFile(dataFilePath, currentTimePoint)
             val birthMonth = treeOfLifeData.birthMonth
 
