@@ -53,7 +53,8 @@ class MainFrame(title: String) : JFrame() {
                 Month(java.time.LocalDate.now().month.value)
             )
             val data = loadDataFile(dataFilePath, currentTimePoint)
-            val birthMonth = data.first
+            val treeOfLifeData = loadTreeOfLifeDataFile(dataFilePath, currentTimePoint)
+            val birthMonth = treeOfLifeData.birthMonth
 
             val allBlocks = visualCategories(currentTimePoint).flatMap { visualCategory ->
                 textBlocksForPeriods(

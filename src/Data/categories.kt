@@ -22,6 +22,11 @@ fun loadDataFile(dataFilePath: String, currentTimePoint: TimePoint): Pair<TimePo
     return Pair(result.birthMonth, result.categories)
 }
 
+fun loadTreeOfLifeDataFile(dataFilePath: String, currentTimePoint: TimePoint): TreeOfLifeData {
+    val fileContent = readFile(dataFilePath)
+    return treeOfLifeParser(fileContent, currentTimePoint)
+}
+
 fun readFile(string: String):String {
     val file = java.io.File(string)
     return file.readText()
