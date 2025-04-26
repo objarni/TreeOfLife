@@ -71,6 +71,7 @@ class MainFrame(title: String) : JFrame() {
                 )
             }
             timeLinePanel.setBirthMonth(birthMonth)
+            timeLinePanel.setTitle(treeOfLifeData.name)
             timeLinePanel.setBlocks(allBlocks + labelBlocks)
             println("Data reloaded successfully") // Debug print
         } catch (e: Exception) {
