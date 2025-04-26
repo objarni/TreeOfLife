@@ -23,7 +23,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     private var centerEyeWorld = Point(100, 0)
     private val blocks = mutableListOf<TextBlock>()
     private var birthMonth = TimePoint(Year(1979), Month.JULY)
-    private var title: String = "Timeline";
+    private var title: String = "Timeline"
     private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
     var onCursorMoved: (TimePoint, TimePoint, List<String>) -> Unit = { _, _, _ -> }
     private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
@@ -183,17 +183,14 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             zoom = zoom
         )
 
-        if(yAxisDistance(e, projector.projectPoint(Point(0, 0)).y) > clickableAreaHeight) {
-            return
-        }
-        val worldX = projector.reverseProjectPoint(Point(e.x, e.y)).x
+        val mouseWorldCoordinate = projector.reverseProjectPoint(Point(e.x, e.y))
 
-        // If the world coordinate is before birth, ignore this click
-        if(worldX < 0) {
+        if((mouseWorldCoordinate.x < 0) ||
+            (yAxisDistance(e, mouseWorldCoordinate.y) > clickableAreaHeight)) {
             return
         }
 
-        cursorPosition = worldX
+        cursorPosition = mouseWorldCoordinate.x
         
         // Calculate the time point and notify listeners
         val years = cursorPosition / 12
