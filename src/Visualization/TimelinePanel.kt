@@ -225,11 +225,13 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             viewportSize = Dimension(width, height),
             zoom = zoom
         )
-        val xAxisY = projector.projectPoint(Point(0, 0)).y
-        val distanceToAxis = yAxisDistance(e, xAxisY)
+        val origoWindowCoord = projector.projectPoint(Point(0, 0))
+        val xAxisY = origoWindowCoord.y
+        val distanceToXAxis = yAxisDistance(e, xAxisY)
+        val mouseDeltaOrigoY = e.x - origoWindowCoord.x
         
         // Change cursor to hand if within clickable area
-        cursor = if (distanceToAxis <= clickableAreaHeight) {
+        cursor = if (distanceToXAxis <= clickableAreaHeight && mouseDeltaOrigoY > 0) {
             Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)
         } else {
             Cursor.getDefaultCursor()
