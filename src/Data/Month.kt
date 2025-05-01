@@ -1,4 +1,4 @@
-package treeOfLife.Data
+package treeOfLife.data
 
 data class Month(val value: Int) {
 

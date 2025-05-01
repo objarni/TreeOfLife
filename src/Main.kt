@@ -1,6 +1,6 @@
 package treeOfLife
 
-import treeOfLife.Data.*
+import treeOfLife.data.*
 import treeOfLife.Visualization.TextBlock
 import treeOfLife.Visualization.TimelinePanel
 import treeOfLife.Visualization.StatusText

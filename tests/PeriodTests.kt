@@ -1,8 +1,8 @@
 import treeOfLife.Visualization.TextBlock
-import treeOfLife.Data.Month
-import treeOfLife.Data.Period
-import treeOfLife.Data.TimePoint
-import treeOfLife.Data.Year
+import treeOfLife.data.Month
+import treeOfLife.data.Period
+import treeOfLife.data.TimePoint
+import treeOfLife.data.Year
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Color

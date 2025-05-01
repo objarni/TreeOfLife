@@ -1,9 +1,9 @@
-import treeOfLife.Data.Month
-import treeOfLife.Data.TimePoint
-import treeOfLife.Data.Year
-import treeOfLife.Data.educations
-import treeOfLife.Data.homes
-import treeOfLife.Data.overlappingPeriods
+import treeOfLife.data.Month
+import treeOfLife.data.TimePoint
+import treeOfLife.data.Year
+import treeOfLife.data.educations
+import treeOfLife.data.homes
+import treeOfLife.data.overlappingPeriods
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

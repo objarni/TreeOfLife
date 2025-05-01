@@ -1,4 +1,4 @@
-package treeOfLife.Data
+package treeOfLife.data
 
 data class Year(val value: Int) {
     init {

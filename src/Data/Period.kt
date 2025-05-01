@@ -1,4 +1,4 @@
-package treeOfLife.Data
+package treeOfLife.data
 
 import treeOfLife.Visualization.TextBlock
 import java.awt.Color

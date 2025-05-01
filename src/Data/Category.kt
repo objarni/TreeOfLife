@@ -1,4 +1,4 @@
-package treeOfLife.Data
+package treeOfLife.data
 
 data class Category(val category: String, val periods: List<Period>)
 
