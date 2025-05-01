@@ -1,4 +1,4 @@
-package TreeOfLife.Visualization
+package treeOfLife.Visualization
 
 import java.awt.Color
 import java.awt.Rectangle

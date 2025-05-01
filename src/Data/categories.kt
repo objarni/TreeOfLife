@@ -1,4 +1,4 @@
-package TreeOfLife.Data
+package treeOfLife.Data
 
 import java.nio.file.Paths
 

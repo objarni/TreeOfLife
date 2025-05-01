@@ -1,10 +1,10 @@
-package TreeOfLife
+package treeOfLife
 
-import TreeOfLife.Data.*
-import TreeOfLife.Visualization.TextBlock
-import TreeOfLife.Visualization.TimelinePanel
-import TreeOfLife.Visualization.StatusText
-import TreeOfLife.Visualization.visualCategories
+import treeOfLife.Data.*
+import treeOfLife.Visualization.TextBlock
+import treeOfLife.Visualization.TimelinePanel
+import treeOfLife.Visualization.StatusText
+import treeOfLife.Visualization.visualCategories
 import java.awt.BorderLayout
 import java.awt.EventQueue
 import java.awt.Rectangle

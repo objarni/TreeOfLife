@@ -15,7 +15,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("TreeOfLife.MainKt")
+    mainClass.set("treeOfLife.MainKt")
 }
 
 tasks.test {

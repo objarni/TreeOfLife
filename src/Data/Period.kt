@@ -1,6 +1,6 @@
-package TreeOfLife.Data
+package treeOfLife.Data
 
-import TreeOfLife.Visualization.TextBlock
+import treeOfLife.Visualization.TextBlock
 import java.awt.Color
 import java.awt.Rectangle
 
@@ -29,7 +29,7 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
 
 fun textBlocksForPeriods(periods: List<Period>, baseY: Int, color: Color, birthMonth: TimePoint): List<TextBlock> {
     /* algorithm. keep track of all added-so-far blocks. for each period, check if it overlaps with any of the added blocks. if it does, increment y. */
-    var addedBlocks = mutableListOf<TextBlock>()
+    val addedBlocks = mutableListOf<TextBlock>()
     return periods.map { period ->
         var y = baseY
         while (addedBlocks.any { it.rect.intersects(period.toBlock(color, birthMonth, y).rect) }) {

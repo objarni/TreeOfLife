@@ -1,4 +1,4 @@
-import TreeOfLife.Data.*
+import treeOfLife.Data.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertNull

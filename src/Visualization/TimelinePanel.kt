@@ -1,8 +1,8 @@
-package TreeOfLife.Visualization
+package treeOfLife.Visualization
 
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
+import treeOfLife.Data.Month
+import treeOfLife.Data.TimePoint
+import treeOfLife.Data.Year
 import java.awt.Color
 import java.awt.Cursor
 import java.awt.Dimension

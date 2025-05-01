@@ -1,4 +1,4 @@
-package TreeOfLife.Visualization
+package treeOfLife.Visualization
 
 import java.awt.Dimension
 import java.awt.Point
@@ -9,7 +9,7 @@ class ViewportProjector(var centerEyeWorld: Point, var viewportSize: Dimension, 
         // W = world coordinates, V = viewport coordinates
         val topLeftW = bottomLeftW + Point(0, sizeW.height)
         val topLeftV = projectPoint(topLeftW)
-        var dimV = sizeW * zoom
+        val dimV = sizeW * zoom
         return Rectangle(topLeftV, dimV)
     }
 

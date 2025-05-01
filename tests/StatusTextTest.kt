@@ -1,7 +1,7 @@
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
-import TreeOfLife.Visualization.StatusText
+import treeOfLife.Data.Month
+import treeOfLife.Data.TimePoint
+import treeOfLife.Data.Year
+import treeOfLife.Visualization.StatusText
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 

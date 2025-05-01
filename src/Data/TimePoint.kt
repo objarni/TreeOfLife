@@ -1,4 +1,4 @@
-package TreeOfLife.Data
+package treeOfLife.Data
 
 data class TimePoint(val year: Year, val month: Month)
 

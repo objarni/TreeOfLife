@@ -1,4 +1,4 @@
-import TreeOfLife.Visualization.ViewportProjector
+import treeOfLife.Visualization.ViewportProjector
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.awt.Dimension

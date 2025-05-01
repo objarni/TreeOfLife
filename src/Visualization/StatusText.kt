@@ -1,6 +1,6 @@
-package TreeOfLife.Visualization
+package treeOfLife.Visualization
 
-import TreeOfLife.Data.TimePoint
+import treeOfLife.Data.TimePoint
 
 object StatusText {
     fun calculate(timePoint: TimePoint, birthMonth: TimePoint, overlappingPeriods: List<String>): String {

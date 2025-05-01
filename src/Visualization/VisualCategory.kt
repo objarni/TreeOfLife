@@ -1,11 +1,11 @@
-package TreeOfLife.Visualization
+package treeOfLife.Visualization
 
-import TreeOfLife.Data.Category
-import TreeOfLife.Data.Month
-import TreeOfLife.Data.TimePoint
-import TreeOfLife.Data.Year
-import TreeOfLife.Data.categories
-import TreeOfLife.Data.textBlocksForPeriods
+import treeOfLife.Data.Category
+import treeOfLife.Data.Month
+import treeOfLife.Data.TimePoint
+import treeOfLife.Data.Year
+import treeOfLife.Data.categories
+import treeOfLife.Data.textBlocksForPeriods
 import java.awt.Color
 
 data class VisualCategory(val category: Category, val color: Color, val baseY: Int)

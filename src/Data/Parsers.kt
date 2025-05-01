@@ -1,4 +1,4 @@
-package TreeOfLife.Data
+package treeOfLife.Data
 
 // Common regex patterns
 private const val MONTH_PATTERN = """[A-Z][a-z]{2}"""
