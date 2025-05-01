@@ -111,13 +111,13 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         )
 
         drawYearLabel(projector, 0, "Born %s, %d", g2d)
-        drawYearLabel(projector, 5, "%s, %d (5 years)", g2d)
-        drawYearLabel(projector, 10, "%s, %d (10 years)", g2d)
-        drawYearLabel(projector, 18, "%s, %d (18 years)", g2d)
-        drawYearLabel(projector, 25, "%s, %d (25 years)", g2d)
-        drawYearLabel(projector, 30, "%s, %d (30 years)", g2d)
-        drawYearLabel(projector, 40, "%s, %d (40 years)", g2d)
-        drawYearLabel(projector, 45, "%s, %d (45 years)", g2d)
+        drawYearLabel(projector, 5, "5 years %s %d", g2d)
+        drawYearLabel(projector, 10, "10 years %s %d", g2d)
+        drawYearLabel(projector, 18, "18 years %s %d", g2d)
+        drawYearLabel(projector, 25, "25 years %s %d ", g2d)
+        drawYearLabel(projector, 30, "30 years %s %d ", g2d)
+        drawYearLabel(projector, 40, "40 years %s %d ", g2d)
+        drawYearLabel(projector, 45, "45 years %s %d ", g2d)
 
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
@@ -139,7 +139,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         g2d: Graphics
     ) {
         val origo = projector.projectPoint(Point(age * 12, 0))
-        val origoText = String.format(template, birthMonth.month.name(), birthMonth.year.value + age)
+        val origoText = String.format(template, birthMonth.month.name().substring(0, 3), birthMonth.year.value + age)
         g2d.drawString(origoText, origo.x, origo.y + 3*zoom.toInt())
         g2d.drawLine(origo.x, origo.y, origo.x, origo.y + 5*zoom.toInt())
     }
