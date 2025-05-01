@@ -160,19 +160,17 @@ Cykel: Jan 1995-Jun 2000
         try {
             when {
                 os.contains("win") -> {
-                    // Windows: Use Notepad
                     ProcessBuilder("notepad.exe", file).start()
                 }
 
                 os.contains("mac") -> {
-                    // macOS: Try CotEditor or VS Code, fallback to open -e
                     val editorsToTry = listOf(
                         "/Applications/CotEditor.app" to listOf("open", "-a", "CotEditor",
                             file),
                         "/Applications/Visual Studio Code.app" to listOf("open", "-a", "Visual Studio Code",
                             file),
                         null to listOf("open", "-e",
-                            file) // fallback to TextEdit in plaintext mode
+                            file)
                     )
 
                     for ((appPath, command) in editorsToTry) {
@@ -243,7 +241,3 @@ private fun createAndShowGUI() {
 fun main() {
     EventQueue.invokeLater(::createAndShowGUI)
 }
-
-
-
-//Year and month of birth
