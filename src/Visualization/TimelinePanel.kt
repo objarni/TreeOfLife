@@ -27,6 +27,9 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     private var cursorPosition = 10 * 12 // Default position at age 10, January (0-based month)
     var onCursorMoved: (TimePoint, TimePoint, List<String>) -> Unit = { _, _, _ -> }
     private val clickableAreaHeight = 25 // Height of area where clicking will move the cursor
+    private val originalFont = font
+    private var ordinaryFont: java.awt.Font = font
+    private var biggerFont: java.awt.Font = ordinaryFont.deriveFont(ordinaryFont.size2D * 2)
 
     init {
         // Set preferred size for the panel
@@ -50,6 +53,9 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         if (zoom > maxZoom)
             zoom = maxZoom
 
+        ordinaryFont = originalFont.deriveFont(1.5f * zoom.toFloat())
+//        biggerFont = ordinaryFont.deriveFont(ordinaryFont.size2D * 2)
+
         repaint()
     }
 
@@ -65,8 +71,6 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         g2d.drawString("Zoom: $zoomStr", 10, 20)
 
         // Draw the title centered
-        val originalFont = g2d.font
-        val biggerFont = g2d.font.deriveFont(g2d.font.size2D * 2)
         g2d.font = biggerFont
         val fontMetrics = g2d.fontMetrics
         val titleWidth = fontMetrics.stringWidth(title)
@@ -74,7 +78,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         val titleX = (width - titleWidth) / 2
         val titleY = titleHeight // Position it at the top with some padding
         g2d.drawString(title, titleX, titleY)
-        g2d.font = originalFont
+        g2d.font = ordinaryFont
 
         val projector = ViewportProjector(
             centerEyeWorld = centerEyeWorld,
@@ -114,7 +118,6 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         drawYearLabel(projector, 30, "%s, %d (30 years)", g2d)
         drawYearLabel(projector, 40, "%s, %d (40 years)", g2d)
         drawYearLabel(projector, 45, "%s, %d (45 years)", g2d)
-
 
         for (box in axisBlocks + blocks) {
             val rect = projector.projectRectangle(box.rect.location, box.rect.size)
