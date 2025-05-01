@@ -17,6 +17,7 @@ import java.awt.event.MouseMotionListener
 import java.awt.event.MouseWheelEvent
 import java.awt.event.MouseWheelListener
 import javax.swing.JPanel
+import kotlin.math.abs
 
 class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener, MouseMotionListener {
     private var zoom = 7.7
@@ -80,11 +81,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         g2d.drawString(title, titleX, titleY)
         g2d.font = ordinaryFont
 
-        val projector = ViewportProjector(
-            centerEyeWorld = centerEyeWorld,
-            viewportSize = Dimension(width, height),
-            zoom = zoom
-        )
+        val projector = makeProjector()
 
         // Draw cursor
         val cursorX = projector.projectPoint(Point(cursorPosition, 0)).x
@@ -180,18 +177,20 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     }
 
     override fun mouseClicked(e: MouseEvent) {
-        val projector = ViewportProjector(
-            centerEyeWorld = centerEyeWorld,
-            viewportSize = Dimension(width, height),
-            zoom = zoom
-        )
+        println("Mouse clicked at: ${e.x}, ${e.y}")
+        val projector = makeProjector()
 
         val mouseWorldCoordinate = projector.reverseProjectPoint(Point(e.x, e.y))
+        println("Mouse world coordinate: ${mouseWorldCoordinate.x}, ${mouseWorldCoordinate.y}")
+
+        val origoWindowYCoord = projector.projectPoint(Point(0, 0)).y
 
         if((mouseWorldCoordinate.x < 0) ||
-            (yAxisDistance(e, mouseWorldCoordinate.y) > clickableAreaHeight)) {
+            (abs(e.y - origoWindowYCoord) > clickableAreaHeight)) {
+            println("Click outside clickable area")
             return
         }
+
 
         cursorPosition = mouseWorldCoordinate.x
         
@@ -223,14 +222,10 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     override fun mouseExited(e: MouseEvent?) {}
 
     override fun mouseMoved(e: MouseEvent) {
-        val projector = ViewportProjector(
-            centerEyeWorld = centerEyeWorld,
-            viewportSize = Dimension(width, height),
-            zoom = zoom
-        )
+        val projector = makeProjector()
         val origoWindowCoord = projector.projectPoint(Point(0, 0))
         val xAxisY = origoWindowCoord.y
-        val distanceToXAxis = yAxisDistance(e, xAxisY)
+        val distanceToXAxis = abs(e.y - xAxisY)
         val mouseDeltaOrigoY = e.x - origoWindowCoord.x
         
         // Change cursor to hand if within clickable area
@@ -241,7 +236,11 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         }
     }
 
-    private fun yAxisDistance(e: MouseEvent, xAxisY: Int): Int = Math.abs(e.y - xAxisY)
+    private fun makeProjector(): ViewportProjector = ViewportProjector(
+        centerEyeWorld = centerEyeWorld,
+        viewportSize = Dimension(width, height),
+        zoom = zoom
+    )
 
     override fun mouseDragged(e: MouseEvent) {
         // Not used but required by MouseMotionListener
