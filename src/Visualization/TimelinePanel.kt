@@ -140,8 +140,8 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     ) {
         val origo = projector.projectPoint(Point(age * 12, 0))
         val origoText = String.format(template, birthMonth.month.name(), birthMonth.year.value + age)
-        g2d.drawString(origoText, origo.x, origo.y + 25)
-        g2d.drawLine(origo.x, origo.y, origo.x, origo.y + 5)
+        g2d.drawString(origoText, origo.x, origo.y + 3*zoom.toInt())
+        g2d.drawLine(origo.x, origo.y, origo.x, origo.y + 5*zoom.toInt())
     }
 
     override fun keyTyped(e: KeyEvent?) {}
