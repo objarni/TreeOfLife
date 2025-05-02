@@ -35,7 +35,7 @@ class CategoryTests {
         )
         assertEquals(0, blocks[0].rect.y)
         assertEquals(240, blocks[0].rect.x)
-        assertEquals(2, blocks[1].rect.y)
+        assertEquals(4, blocks[1].rect.y)
         assertEquals(241, blocks[1].rect.x)
         assertEquals(Color.RED, blocks[1].color)
     }
@@ -54,7 +54,7 @@ class CategoryTests {
         val xs = blocks.map { it.rect.x }
         val xIsSorted = xs.zipWithNext().all { (a, b) -> a < b }
         assert(xIsSorted)
-        assertEquals(intArrayOf(0, 2, 0).toList(), blocks.map { it.rect.y })
+        assertEquals(intArrayOf(0, 4, 0).toList(), blocks.map { it.rect.y })
     }
 
     @Test

@@ -122,8 +122,8 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             g2d.fillRect(rect.x, rect.y, rect.width, rect.height)
             g2d.color = Color.GRAY
             g2d.drawRect(rect.x, rect.y, rect.width, rect.height)
-            g2d.color = Color.BLACK
-            g2d.drawString(box.text, rect.x, rect.y)
+            g2d.color = box.color.contrastColor()
+            g2d.drawString(box.text, rect.x + zoom.toInt(), rect.y + rect.height / 2)
         }
 
         g2d.dispose() // Clean up the graphics object

@@ -17,7 +17,7 @@ class PeriodTests {
     @Test
     fun testFromPeriodToBlock() {
         val expeced = TextBlock(
-            rect = Rectangle(6, 4, 48, 2),
+            rect = Rectangle(6, 4, 48, 4),
             color = Color.BLUE,
             text = "Test period"
         )
