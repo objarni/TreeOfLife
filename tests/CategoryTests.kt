@@ -3,9 +3,10 @@ import treeOfLife.data.Period
 import treeOfLife.data.TimePoint
 import treeOfLife.data.Year
 import treeOfLife.data.textBlocksForPeriods
-import treeOfLife.data.homes
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import treeOfLife.data.Category
+import treeOfLife.data.categoryParser
 import java.awt.Color
 
 class CategoryTests {
@@ -70,3 +71,7 @@ class CategoryTests {
     }
 }
 
+
+fun homes(currentTimePoint: TimePoint): Category {
+    return categoryParser(homeCategory, currentTimePoint)!!
+}
