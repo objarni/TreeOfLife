@@ -65,7 +65,7 @@ class MainFrame(title: String) : JFrame() {
             }
             val labelBlocks = visualCategories(currentTimePoint).map { visualCategory ->
                 TextBlock(
-                    rect = Rectangle(-20, visualCategory.baseY, 1, 1),
+                    rect = Rectangle(-50, visualCategory.baseY, 30, 4),
                     color = visualCategory.color,
                     text = visualCategory.category.category
                 )
