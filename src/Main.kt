@@ -4,7 +4,7 @@ import treeOfLife.data.*
 import treeOfLife.Visualization.TextBlock
 import treeOfLife.Visualization.TimelinePanel
 import treeOfLife.Visualization.StatusText
-import treeOfLife.Visualization.visualCategories
+import treeOfLife.Visualization.mapToVisualCategories
 import java.awt.BorderLayout
 import java.awt.EventQueue
 import java.awt.Rectangle
@@ -55,7 +55,7 @@ class MainFrame(title: String) : JFrame() {
             val treeOfLifeData = loadTreeOfLifeDataFile(dataFilePath, currentTimePoint)
             val birthMonth = treeOfLifeData.birthMonth
 
-            val allBlocks = visualCategories(currentTimePoint).flatMap { visualCategory ->
+            val allBlocks = mapToVisualCategories(treeOfLifeData.categories).flatMap { visualCategory ->
                 textBlocksForPeriods(
                     visualCategory.category.periods,
                     baseY = visualCategory.baseY,
@@ -63,7 +63,7 @@ class MainFrame(title: String) : JFrame() {
                     birthMonth = birthMonth
                 )
             }
-            val labelBlocks = visualCategories(currentTimePoint).map { visualCategory ->
+            val labelBlocks = mapToVisualCategories(treeOfLifeData.categories).map { visualCategory ->
                 TextBlock(
                     rect = Rectangle(-50, visualCategory.baseY, 30, 4),
                     color = visualCategory.color,
