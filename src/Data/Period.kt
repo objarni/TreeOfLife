@@ -15,7 +15,7 @@ data class Period(val start: TimePoint, val end: TimePoint, val text: String) {
         val xStart = (startYear - birthYear) * 12 + startMonth - birthMonth
         val xEnd = (endYear - birthYear) * 12 + endMonth - birthMonth
         return TextBlock(
-            rect = Rectangle(xStart, y, xEnd - xStart, 1),
+            rect = Rectangle(xStart, y, xEnd - xStart, 2),
             color = color,
             text = text
         )
@@ -33,7 +33,7 @@ fun textBlocksForPeriods(periods: List<Period>, baseY: Int, color: Color, birthM
     return periods.map { period ->
         var y = baseY
         while (addedBlocks.any { it.rect.intersects(period.toBlock(color, birthMonth, y).rect) }) {
-            y++
+            y ++
         }
         val block = period.toBlock(color, birthMonth, y)
         addedBlocks.add(block)
