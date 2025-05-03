@@ -7,6 +7,7 @@ import java.awt.Color
 import java.awt.Cursor
 import java.awt.Dimension
 import java.awt.Graphics
+import java.awt.Graphics2D
 import java.awt.Point
 import java.awt.Rectangle
 import java.awt.event.KeyEvent
@@ -84,15 +85,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         val projector = makeProjector()
 
         // Draw cursor
-        val cursorX = projector.projectPoint(Point(cursorPosition, 0)).x
-        val xAxisY = projector.projectPoint(Point(0, 0)).y // Get Y position of X-axis
-        val cursorStartY = xAxisY + 50 // Start 50 pixels below X-axis
-        g2d.color = Color.BLUE
-        g2d.drawLine(cursorX, cursorStartY, cursorX, xAxisY) // Draw from below X-axis up to X-axis
-        // Draw arrow pointing upwards
-        val arrowSize = 10
-        g2d.drawLine(cursorX, xAxisY, cursorX - arrowSize, xAxisY + arrowSize)
-        g2d.drawLine(cursorX, xAxisY, cursorX + arrowSize, xAxisY + arrowSize)
+        drawCursor(projector, g2d as Graphics2D)
 
         val axisBlocks = listOf(
             TextBlock(
@@ -127,6 +120,23 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         }
 
         g2d.dispose() // Clean up the graphics object
+    }
+
+    private fun drawCursor(projector: ViewportProjector, g2d: Graphics2D) {
+        val cursorX = projector.projectPoint(Point(cursorPosition, 0)).x
+        val xAxisY = projector.projectPoint(Point(0, 0)).y // Get Y position of X-axis
+        val cursorStartY = xAxisY + 50 // Start 50 pixels below X-axis
+        g2d.color = Color.BLUE
+        g2d.drawLine(cursorX, cursorStartY, cursorX, xAxisY) // Draw from below X-axis up to X-axis
+        // Draw arrow pointing upwards
+        val arrowSize = 10
+        g2d.drawLine(cursorX, xAxisY, cursorX - arrowSize, xAxisY + arrowSize)
+        g2d.drawLine(cursorX, xAxisY, cursorX + arrowSize, xAxisY + arrowSize)
+        // Draw stitched line to the top
+        val originalStroke = g2d.stroke
+        g2d.stroke = java.awt.BasicStroke(1.0f, java.awt.BasicStroke.CAP_BUTT, java.awt.BasicStroke.JOIN_MITER, 10.0f, floatArrayOf(5.0f, 5.0f), 0.0f)
+        g2d.drawLine(cursorX, xAxisY, cursorX, 0)
+        g2d.stroke = originalStroke // Restore original stroke
     }
 
     private fun drawYearLabel(
