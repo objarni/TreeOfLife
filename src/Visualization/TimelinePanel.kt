@@ -134,6 +134,7 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         g2d.drawLine(cursorX, xAxisY, cursorX + arrowSize, xAxisY + arrowSize)
         // Draw stitched line to the top
         val originalStroke = g2d.stroke
+        g2d.color = Color.LIGHT_GRAY
         g2d.stroke = java.awt.BasicStroke(1.0f, java.awt.BasicStroke.CAP_BUTT, java.awt.BasicStroke.JOIN_MITER, 10.0f, floatArrayOf(5.0f, 5.0f), 0.0f)
         g2d.drawLine(cursorX, xAxisY, cursorX, 0)
         g2d.stroke = originalStroke // Restore original stroke
