@@ -11,7 +11,7 @@ data class VisualCategory(val category: Category, val color: Color, val baseY: I
 
 fun mapToVisualCategories(categories: List<Category>): List<VisualCategory> {
     // For now, compute y values using the textBlocksForPeriods algorithm
-    var initialY = 0
+    var initialY = 2
     val allColors = listOf(
         Color.ORANGE,
         Color.BLUE,
