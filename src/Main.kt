@@ -196,7 +196,7 @@ Cykel: Jan 1995-Jun 2000
 
         val fileMenu = JMenu("File")
         val aboutMenuItem = JMenuItem("About")
-        val openDataFileMenuItem = JMenuItem("Open Data File")
+        val openDataFileMenuItem = JMenuItem("Edit")
         val quitMenuItem = JMenuItem("Quit")
 
         aboutMenuItem.addActionListener {
