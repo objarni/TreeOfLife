@@ -100,12 +100,16 @@ class MainFrame(title: String) : JFrame() {
             statusLabel.text = statusText
         }
 
+        // Set up the main content pane
         layout = BorderLayout()
         val bottomPanel = JPanel(BorderLayout())
         bottomPanel.add(statusLabel, BorderLayout.CENTER)
         contentPane.add(timeLinePanel, BorderLayout.CENTER)
         contentPane.add(bottomPanel, BorderLayout.SOUTH)
+
+        // Set up the menu bar
         createMenuBar()
+
         reloadData()
 
         pack()
