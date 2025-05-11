@@ -110,9 +110,26 @@ class MainFrame(title: String) : JFrame() {
         // Set up the menu bar
         createMenuBar()
 
+        // Make sure there is a data file, if not create one
+        createDefaultIfDataFileDoesNotExist()
         reloadData()
 
         pack()
+    }
+
+    private fun createDefaultIfDataFileDoesNotExist() {
+        val dataFile = File(dataFilePath)
+        if (!dataFile.exists()) {
+            try {
+                dataFile.parentFile.mkdirs()
+                dataFile.createNewFile()
+                writeDefaultFile(dataFilePath)
+                println("Default data file created at $dataFilePath") // Debug print
+            } catch (e: IOException) {
+                println("Error creating default data file: ${e.message}") // Debug print
+                popupMessageDialog("Error creating default data file: ${e.message}")
+            }
+        }
     }
 
     private fun writeDefaultFile(dataFilePath: String) {
