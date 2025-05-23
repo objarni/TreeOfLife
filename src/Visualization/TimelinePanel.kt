@@ -204,7 +204,6 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
             return
         }
 
-
         cursorPosition = mouseWorldCoordinate.x
         
         // Calculate the time point and notify listeners

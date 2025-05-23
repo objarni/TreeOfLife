@@ -135,6 +135,7 @@ class MainFrame(title: String) : JFrame() {
     private fun writeDefaultFile(dataFilePath: String) {
         val defaultData = """
 Birth month: Jan 1983
+Name: 	Friedrich Söder
 
 ---Hem---
 Stockholm: Sep 1983-Jun 1984
