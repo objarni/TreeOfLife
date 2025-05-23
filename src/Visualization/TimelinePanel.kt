@@ -207,11 +207,10 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         cursorPosition = mouseWorldCoordinate.x
         
         // Calculate the time point and notify listeners
-        val years = cursorPosition / 12
-        val months = cursorPosition % 12 + 1 // Month values are 1-based
+        val year = cursorPosition / 12 + birthMonth.year.value
+        val months = (cursorPosition + birthMonth.month.value - 1) % 12 + 1  // Month values are 1-based
         val cursorTimePoint = TimePoint(
-            Year(birthMonth.year.value + years),
-            Month(months)
+            Year(year), Month(months)
         )
         
         // Find overlapping periods
