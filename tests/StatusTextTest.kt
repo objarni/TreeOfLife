@@ -61,4 +61,13 @@ class StatusTextTest {
         val result = StatusText.calculate(timePoint, birthMonth, emptyList())
         assertEquals("FEBRUARY, 2023 (age 10)", result)
     }
+
+    @Test
+    fun `test age calculation`() {
+        val birthMonth = TimePoint(Year(1979), Month.JULY)
+        assertEquals(0,  StatusText.calculateAge(TimePoint(Year(1979), Month.DECEMBER), birthMonth))
+        assertEquals(0,  StatusText.calculateAge(TimePoint(Year(1980), Month.JUNE), birthMonth))
+        assertEquals(1,  StatusText.calculateAge(TimePoint(Year(1980), Month.JULY), birthMonth))
+        assertEquals(1,  StatusText.calculateAge(TimePoint(Year(1980), Month.DECEMBER), birthMonth))
+    }
 }

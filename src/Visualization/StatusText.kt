@@ -14,7 +14,7 @@ object StatusText {
         }
     }
     
-    private fun calculateAge(current: TimePoint, birth: TimePoint): Int {
+    fun calculateAge(current: TimePoint, birth: TimePoint): Int {
         val yearDiff = current.year.value - birth.year.value
         val monthDiff = current.month.value - birth.month.value
         
