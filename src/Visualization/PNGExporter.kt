@@ -120,8 +120,22 @@ class PNGExporter(
             if (block.text.isNotEmpty()) {
                 g2d.color = block.color.contrastColor()
                 g2d.font = Font("Arial", Font.PLAIN, (zoom * 2).toInt()) // Adjust font size for larger image
+
+                val fontMetrics = g2d.fontMetrics
+                val maxTextWidth = adjustedRect.width - 2 * zoom.toInt()
+                var displayText = block.text
+
+                if (fontMetrics.stringWidth(displayText) > maxTextWidth && maxTextWidth > 0) {
+                    val ellipsis = "…"
+                    var end = displayText.length
+                    while (end > 0 && fontMetrics.stringWidth(displayText.substring(0, end) + ellipsis) > maxTextWidth) {
+                        end--
+                    }
+                    displayText = if (end > 0) displayText.substring(0, end) + ellipsis else ""
+                }
+
                 g2d.drawString(
-                    block.text,
+                    displayText,
                     adjustedRect.x + zoom.toInt(),
                     adjustedRect.y + adjustedRect.height / 2 + g2d.fontMetrics.height / 4
                 )
