@@ -35,3 +35,8 @@ bin/
 /.gradle/
 /build/
 gradle/wrapper
+
+### Claude Code ###
+/.claude/
+CLAUDE.md
+
