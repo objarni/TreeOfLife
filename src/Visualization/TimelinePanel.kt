@@ -188,6 +188,10 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         this.title = title
         repaint()
     }
+    
+    fun getBlocks(): List<TextBlock> = blocks.toList()
+    fun getBirthMonth(): TimePoint = birthMonth
+    fun getTitle(): String = title
 
     override fun mouseClicked(e: MouseEvent) {
         println("Mouse clicked at: ${e.x}, ${e.y}")

@@ -5,12 +5,14 @@ import treeOfLife.Visualization.TextBlock
 import treeOfLife.Visualization.TimelinePanel
 import treeOfLife.Visualization.StatusText
 import treeOfLife.Visualization.mapToVisualCategories
+import treeOfLife.Visualization.PNGExporter
 import java.awt.BorderLayout
 import java.awt.EventQueue
 import java.awt.Rectangle
 import java.awt.event.KeyEvent
 import java.io.File
 import java.io.IOException
+import javax.swing.JFileChooser
 import javax.swing.JFrame
 import javax.swing.JMenu
 import javax.swing.JMenuBar
@@ -19,6 +21,7 @@ import javax.swing.JOptionPane
 import javax.swing.JPanel
 import javax.swing.JTextField
 import javax.swing.KeyStroke
+import javax.swing.filechooser.FileNameExtensionFilter
 
 class MainFrame(title: String) : JFrame() {
     private lateinit var timeLinePanel: TimelinePanel
@@ -175,6 +178,46 @@ Cykel: Jan 1995-Jun 2000
     private fun openDataFile() {
         openTextFile("${System.getProperty("user.home")}/Documents/TreeOfLife.txt")
     }
+    
+    private fun exportToPNG() {
+        val fileChooser = JFileChooser()
+        fileChooser.dialogTitle = "Export Timeline to PNG"
+        fileChooser.fileFilter = FileNameExtensionFilter("PNG files", "png")
+        fileChooser.selectedFile = File("${System.getProperty("user.home")}/Desktop/TreeOfLife.png")
+        
+        val result = fileChooser.showSaveDialog(this)
+        if (result == JFileChooser.APPROVE_OPTION) {
+            val selectedFile = fileChooser.selectedFile
+            val filePath = if (selectedFile.name.endsWith(".png")) {
+                selectedFile.absolutePath
+            } else {
+                selectedFile.absolutePath + ".png"
+            }
+            
+            try {
+                val exporter = PNGExporter(
+                    blocks = timeLinePanel.getBlocks(),
+                    birthMonth = timeLinePanel.getBirthMonth(),
+                    title = timeLinePanel.getTitle()
+                )
+                exporter.exportToPNG(filePath)
+                JOptionPane.showMessageDialog(
+                    this,
+                    "Timeline exported successfully to:\n$filePath",
+                    "Export Successful",
+                    JOptionPane.INFORMATION_MESSAGE
+                )
+            } catch (e: Exception) {
+                JOptionPane.showMessageDialog(
+                    this,
+                    "Error exporting timeline: ${e.message}",
+                    "Export Error",
+                    JOptionPane.ERROR_MESSAGE
+                )
+                e.printStackTrace()
+            }
+        }
+    }
 
     fun openTextFile(file: String) {
         val os = System.getProperty("os.name").lowercase()
@@ -219,6 +262,7 @@ Cykel: Jan 1995-Jun 2000
         val fileMenu = JMenu("File")
         val aboutMenuItem = JMenuItem("About")
         val openDataFileMenuItem = JMenuItem("Edit")
+        val exportPNGMenuItem = JMenuItem("Export to PNG...")
         val quitMenuItem = JMenuItem("Quit")
 
         aboutMenuItem.addActionListener {
@@ -234,6 +278,10 @@ Cykel: Jan 1995-Jun 2000
             openDataFile()
         }
 
+        exportPNGMenuItem.addActionListener {
+            exportToPNG()
+        }
+
         quitMenuItem.addActionListener {
             dispose()
         }
@@ -242,6 +290,7 @@ Cykel: Jan 1995-Jun 2000
 
         fileMenu.add(aboutMenuItem)
         fileMenu.add(openDataFileMenuItem)
+        fileMenu.add(exportPNGMenuItem)
         fileMenu.addSeparator()
         fileMenu.add(quitMenuItem)
 
