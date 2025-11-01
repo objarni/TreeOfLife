@@ -13,3 +13,19 @@ In practical terms, it therefore needs APIs to do these things:
 
  - set the origo timepoint
  - set the text blocks
+
+
+# The cursor
+
+The cursor is a visual element that indicates the "current timepoint",
+which is the timepoint that the user selected.
+
+When clicking on the timeline, the window coordinates are converted
+to world coordinates, and the X coordinate is used to set the cursor
+position.
+
+Given an X position, we can calculate the age of the visualized person
+at that point in time, as well as the year and month. We can also
+compute the "cross-section" of the periods active at that time:
+
+  crossSection: XCoord -> BirthMonth -> (Age, Year, Month, Periods)

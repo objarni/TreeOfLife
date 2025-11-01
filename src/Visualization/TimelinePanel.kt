@@ -211,12 +211,10 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
         cursorPosition = mouseWorldCoordinate.x
         
         // Calculate the time point and notify listeners
-        val year = cursorPosition / 12 + birthMonth.year.value
-        val months = (cursorPosition + birthMonth.month.value - 1) % 12 + 1  // Month values are 1-based
-        val cursorTimePoint = TimePoint(
-            Year(year), Month(months)
-        )
-        
+        val origoPoint = birthMonth
+        val origoXDistance = cursorPosition
+        val cursorTimePoint = timePointAtPosition(origoXDistance, origoPoint)
+
         // Find overlapping periods
         val overlappingPeriods = blocks
             .filter { it.text.isNotEmpty() } // Filter out axis blocks
@@ -260,4 +258,15 @@ class TimelinePanel() : JPanel(), MouseWheelListener, KeyListener, MouseListener
     override fun mouseDragged(e: MouseEvent) {
         // Not used but required by MouseMotionListener
     }
+}
+
+fun timePointAtPosition(
+    monthNumber: Int,
+    _origoPoint: TimePoint
+): TimePoint {
+    val absoluteYearsDistance = monthNumber / 12
+    val absoluteMonthsDistance = monthNumber % 12
+    return TimePoint(
+        Year(absoluteYearsDistance), Month(absoluteMonthsDistance)
+    )
 }
